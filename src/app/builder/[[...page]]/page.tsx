@@ -2,8 +2,8 @@ import BuilderPageClient from "@/components/BuilderPageClient";
 import { BUILDER_API_KEY, BUILDER_CONTENT_API } from "@/lib/builderConfig";
 import type { BuilderContent } from "@builder.io/sdk";
 
-interface BuilderParams {
-  params: { page?: string[] };
+interface BuilderPageProps {
+  params: Promise<{ page?: string[] }>;
 }
 
 export const revalidate = 5;
@@ -31,7 +31,8 @@ async function fetchBuilderContent(pathSegments: string[] = []): Promise<Builder
   return payload?.results?.[0] ?? null;
 }
 
-export default async function CatchAllPage({ params }: BuilderParams) {
-  const content = await fetchBuilderContent(params.page);
+export default async function CatchAllPage({ params }: BuilderPageProps) {
+  const resolvedParams = await params;
+  const content = await fetchBuilderContent(resolvedParams.page);
   return <BuilderPageClient content={content} />;
 }
