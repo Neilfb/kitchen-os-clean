@@ -85,7 +85,7 @@ export default function FWastePage() {
     },
     {
       question: 'How much does F*** Waste cost?',
-      answer: 'Pricing starts at £79/month for a single site. This includes unlimited photo uploads, AI recognition, analytics, and sustainability reporting. Most customers see ROI within the first month. Volume discounts available for multi-site operators. See our pricing page for full details.',
+      answer: '£150/month per site with a one-time setup fee of £300. This includes unlimited photo uploads, AI recognition, analytics, and sustainability reporting. Most customers see ROI within the first month through waste reduction. Volume discounts available for multi-site operators. See our pricing page for full details.',
     },
   ];
 
@@ -95,6 +95,11 @@ export default function FWastePage() {
       <section className="bg-gradient-to-br from-product-fw-green to-product-fw-green-dark text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
+            <img
+              src="/logos/fwaste/fwaste-icon.png"
+              alt="F*** Waste"
+              className="w-20 h-20 mb-6"
+            />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Track Food Waste, Reduce Costs
             </h1>

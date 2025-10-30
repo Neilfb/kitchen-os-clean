@@ -73,23 +73,27 @@ export default function PricingPage() {
   const addOns = [
     {
       name: 'Food Safe System',
-      price: '£49/month',
-      description: 'HACCP management and automated temperature monitoring',
+      price: 'From £22.50/month',
+      description: 'HACCP software (£22.50/mo) OR automatic temperature monitoring (£12/sensor/mo, min 3 + £200 setup)',
+      logo: '/logos/food-safe-system/fss-icon.png',
     },
     {
       name: 'AllerQ',
-      price: '£29/month',
-      description: 'Digital allergen menus with QR codes and multi-language support',
+      price: '£7.49/month',
+      description: 'Digital allergen menus with QR codes and multi-language support. Unlimited menus per restaurant. £74/year option available.',
+      logo: '/logos/allerq/allerq-icon.png',
     },
     {
       name: 'Food Label System',
-      price: '£39/month',
-      description: 'Automated date labels with barcode tracking and traceability',
+      price: '£35/month',
+      description: 'Includes 2,000 free labels + 1.25p per additional label. Android printer included, no upfront costs',
+      logo: '/logos/food-label-system/fls-icon.png',
     },
     {
       name: 'F*** Waste',
-      price: '£79/month',
-      description: 'AI-powered food waste tracking and cost reduction analytics',
+      price: '£150/month',
+      description: 'AI-powered food waste tracking and cost reduction analytics. One-time setup fee: £300',
+      logo: '/logos/fwaste/fwaste-icon.png',
     },
   ];
 
@@ -108,7 +112,7 @@ export default function PricingPage() {
     },
     {
       question: 'What hardware do I need?',
-      answer: 'For Food Safe System: LoRaWAN temperature sensors (£50 each) and gateway (£150 one-time). For Food Label System: Bluetooth thermal printer (£150 one-time) and labels (£15/month). AllerQ and F*** Waste require no hardware - just use your existing smartphone or tablet.',
+      answer: 'For Food Safe System Option 2 (sensors): £200 one-time setup fee includes sensors and gateway - no additional hardware costs. For Food Label System: Android-powered label printer included with subscription, plus 2,000 free labels (additional labels 1.25p each). AllerQ and F*** Waste require no hardware - just use your existing smartphone or tablet.',
     },
     {
       question: 'Do you offer discounts for multiple sites?',
@@ -213,11 +217,20 @@ export default function PricingPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {addOns.map((addon, index) => (
               <div key={index} className="bg-gray-50 p-6 rounded-lg">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="text-xl font-semibold text-brand-navy">{addon.name}</h3>
-                  <span className="text-2xl font-bold text-product-fss-green">{addon.price}</span>
+                <div className="flex items-start mb-4">
+                  <img
+                    src={addon.logo}
+                    alt={addon.name}
+                    className="w-12 h-12 mr-4 object-contain flex-shrink-0"
+                  />
+                  <div className="flex-1">
+                    <div className="flex justify-between items-start mb-2">
+                      <h3 className="text-xl font-semibold text-brand-navy">{addon.name}</h3>
+                      <span className="text-2xl font-bold text-product-fss-green whitespace-nowrap ml-2">{addon.price}</span>
+                    </div>
+                    <p className="text-gray-600">{addon.description}</p>
+                  </div>
                 </div>
-                <p className="text-gray-600">{addon.description}</p>
               </div>
             ))}
           </div>
@@ -255,19 +268,19 @@ export default function PricingPage() {
                 </tr>
                 <tr>
                   <td className="px-6 py-4 text-sm text-gray-900">AllerQ (Allergen Menus)</td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-600">+£29/mo</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600">+£7.49/mo</td>
                   <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-product-fss-green mx-auto" /></td>
                   <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-brand-navy mx-auto" /></td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 text-sm text-gray-900">Food Label System</td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-600">+£39/mo</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600">+£35/mo</td>
                   <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-product-fss-green mx-auto" /></td>
                   <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-brand-navy mx-auto" /></td>
                 </tr>
                 <tr>
                   <td className="px-6 py-4 text-sm text-gray-900">F*** Waste Tracking</td>
-                  <td className="px-6 py-4 text-center text-sm text-gray-600">+£79/mo</td>
+                  <td className="px-6 py-4 text-center text-sm text-gray-600">+£150/mo</td>
                   <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-product-fss-green mx-auto" /></td>
                   <td className="px-6 py-4 text-center"><CheckCircle className="w-5 h-5 text-brand-navy mx-auto" /></td>
                 </tr>

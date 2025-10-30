@@ -1,8 +1,5 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  generateBuildId: async () => {
-    return 'kitchen-os-build-' + Date.now()
-  },
   images: {
     remotePatterns: [
       {

@@ -85,7 +85,7 @@ export default function AllerQPage() {
     },
     {
       question: 'How much does AllerQ cost?',
-      answer: 'Pricing starts at £29/month for a single venue. This includes unlimited menu items, all languages, QR code generation, and customer analytics. Volume discounts available for restaurant groups. See our pricing page for full details.',
+      answer: '£7.49/month per restaurant for unlimited menus. Annual plan available at £74/year (save £15). This includes unlimited menu items, all 30+ languages, QR code generation, and customer analytics. See our pricing page for full details.',
     },
   ];
 
@@ -95,6 +95,11 @@ export default function AllerQPage() {
       <section className="bg-gradient-to-br from-product-allerq-orange to-product-allerq-orange-dark text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
+            <img
+              src="/logos/allerq/allerq-icon.png"
+              alt="AllerQ"
+              className="w-20 h-20 mb-6"
+            />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Digital Allergen Menus with QR Codes
             </h1>

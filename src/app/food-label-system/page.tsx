@@ -85,7 +85,7 @@ export default function FoodLabelSystemPage() {
     },
     {
       question: 'How much does it cost?',
-      answer: 'Pricing starts at £39/month for a single site. This includes unlimited labels, barcode scanning, cloud storage, and mobile apps. Printer and labels sold separately (approx £150 one-time + £15/month for labels). See our pricing page for full details.',
+      answer: '£35/month per site, which includes 2,000 FREE labels as a starter pack. Additional labels cost just 1.25p each (compare to 3-5p for pre-printed labels). No upfront costs. The Android-powered label printer is included with your subscription, plus remote setup and support. This saves most kitchens 40-90% compared to buying pre-printed date labels.',
     },
   ];
 
@@ -95,6 +95,11 @@ export default function FoodLabelSystemPage() {
       <section className="bg-gradient-to-br from-product-fls-green to-product-fls-green-dark text-brand-navy py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
+            <img
+              src="/logos/food-label-system/fls-icon.png"
+              alt="Food Label System"
+              className="w-20 h-20 mb-6"
+            />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Automated Date Labels & Barcodes
             </h1>

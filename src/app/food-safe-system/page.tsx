@@ -85,7 +85,7 @@ export default function FoodSafeSystemPage() {
     },
     {
       question: 'How much does it cost?',
-      answer: 'Pricing starts at £49/month for a single site. This includes sensors, gateway, cloud platform, and mobile app. Volume discounts available for multi-site operators. See our pricing page for full details.',
+      answer: 'Two options: Option 1 - £22.50/month for software only (you manage HACCP digitally with custom plans, checklists, and compliance reports). Option 2 - £12/month per sensor (minimum 3 sensors) + £200 one-time setup fee for automatic temperature monitoring with real-time alerts. Typical setup with 3 sensors costs £36/month + £200 setup. See our pricing page for full details.',
     },
   ];
 
@@ -95,6 +95,11 @@ export default function FoodSafeSystemPage() {
       <section className="bg-gradient-to-br from-product-fss-green to-product-fss-green-dark text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
+            <img
+              src="/logos/food-safe-system/fss-icon.png"
+              alt="Food Safe System"
+              className="w-20 h-20 mb-6"
+            />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Digital HACCP & Temperature Monitoring
             </h1>

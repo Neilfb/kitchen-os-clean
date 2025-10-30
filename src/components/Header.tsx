@@ -9,10 +9,34 @@ export default function Header() {
   const [isProductsOpen, setIsProductsOpen] = useState(false);
 
   const products = [
-    { name: 'Food Safe System', href: '/food-safe-system', color: 'product-fss-green' },
-    { name: 'AllerQ', href: '/allerq', color: 'product-allerq-orange' },
-    { name: 'Food Label System', href: '/food-label-system', color: 'product-fls-green' },
-    { name: 'F*** Waste', href: '/f-waste', color: 'product-fw-green' },
+    {
+      name: 'Food Safe System',
+      href: '/food-safe-system',
+      color: 'product-fss-green',
+      logo: '/logos/food-safe-system/fss-icon.png',
+      description: 'HACCP & Temperature Monitoring'
+    },
+    {
+      name: 'AllerQ',
+      href: '/allerq',
+      color: 'product-allerq-orange',
+      logo: '/logos/allerq/allerq-icon.png',
+      description: 'Digital Allergen Menus'
+    },
+    {
+      name: 'Food Label System',
+      href: '/food-label-system',
+      color: 'product-fls-green',
+      logo: '/logos/food-label-system/fls-icon.png',
+      description: 'Automated Date Labels'
+    },
+    {
+      name: 'F*** Waste',
+      href: '/f-waste',
+      color: 'product-fw-green',
+      logo: '/logos/fwaste/fwaste-icon.png',
+      description: 'Food Waste Tracking'
+    },
   ];
 
   return (
@@ -39,16 +63,26 @@ export default function Header() {
               </button>
 
               {isProductsOpen && (
-                <div className="absolute top-full left-0 pt-2 w-80">
+                <div className="absolute top-full left-0 pt-2 w-96">
                   <div className="bg-white rounded-xl shadow-lg border border-gray-100 overflow-hidden">
                     {products.map((product) => (
                       <Link
                         key={product.href}
                         href={product.href}
-                        className="block px-6 py-4 text-gray-900 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0 font-medium focus:outline-none focus:bg-gray-50 group"
+                        className="flex items-center px-6 py-4 text-gray-900 hover:bg-gray-50 transition-all border-b border-gray-100 last:border-b-0 focus:outline-none focus:bg-gray-50 group"
                         onClick={() => setIsProductsOpen(false)}
                       >
-                        <span className="group-hover:translate-x-1 inline-block transition-transform duration-200">{product.name}</span>
+                        <img
+                          src={product.logo}
+                          alt={product.name}
+                          className="w-10 h-10 mr-4 object-contain flex-shrink-0"
+                        />
+                        <div className="flex-1">
+                          <div className="font-semibold text-gray-900 group-hover:translate-x-1 inline-block transition-transform duration-200">
+                            {product.name}
+                          </div>
+                          <div className="text-sm text-gray-500">{product.description}</div>
+                        </div>
                       </Link>
                     ))}
                   </div>
@@ -104,10 +138,18 @@ export default function Header() {
               <Link
                 key={product.href}
                 href={product.href}
-                className="block text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all py-3 px-3 rounded-lg font-medium min-h-[44px] flex items-center"
+                className="flex items-center text-gray-600 hover:text-gray-900 hover:bg-gray-50 transition-all py-3 px-3 rounded-lg font-medium min-h-[44px]"
                 onClick={() => setIsOpen(false)}
               >
-                {product.name}
+                <img
+                  src={product.logo}
+                  alt={product.name}
+                  className="w-8 h-8 mr-3 object-contain flex-shrink-0"
+                />
+                <div className="flex-1">
+                  <div className="font-semibold">{product.name}</div>
+                  <div className="text-xs text-gray-500">{product.description}</div>
+                </div>
               </Link>
             ))}
             <Link
