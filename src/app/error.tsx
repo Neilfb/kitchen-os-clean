@@ -23,7 +23,7 @@ export default function Error({
           Something went wrong
         </h2>
         <p className="text-brand-medium-text mb-8 max-w-md mx-auto">
-          We're sorry, but something unexpected happened. Please try again or contact support if the problem persists.
+          We&apos;re sorry, but something unexpected happened. Please try again or contact support if the problem persists.
         </p>
         {error.digest && (
           <p className="text-sm text-brand-light-text mb-4">

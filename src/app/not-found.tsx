@@ -15,7 +15,7 @@ export default function NotFound() {
           Page Not Found
         </h2>
         <p className="text-brand-medium-text mb-8 max-w-md mx-auto">
-          Sorry, we couldn't find the page you're looking for. The page may have been moved or deleted.
+          Sorry, we couldn&apos;t find the page you&apos;re looking for. The page may have been moved or deleted.
         </p>
         <div className="flex gap-4 justify-center">
           <Link
