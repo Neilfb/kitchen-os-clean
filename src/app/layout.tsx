@@ -1,1 +1,24 @@
-export default function RootLayout({ children }: { children: React.ReactNode }) { return <html><body>{children}</body></html>; }
+import type { Metadata } from "next";
+import "./globals.css";
+import { defaultMetadata } from "@/lib/defaultSeo";
+import Header from "@/components/Header.test";
+import Footer from "@/components/Footer";
+
+// Export metadata using Next.js App Router native metadata API
+export const metadata: Metadata = defaultMetadata;
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body className="min-h-screen bg-white text-gray-900 antialiased">
+        <Header />
+        <main>{children}</main>
+        <Footer />
+      </body>
+    </html>
+  );
+}

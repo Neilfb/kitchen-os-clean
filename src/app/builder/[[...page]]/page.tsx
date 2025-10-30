@@ -2,15 +2,17 @@ import BuilderPageClient from "@/components/BuilderPageClient";
 import { BUILDER_API_KEY, BUILDER_CONTENT_API } from "@/lib/builderConfig";
 import type { BuilderContent } from "@builder.io/sdk";
 
-const PAGE_MODEL = "page";
-const PAGE_PATH = "/";
+interface BuilderParams {
+  params: { page?: string[] };
+}
 
 export const revalidate = 5;
 
-async function fetchBuilderPageContent(): Promise<BuilderContent | null> {
+async function fetchBuilderContent(pathSegments: string[] = []): Promise<BuilderContent | null> {
+  const urlPath = `/${pathSegments.join("/")}` || "/";
   const apiKey = BUILDER_API_KEY;
-  const url = `${BUILDER_CONTENT_API}/${PAGE_MODEL}?apiKey=${apiKey}&userAttributes.urlPath=${encodeURIComponent(
-    PAGE_PATH
+  const url = `${BUILDER_CONTENT_API}/page?apiKey=${apiKey}&userAttributes.urlPath=${encodeURIComponent(
+    urlPath
   )}`;
 
   const response = await fetch(url, {
@@ -21,11 +23,7 @@ async function fetchBuilderPageContent(): Promise<BuilderContent | null> {
   });
 
   if (!response.ok) {
-    console.error(
-      "[Builder] Failed to fetch content",
-      response.status,
-      response.statusText
-    );
+    console.error("[Builder] Failed to fetch preview content", response.status, response.statusText);
     return null;
   }
 
@@ -33,7 +31,7 @@ async function fetchBuilderPageContent(): Promise<BuilderContent | null> {
   return payload?.results?.[0] ?? null;
 }
 
-export default async function HomePage() {
-  const content = await fetchBuilderPageContent();
+export default async function CatchAllPage({ params }: BuilderParams) {
+  const content = await fetchBuilderContent(params.page);
   return <BuilderPageClient content={content} />;
 }
