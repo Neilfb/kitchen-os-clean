@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import "./globals.css";
 import { defaultMetadata } from "@/lib/defaultSeo";
-import Header from "@/components/Header.test";
+import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 // Export metadata using Next.js App Router native metadata API
