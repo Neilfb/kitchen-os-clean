@@ -195,15 +195,15 @@ export default function ShopPage() {
                       key={variant.id}
                       className={`
                         relative bg-white rounded-xl border-2 p-6 transition-all
-                        ${variant.disabled
+                        ${'disabled' in variant && variant.disabled
                           ? 'border-gray-200 opacity-60 cursor-not-allowed'
-                          : variant.popular
+                          : 'popular' in variant && variant.popular
                           ? 'border-green-500 shadow-lg'
                           : 'border-gray-200 hover:border-green-300 hover:shadow-md cursor-pointer'
                         }
                       `}
                     >
-                      {variant.popular && (
+                      {'popular' in variant && variant.popular && (
                         <div className="absolute -top-3 left-6 bg-gradient-to-r from-green-500 to-green-600 text-white px-4 py-1 rounded-full text-sm font-semibold">
                           Most Popular
                         </div>
@@ -215,31 +215,31 @@ export default function ShopPage() {
                             {variant.name}
                           </h4>
 
-                          {variant.pricePerLabel && (
+                          {'pricePerLabel' in variant && variant.pricePerLabel && (
                             <p className="text-sm text-gray-600 mb-2">
                               {variant.pricePerLabel.toFixed(2)}p per label
                             </p>
                           )}
 
-                          {variant.pricePerProbe && (
+                          {'pricePerProbe' in variant && variant.pricePerProbe && (
                             <p className="text-sm text-gray-600 mb-2">
                               £{variant.pricePerProbe.toFixed(2)} per probe
                             </p>
                           )}
 
-                          {variant.savings && (
+                          {'savings' in variant && variant.savings && (
                             <div className="inline-flex items-center gap-2 bg-green-50 text-green-700 px-3 py-1 rounded-full text-sm font-semibold mb-2">
                               Save {variant.savings}%
                             </div>
                           )}
 
-                          {variant.setupFee && (
+                          {'setupFee' in variant && variant.setupFee && (
                             <p className="text-sm text-gray-500 mb-2">
                               + £{variant.setupFee.toFixed(2)} one-time setup fee
                             </p>
                           )}
 
-                          {variant.note && (
+                          {'note' in variant && variant.note && (
                             <p className="text-sm text-amber-600 font-medium">
                               {variant.note}
                             </p>
@@ -251,11 +251,11 @@ export default function ShopPage() {
                             £{variant.price.toFixed(2)}
                           </div>
 
-                          {!variant.disabled && (
+                          {!('disabled' in variant && variant.disabled) && (
                             <button
                               className={`
                                 mt-3 px-6 py-2 rounded-lg font-semibold transition-all
-                                ${variant.popular
+                                ${'popular' in variant && variant.popular
                                   ? 'bg-gradient-to-r from-green-500 to-green-600 text-white hover:from-green-600 hover:to-green-700 shadow-md'
                                   : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                 }
