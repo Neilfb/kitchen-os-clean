@@ -381,7 +381,7 @@ export default function SignUpPage() {
             {/* Testimonial */}
             <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
               <div className="text-green-50 italic mb-4">
-                "We were up and running in under 10 minutes. The ROI was obvious within the first week when we avoided a failed inspection and caught £400 of waste."
+                &ldquo;We were up and running in under 10 minutes. The ROI was obvious within the first week when we avoided a failed inspection and caught £400 of waste.&rdquo;
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold">

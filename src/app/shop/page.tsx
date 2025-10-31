@@ -157,7 +157,7 @@ export default function ShopPage() {
       {/* Products */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="space-y-24">
-          {products.map((product, index) => (
+          {products.map((product) => (
             <div key={product.id} id={product.id} className="scroll-mt-24">
               {/* Product Header */}
               <div className="flex items-start gap-6 mb-8">
@@ -275,7 +275,7 @@ export default function ShopPage() {
                   {/* Features */}
                   <div className="bg-white rounded-xl border border-gray-200 p-6">
                     <h3 className="text-lg font-semibold text-gray-900 mb-4">
-                      What's Included
+                      What&apos;s Included
                     </h3>
                     <ul className="space-y-3">
                       {product.features.map((feature, idx) => (
@@ -365,7 +365,7 @@ export default function ShopPage() {
 
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              What's your delivery policy?
+              What&apos;s your delivery policy?
             </h3>
             <p className="text-gray-700">
               We offer free UK delivery on orders over £50. Orders are dispatched next working day via Royal Mail Tracked 24 or DPD. Typical delivery is 1-2 working days. For orders under £50, standard delivery is £4.95. Express delivery options available at checkout.
@@ -374,10 +374,10 @@ export default function ShopPage() {
 
           <div className="bg-white rounded-xl border border-gray-200 p-6">
             <h3 className="text-lg font-semibold text-gray-900 mb-2">
-              Can I return products if they don't work for me?
+              Can I return products if they don&apos;t work for me?
             </h3>
             <p className="text-gray-700">
-              Yes. We offer a 30-day money-back guarantee on all hardware purchases. If you're not satisfied, return the products in their original condition for a full refund. Opened thermal label rolls cannot be returned for hygiene reasons, but unopened rolls are eligible for return.
+              Yes. We offer a 30-day money-back guarantee on all hardware purchases. If you&apos;re not satisfied, return the products in their original condition for a full refund. Opened thermal label rolls cannot be returned for hygiene reasons, but unopened rolls are eligible for return.
             </p>
           </div>
 
@@ -386,7 +386,7 @@ export default function ShopPage() {
               Do you offer bulk discounts for multi-site operators?
             </h3>
             <p className="text-gray-700">
-              Yes! If you're ordering for multiple sites (5+ locations), contact our sales team for volume pricing on both hardware and consumables. We also offer consolidated billing and centralized account management for restaurant groups. Email sales@kitchenos.uk or call 0800 123 4567.
+              Yes! If you&apos;re ordering for multiple sites (5+ locations), contact our sales team for volume pricing on both hardware and consumables. We also offer consolidated billing and centralized account management for restaurant groups. Email sales@kitchenos.uk or call 0800 123 4567.
             </p>
           </div>
 

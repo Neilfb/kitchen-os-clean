@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Lock, Mail, Eye, EyeOff, Shield, Zap, CheckCircle } from 'lucide-react';
+import { Lock, Mail, Eye, Shield, Zap, CheckCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Login - Kitchen OS Platform',
@@ -176,7 +176,7 @@ export default function LoginPage() {
               {/* Sign Up Link */}
               <div className="mt-6 text-center">
                 <p className="text-sm text-gray-600">
-                  Don't have an account?{' '}
+                  Don&apos;t have an account?{' '}
                   <Link
                     href="/signup"
                     className="font-semibold text-green-600 hover:text-green-700"
@@ -294,7 +294,7 @@ export default function LoginPage() {
             {/* Testimonial */}
             <div className="mt-8 bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
               <div className="text-green-50 italic mb-4">
-                "Having all our kitchen systems in one login has saved us hours every week. The unified dashboard gives us visibility we never had before."
+                &ldquo;Having all our kitchen systems in one login has saved us hours every week. The unified dashboard gives us visibility we never had before.&rdquo;
               </div>
               <div className="flex items-center gap-3">
                 <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center text-white font-bold">

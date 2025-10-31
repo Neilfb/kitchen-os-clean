@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { Mic, Play, Headphones, Calendar, TrendingUp, Users, MessageCircle, ExternalLink } from 'lucide-react';
+import { Mic, Play, Headphones, Calendar, Users, MessageCircle, ExternalLink } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Kitchen OS Podcast - Industry Insights & Expert Conversations',

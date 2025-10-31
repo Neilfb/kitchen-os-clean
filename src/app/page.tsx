@@ -298,8 +298,8 @@ export default function HomePage() {
                   </svg>
                 </div>
                 <blockquote className="text-2xl text-gray-700 leading-relaxed mb-8">
-                  Kitchen OS transformed our operations completely. We've saved over £15,000 this year on waste alone,
-                  and our last health inspection was the easiest we've ever had.
+                  Kitchen OS transformed our operations completely. We&apos;ve saved over £15,000 this year on waste alone,
+                  and our last health inspection was the easiest we&apos;ve ever had.
                 </blockquote>
                 <div className="flex items-center">
                   <div>

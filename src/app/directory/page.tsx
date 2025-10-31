@@ -280,7 +280,7 @@ export default function DirectoryPage() {
               Trusted Partners & Suppliers
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              We've curated the best solutions for every aspect of your kitchen operations.
+              We&apos;ve curated the best solutions for every aspect of your kitchen operations.
               No affiliates, no commissions - just genuine recommendations.
             </p>
           </div>
@@ -335,7 +335,7 @@ export default function DirectoryPage() {
             Missing Something?
           </h2>
           <p className="text-xl text-gray-600 mb-8">
-            Know a great supplier we should feature? Let us know and we'll review them for inclusion.
+            Know a great supplier we should feature? Let us know and we&apos;ll review them for inclusion.
           </p>
           <Link
             href="/contact"
