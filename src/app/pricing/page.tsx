@@ -1,14 +1,38 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight } from 'lucide-react';
+import { BreadcrumbSchema, FAQSchema } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Pricing - Kitchen OS Plans & Pricing',
-  description: 'Transparent pricing for Kitchen OS products. Choose the plan that fits your kitchen. 14-day free trial, no credit card required.',
+  description: 'Transparent pricing for Kitchen OS products. Choose the plan that fits your kitchen. 14-day free trial, no credit card required. From £22.50/month.',
+  keywords: [
+    'kitchen management pricing',
+    'restaurant software pricing',
+    'HACCP software cost',
+    'food safety software pricing',
+    'kitchen OS pricing',
+    'commercial kitchen software cost',
+  ],
   openGraph: {
     title: 'Pricing - Kitchen OS Plans & Pricing',
-    description: 'Transparent pricing for Kitchen OS products. Choose the plan that fits your kitchen. 14-day free trial, no credit card required.',
+    description: 'Transparent pricing for Kitchen OS products. Choose the plan that fits your kitchen. 14-day free trial, no credit card required. From £22.50/month.',
     url: '/pricing',
+    type: 'website',
+    images: [
+      {
+        url: '/assets/KitchenOS-03.png',
+        width: 1200,
+        height: 630,
+        alt: 'Kitchen OS Pricing Plans',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pricing - Kitchen OS Plans & Pricing',
+    description: 'Transparent pricing for Kitchen OS products. Choose the plan that fits your kitchen. 14-day free trial, no credit card required.',
+    images: ['/assets/KitchenOS-03.png'],
   },
 };
 
@@ -134,6 +158,15 @@ export default function PricingPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD Schema Markup */}
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Pricing', url: '/pricing' },
+        ]}
+      />
+      <FAQSchema faqs={faqs} />
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-brand-navy to-brand-navy-light text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

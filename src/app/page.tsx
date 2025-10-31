@@ -1,10 +1,44 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, Zap, Shield, TrendingUp, Users } from 'lucide-react';
+import { BreadcrumbSchema } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Kitchen OS - The Operating System for Professional Kitchens',
   description: 'Transform your kitchen operations with Kitchen OS. Food safety, allergen management, labelling, and waste tracking in one intelligent platform. Trusted by hospitality leaders.',
+  keywords: [
+    'kitchen management software',
+    'restaurant management system',
+    'food safety software',
+    'kitchen operations platform',
+    'HACCP software',
+    'allergen management',
+    'food waste tracking',
+    'restaurant technology',
+    'commercial kitchen software',
+    'hospitality management system',
+  ],
+  openGraph: {
+    title: 'Kitchen OS - The Operating System for Professional Kitchens',
+    description: 'Transform your kitchen operations with Kitchen OS. Food safety, allergen management, labelling, and waste tracking in one intelligent platform. Trusted by hospitality leaders.',
+    url: '/',
+    type: 'website',
+    images: [
+      {
+        url: '/assets/KitchenOS-03.png',
+        width: 1200,
+        height: 630,
+        alt: 'Kitchen OS - The Operating System for Professional Kitchens',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    site: '@KitchenOS',
+    title: 'Kitchen OS - The Operating System for Professional Kitchens',
+    description: 'Transform your kitchen operations with Kitchen OS. Food safety, allergen management, labelling, and waste tracking in one intelligent platform.',
+    images: ['/assets/KitchenOS-03.png'],
+  },
 };
 
 export default function HomePage() {
@@ -79,6 +113,13 @@ export default function HomePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD Schema Markup */}
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+        ]}
+      />
+
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-navy-dark text-white overflow-hidden">
         {/* Background Pattern */}

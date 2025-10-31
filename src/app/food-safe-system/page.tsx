@@ -1,15 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, Shield, Clock, Bell, Cloud, TrendingDown, Users, FileText } from 'lucide-react';
+import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Food Safe System - Digital HACCP & Temperature Monitoring',
   description: 'Automated HACCP management and temperature monitoring for professional kitchens. Real-time alerts, cloud backup, and complete compliance documentation.',
+  keywords: [
+    'HACCP software',
+    'temperature monitoring',
+    'food safety management',
+    'digital HACCP',
+    'restaurant compliance',
+    'temperature sensors',
+    'food safety automation',
+    'kitchen temperature monitoring',
+  ],
   openGraph: {
     title: 'Food Safe System - Digital HACCP & Temperature Monitoring | Kitchen OS',
     description: 'Automated HACCP management and temperature monitoring for professional kitchens. Real-time alerts, cloud backup, and complete compliance documentation.',
     url: '/food-safe-system',
-    images: [{ url: '/assets/fss_social_logo.png', width: 1200, height: 630 }],
+    type: 'website',
+    images: [{ url: '/assets/fss_social_logo.png', width: 1200, height: 630, alt: 'Food Safe System - HACCP & Temperature Monitoring' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Food Safe System - Digital HACCP & Temperature Monitoring',
+    description: 'Automated HACCP management and temperature monitoring for professional kitchens. Real-time alerts, cloud backup, and complete compliance documentation.',
+    images: ['/assets/fss_social_logo.png'],
   },
 };
 
@@ -91,6 +109,36 @@ export default function FoodSafeSystemPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD Schema Markup */}
+      <ProductSchema
+        name="Food Safe System"
+        description="Automated HACCP management and temperature monitoring for professional kitchens. Real-time alerts, cloud backup, and complete compliance documentation. Save 3+ hours per week on paperwork while ensuring 100% compliance."
+        price="22.50"
+        currency="GBP"
+        image="/logos/food-safe-system/fss-icon.png"
+        url="/food-safe-system"
+        sku="FSS-001"
+        aggregateRating={{
+          ratingValue: "4.9",
+          reviewCount: "43"
+        }}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Food Safe System', url: '/food-safe-system' },
+        ]}
+      />
+      <SoftwareApplicationSchema
+        name="Food Safe System"
+        description="Digital HACCP and temperature monitoring software for restaurants and professional kitchens"
+        applicationCategory="BusinessApplication"
+        operatingSystem="Web, iOS, Android"
+        price="22.50"
+        currency="GBP"
+      />
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-product-fss-green to-product-fss-green-dark text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

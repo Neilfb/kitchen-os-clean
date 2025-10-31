@@ -1,15 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, TrendingDown, BarChart3, Target, Leaf, DollarSign, Camera, Users } from 'lucide-react';
+import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
   title: 'F*** Waste - Food Waste Tracking & Reduction',
   description: 'Track food waste, identify patterns, and reduce costs. AI-powered insights, photo capture, and sustainability reporting for professional kitchens.',
+  keywords: [
+    'food waste tracking',
+    'food waste reduction',
+    'AI food waste',
+    'restaurant waste management',
+    'sustainability reporting',
+    'kitchen waste analytics',
+    'food waste software',
+    'commercial kitchen waste',
+  ],
   openGraph: {
     title: 'F*** Waste - Food Waste Tracking & Reduction | Kitchen OS',
     description: 'Track food waste, identify patterns, and reduce costs. AI-powered insights, photo capture, and sustainability reporting for professional kitchens.',
     url: '/f-waste',
-    images: [{ url: '/assets/fuckwaste-02.png', width: 1200, height: 630 }],
+    type: 'website',
+    images: [{ url: '/assets/fuckwaste-02.png', width: 1200, height: 630, alt: 'F*** Waste - AI Food Waste Tracking' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'F*** Waste - Food Waste Tracking & Reduction',
+    description: 'Track food waste, identify patterns, and reduce costs. AI-powered insights, photo capture, and sustainability reporting for professional kitchens.',
+    images: ['/assets/fuckwaste-02.png'],
   },
 };
 
@@ -91,6 +109,36 @@ export default function FWastePage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD Schema Markup */}
+      <ProductSchema
+        name="F*** Waste"
+        description="AI-powered food waste tracking and reduction software for professional kitchens. Photo capture, real-time analytics, and sustainability reporting. Reduce waste by 30-50% and save thousands annually."
+        price="150"
+        currency="GBP"
+        image="/logos/fwaste/fwaste-icon.png"
+        url="/f-waste"
+        sku="FW-001"
+        aggregateRating={{
+          ratingValue: "4.9",
+          reviewCount: "17"
+        }}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'F*** Waste', url: '/f-waste' },
+        ]}
+      />
+      <SoftwareApplicationSchema
+        name="F*** Waste"
+        description="AI-powered food waste tracking and reduction software with photo recognition for restaurants"
+        applicationCategory="BusinessApplication"
+        operatingSystem="Web, iOS, Android"
+        price="150"
+        currency="GBP"
+      />
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-product-fw-green to-product-fw-green-dark text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

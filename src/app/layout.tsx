@@ -3,6 +3,7 @@ import "./globals.css";
 import { defaultMetadata } from "@/lib/defaultSeo";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
 
 // Export metadata using Next.js App Router native metadata API
 export const metadata: Metadata = defaultMetadata;
@@ -14,6 +15,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
+      <head>
+        <OrganizationSchema />
+        <WebSiteSchema />
+      </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <Header />
         <main>{children}</main>

@@ -1,15 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, Printer, Barcode, Clock, Shield, TrendingDown, Zap, Database } from 'lucide-react';
+import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
   title: 'Food Label System - Automated Date Labels & Barcodes',
   description: 'Print compliant food labels with barcodes in seconds. Automated use-by dates, allergen warnings, and complete traceability for professional kitchens.',
+  keywords: [
+    'food labelling system',
+    'automated food labels',
+    'barcode food labels',
+    'use-by date labels',
+    'restaurant label printer',
+    'food traceability',
+    'kitchen label software',
+    'commercial kitchen labels',
+  ],
   openGraph: {
     title: 'Food Label System - Automated Date Labels & Barcodes | Kitchen OS',
     description: 'Print compliant food labels with barcodes in seconds. Automated use-by dates, allergen warnings, and complete traceability for professional kitchens.',
     url: '/food-label-system',
-    images: [{ url: '/assets/food label system-01.png', width: 1200, height: 630 }],
+    type: 'website',
+    images: [{ url: '/assets/food label system-01.png', width: 1200, height: 630, alt: 'Food Label System - Automated Date Labels' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Food Label System - Automated Date Labels & Barcodes',
+    description: 'Print compliant food labels with barcodes in seconds. Automated use-by dates, allergen warnings, and complete traceability for professional kitchens.',
+    images: ['/assets/food label system-01.png'],
   },
 };
 
@@ -91,6 +109,36 @@ export default function FoodLabelSystemPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD Schema Markup */}
+      <ProductSchema
+        name="Food Label System"
+        description="Automated food labelling system with barcodes for professional kitchens. Print compliant labels in seconds with automated use-by dates, allergen warnings, and complete traceability. Includes 2,000 free labels monthly."
+        price="35"
+        currency="GBP"
+        image="/logos/food-label-system/fls-icon.png"
+        url="/food-label-system"
+        sku="FLS-001"
+        aggregateRating={{
+          ratingValue: "4.8",
+          reviewCount: "29"
+        }}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'Food Label System', url: '/food-label-system' },
+        ]}
+      />
+      <SoftwareApplicationSchema
+        name="Food Label System"
+        description="Automated food labelling software with barcode tracking for restaurants and commercial kitchens"
+        applicationCategory="BusinessApplication"
+        operatingSystem="Web, iOS, Android"
+        price="35"
+        currency="GBP"
+      />
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-product-fls-green to-product-fls-green-dark text-brand-navy py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

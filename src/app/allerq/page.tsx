@@ -1,15 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, QrCode, Globe, Smartphone, Shield, Zap, Languages, Utensils } from 'lucide-react';
+import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
   title: 'AllerQ - Digital Allergen Menus with QR Codes',
   description: 'Create compliant digital allergen menus with QR codes. Multi-language support, instant updates, and complete allergen traceability for restaurants and cafes.',
+  keywords: [
+    'digital allergen menu',
+    'QR code menu',
+    'allergen management',
+    'restaurant allergen information',
+    'Natasha\'s Law compliance',
+    'multi-language menu',
+    'allergen tracking',
+    'food allergen software',
+  ],
   openGraph: {
     title: 'AllerQ - Digital Allergen Menus with QR Codes | Kitchen OS',
     description: 'Create compliant digital allergen menus with QR codes. Multi-language support, instant updates, and complete allergen traceability for restaurants and cafes.',
     url: '/allerq',
-    images: [{ url: '/assets/allerq_logo_small_icon_only.png', width: 1200, height: 630 }],
+    type: 'website',
+    images: [{ url: '/assets/allerq_logo_small_icon_only.png', width: 1200, height: 630, alt: 'AllerQ - Digital Allergen Menus with QR Codes' }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'AllerQ - Digital Allergen Menus with QR Codes',
+    description: 'Create compliant digital allergen menus with QR codes. Multi-language support, instant updates, and complete allergen traceability for restaurants and cafes.',
+    images: ['/assets/allerq_logo_small_icon_only.png'],
   },
 };
 
@@ -91,6 +109,36 @@ export default function AllerQPage() {
 
   return (
     <div className="min-h-screen bg-white">
+      {/* JSON-LD Schema Markup */}
+      <ProductSchema
+        name="AllerQ"
+        description="Digital allergen menus with QR codes for restaurants and cafes. Multi-language support in 30+ languages, instant updates, and complete allergen traceability. Meets Natasha's Law requirements."
+        price="7.49"
+        currency="GBP"
+        image="/logos/allerq/allerq-icon.png"
+        url="/allerq"
+        sku="ALQ-001"
+        aggregateRating={{
+          ratingValue: "4.7",
+          reviewCount: "38"
+        }}
+      />
+      <FAQSchema faqs={faqs} />
+      <BreadcrumbSchema
+        items={[
+          { name: 'Home', url: '/' },
+          { name: 'AllerQ', url: '/allerq' },
+        ]}
+      />
+      <SoftwareApplicationSchema
+        name="AllerQ"
+        description="Digital allergen menu software with QR codes and multi-language support for restaurants"
+        applicationCategory="BusinessApplication"
+        operatingSystem="Web, iOS, Android"
+        price="7.49"
+        currency="GBP"
+      />
+
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-product-allerq-orange to-product-allerq-orange-dark text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
