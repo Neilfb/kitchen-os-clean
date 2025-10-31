@@ -268,24 +268,32 @@ export default function FoodLabelSystemPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-product-fls-green to-product-fls-green-dark text-brand-navy">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/assets/pexels-4louette-11129150.jpg"
+            alt="Kitchen food preparation"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-product-fls-green/95 to-product-fls-green-dark/95"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Ready to Automate Your Food Labelling?
           </h2>
-          <p className="text-xl mb-8 text-brand-navy-light">
+          <p className="text-xl mb-8 text-white/90">
             Join hundreds of kitchens using Food Label System. 14-day free trial, no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-brand-navy text-white font-semibold rounded-lg hover:bg-brand-navy-light transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-fls-green font-semibold rounded-lg hover:bg-gray-50 transition-all shadow-xl"
             >
               Book a Demo
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-navy font-semibold rounded-lg hover:bg-gray-50 transition-colors border-2 border-brand-navy"
+              className="inline-flex items-center justify-center px-8 py-4 bg-product-fls-green-dark text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all border-2 border-white shadow-xl"
             >
               View Pricing
             </Link>

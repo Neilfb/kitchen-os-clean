@@ -267,24 +267,32 @@ export default function AllerQPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-product-allerq-orange to-product-allerq-orange-dark text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+      <section className="relative py-20 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/assets/pexels-capturedbyaugustine-19533279.jpg"
+            alt="Restaurant dining experience"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-product-allerq-orange/95 to-product-allerq-orange-dark/95"></div>
+        </div>
+        <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
             Ready to Go Digital with Allergen Menus?
           </h2>
-          <p className="text-xl mb-8 text-product-allerq-orange-light">
+          <p className="text-xl mb-8 text-white/90">
             Join hundreds of restaurants using AllerQ. 14-day free trial, no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-allerq-orange font-semibold rounded-lg hover:bg-gray-50 transition-colors"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-allerq-orange font-semibold rounded-lg hover:bg-gray-50 transition-all shadow-xl"
             >
               Book a Demo
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center px-8 py-4 bg-product-allerq-orange-dark text-white font-semibold rounded-lg hover:bg-opacity-90 transition-colors border-2 border-white"
+              className="inline-flex items-center justify-center px-8 py-4 bg-product-allerq-orange-dark text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all border-2 border-white shadow-xl"
             >
               View Pricing
             </Link>
