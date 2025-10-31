@@ -110,6 +110,10 @@ export default function Header() {
               Shop
             </Link>
 
+            <Link href="/podcast" className="text-white/90 hover:text-white hover:bg-white/10 transition-all px-4 py-2.5 rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-white/30">
+              Podcast
+            </Link>
+
             <div className="flex items-center space-x-3 ml-4 pl-4 border-l border-white/20">
               <Link href="/login" className="text-white/90 hover:text-white hover:bg-white/10 transition-all px-4 py-2.5 rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-white/30">
                 Login
@@ -186,6 +190,13 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
             >
               Shop
+            </Link>
+            <Link
+              href="/podcast"
+              className="block text-brand-medium-text hover:text-brand-dark-text hover:bg-brand-subtle-bg transition-all py-3 px-3 rounded-lg font-bold min-h-[44px] flex items-center"
+              onClick={() => setIsOpen(false)}
+            >
+              Podcast
             </Link>
             <div className="pt-4 mt-4 border-t border-gray-200 space-y-3">
               <Link href="/login" className="w-full block text-center text-brand-navy hover:bg-brand-subtle-bg transition-all py-3 px-3 rounded-lg font-bold min-h-[44px]">
