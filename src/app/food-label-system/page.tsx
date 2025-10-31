@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, Printer, Barcode, Clock, Shield, TrendingDown, Zap, Database } from 'lucide-react';
 import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
+import { ProductLogo } from '@/components/ProductLogo';
 
 export const metadata: Metadata = {
   title: 'Food Label System - Automated Date Labels & Barcodes',
@@ -275,25 +276,34 @@ export default function FoodLabelSystemPage() {
             alt="Kitchen food preparation"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-product-fls-green/95 to-product-fls-green-dark/95"></div>
+          {/* Lighter gradient overlay - shows image more */}
+          <div className="absolute inset-0 bg-gradient-to-r from-product-fls-green/75 via-product-fls-green/65 to-product-fls-green-dark/70"></div>
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+          {/* Full logo will go here once provided */}
+          <div className="mb-8 flex justify-center">
+            <ProductLogo
+              fullLogoSrc="/logos/food-label-system/fls-full-logo-white.png"
+              iconFallbackSrc="/logos/food-label-system/fls-icon.png"
+              alt="Food Label System"
+            />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-brand-navy drop-shadow-lg">
             Ready to Automate Your Food Labelling?
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-brand-navy-dark drop-shadow-md">
             Join hundreds of kitchens using Food Label System. 14-day free trial, no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-fls-green font-semibold rounded-lg hover:bg-gray-50 transition-all shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-brand-navy text-white font-bold rounded-xl hover:bg-brand-navy-dark transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               Book a Demo
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center px-8 py-4 bg-product-fls-green-dark text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all border-2 border-white shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-product-fls-green-dark text-white font-bold rounded-xl hover:bg-opacity-90 transition-all border-2 border-brand-navy shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               View Pricing
             </Link>

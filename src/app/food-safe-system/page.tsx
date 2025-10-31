@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, Shield, Clock, Bell, Cloud, TrendingDown, Users, FileText } from 'lucide-react';
 import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
+import { ProductLogo } from '@/components/ProductLogo';
 
 export const metadata: Metadata = {
   title: 'Food Safe System - Digital HACCP & Temperature Monitoring',
@@ -274,25 +275,34 @@ export default function FoodSafeSystemPage() {
             alt="Professional kitchen"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-product-fss-green/95 to-product-fss-green-dark/95"></div>
+          {/* Lighter gradient overlay - shows image more */}
+          <div className="absolute inset-0 bg-gradient-to-r from-product-fss-green/75 via-product-fss-green/65 to-product-fss-green-dark/70"></div>
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+          {/* Full logo will go here once provided - placeholder for icon for now */}
+          <div className="mb-8 flex justify-center">
+            <ProductLogo
+              fullLogoSrc="/logos/food-safe-system/fss-full-logo-white.png"
+              iconFallbackSrc="/logos/food-safe-system/fss-icon.png"
+              alt="Food Safe System"
+            />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white drop-shadow-lg">
             Ready to Automate Your Food Safety?
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-white drop-shadow-md">
             Join hundreds of kitchens using Food Safe System. 14-day free trial, no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-fss-green font-semibold rounded-lg hover:bg-gray-50 transition-all shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-fss-green font-bold rounded-xl hover:bg-gray-50 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               Book a Demo
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center px-8 py-4 bg-product-fss-green-dark text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all border-2 border-white shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-product-fss-green-dark text-white font-bold rounded-xl hover:bg-opacity-90 transition-all border-2 border-white shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               View Pricing
             </Link>

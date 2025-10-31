@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, ArrowRight, Zap, Shield, TrendingUp, Users } from 'lucide-react';
 import { BreadcrumbSchema } from '@/components/seo/JsonLd';
+import { HeroVideo } from '@/components/HeroVideo';
 
 export const metadata: Metadata = {
   title: 'Kitchen OS - The Operating System for Professional Kitchens',
@@ -50,7 +51,9 @@ export default function HomePage() {
       price: 'From £22.50/month',
       href: '/food-safe-system',
       icon: '/logos/food-safe-system/fss-icon.png',
-      color: 'from-green-500 to-green-600',
+      color: 'product-fss-green',
+      colorLight: 'product-fss-green-light',
+      colorDark: 'product-fss-green-dark',
     },
     {
       name: 'AllerQ',
@@ -59,7 +62,9 @@ export default function HomePage() {
       price: '£7.49/month',
       href: '/allerq',
       icon: '/logos/allerq/allerq-icon.png',
-      color: 'from-orange-500 to-orange-600',
+      color: 'product-allerq-orange',
+      colorLight: 'product-allerq-orange-light',
+      colorDark: 'product-allerq-orange-dark',
     },
     {
       name: 'Food Label System',
@@ -68,7 +73,9 @@ export default function HomePage() {
       price: '£35/month',
       href: '/food-label-system',
       icon: '/logos/food-label-system/fls-icon.png',
-      color: 'from-green-600 to-green-700',
+      color: 'product-fls-green',
+      colorLight: 'product-fls-green-light',
+      colorDark: 'product-fls-green-dark',
     },
     {
       name: 'F*** Waste',
@@ -77,7 +84,9 @@ export default function HomePage() {
       price: '£150/month',
       href: '/f-waste',
       icon: '/logos/fwaste/fwaste-icon.png',
-      color: 'from-green-700 to-green-800',
+      color: 'product-fw-green',
+      colorLight: 'product-fw-green-light',
+      colorDark: 'product-fw-green-dark',
     },
   ];
 
@@ -120,15 +129,20 @@ export default function HomePage() {
         ]}
       />
 
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-navy-dark text-white overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-96 h-96 bg-product-fss-green rounded-full blur-3xl"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-product-allerq-orange rounded-full blur-3xl"></div>
+      {/* Hero Section with Video */}
+      <section className="relative min-h-[600px] lg:min-h-[700px] text-white overflow-hidden">
+        {/* Background Video */}
+        <div className="absolute inset-0">
+          <HeroVideo
+            src="/assets/videos/kitchen-hero.mp4"
+            poster="/assets/videos/kitchen-hero-poster.jpg"
+            alt="Professional kitchen operations with chefs at work"
+          />
+          {/* Gradient overlay for text readability */}
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-navy/90 via-brand-navy/75 to-brand-navy/60"></div>
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             {/* Left Column - Hero Content */}
             <div>
@@ -179,24 +193,19 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Column - Hero Image */}
+            {/* Right Column - Floating Card (video provides visual interest) */}
             <div className="relative hidden lg:block">
-              <div className="absolute inset-0 bg-gradient-to-tr from-product-fss-green/20 to-product-allerq-orange/20 rounded-3xl blur-2xl"></div>
-              <img
-                src="/assets/pexels-carlo-martin-alcordo-1279322-2449665.jpg"
-                alt="Professional kitchen operations"
-                className="relative rounded-3xl shadow-2xl w-full h-[600px] object-cover"
-              />
-              {/* Floating Card */}
-              <div className="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-2xl max-w-xs">
-                <div className="flex items-center mb-3">
-                  <CheckCircle className="w-6 h-6 text-product-fss-green mr-2" />
-                  <span className="text-sm font-semibold text-brand-navy">
+              {/* Floating Card with backdrop blur */}
+              <div className="bg-white/10 backdrop-blur-md p-8 rounded-2xl shadow-2xl border border-white/20">
+                <div className="flex items-center mb-4">
+                  <CheckCircle className="w-8 h-8 text-product-fss-green mr-3" />
+                  <span className="text-lg font-bold text-white">
                     100% Compliance Rate
                   </span>
                 </div>
-                <p className="text-sm text-gray-600">
-                  Every Kitchen OS customer passes health inspections with confidence
+                <p className="text-base text-gray-200 leading-relaxed">
+                  Every Kitchen OS customer passes health inspections with confidence.
+                  Join 500+ professional kitchens already using our platform.
                 </p>
               </div>
             </div>
@@ -252,32 +261,71 @@ export default function HomePage() {
               <Link
                 key={index}
                 href={product.href}
-                className="group bg-gradient-to-br from-gray-50 to-white border-2 border-gray-100 hover:border-product-fss-green p-8 rounded-2xl shadow-soft hover:shadow-soft-lg transition-all"
+                className="group relative bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-soft hover:shadow-soft-xl transition-all duration-300 border-2 border-transparent overflow-hidden"
+                style={{
+                  '--hover-border-color': `var(--${product.color})`,
+                } as React.CSSProperties}
               >
-                <div className="flex items-start mb-6">
-                  <img
-                    src={product.icon}
-                    alt={product.name}
-                    className="w-16 h-16 mr-4"
-                  />
-                  <div className="flex-1">
-                    <h3 className="text-2xl font-bold text-brand-navy group-hover:text-product-fss-green transition-colors mb-1">
-                      {product.name}
-                    </h3>
-                    <p className="text-sm text-gray-500 font-semibold uppercase tracking-wide">
-                      {product.tagline}
-                    </p>
+                {/* Animated gradient border on hover */}
+                <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+                     style={{
+                       background: `linear-gradient(135deg, var(--${product.color}) 0%, var(--${product.colorDark}) 100%)`,
+                       padding: '2px',
+                       mask: 'linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0)',
+                       maskComposite: 'exclude',
+                     }}
+                />
+
+                <div className="relative">
+                  <div className="flex items-start mb-6">
+                    {/* Icon with gradient background */}
+                    <div
+                      className="w-16 h-16 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300"
+                      style={{
+                        background: `linear-gradient(135deg, var(--${product.color}) 0%, var(--${product.colorDark}) 100%)`
+                      }}
+                    >
+                      <img
+                        src={product.icon}
+                        alt={product.name}
+                        className="w-10 h-10"
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <h3
+                        className="text-2xl font-bold text-brand-navy mb-1 group-hover:transition-colors duration-300"
+                        style={{
+                          color: `var(--${product.color})`,
+                        } as React.CSSProperties}
+                      >
+                        {product.name}
+                      </h3>
+                      <p className="text-sm text-gray-500 font-semibold uppercase tracking-wide">
+                        {product.tagline}
+                      </p>
+                    </div>
+                    {/* Price badge */}
+                    <div
+                      className="px-4 py-2 rounded-full text-sm font-bold"
+                      style={{
+                        background: `var(--${product.colorLight})`,
+                        color: `var(--${product.colorDark})`,
+                        border: `1px solid var(--${product.color})20`,
+                      } as React.CSSProperties}
+                    >
+                      {product.price}
+                    </div>
                   </div>
-                  <span className="text-2xl font-bold text-product-fss-green">
-                    {product.price}
-                  </span>
-                </div>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {product.description}
-                </p>
-                <div className="flex items-center text-product-fss-green font-semibold group-hover:translate-x-2 transition-transform">
-                  Learn more
-                  <ArrowRight className="ml-2 w-5 h-5" />
+                  <p className="text-gray-600 mb-6 leading-relaxed">
+                    {product.description}
+                  </p>
+                  <div
+                    className="flex items-center font-semibold group-hover:translate-x-2 transition-transform"
+                    style={{color: `var(--${product.color})`} as React.CSSProperties}
+                  >
+                    Learn more
+                    <ArrowRight className="ml-2 w-5 h-5" />
+                  </div>
                 </div>
               </Link>
             ))}

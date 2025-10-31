@@ -1,3 +1,27 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+  :root {
+    /* Product Colors - Food Safe System */
+    --product-fss-green: #00B589;
+    --product-fss-green-light: #E6F9F4;
+    --product-fss-green-dark: #009B75;
+
+    /* Product Colors - Food Label System */
+    --product-fls-green: #C3E941;
+    --product-fls-green-light: #F5FCE4;
+    --product-fls-green-dark: #A8C935;
+
+    /* Product Colors - AllerQ */
+    --product-allerq-orange: #F58A07;
+    --product-allerq-orange-light: #FEF3E7;
+    --product-allerq-orange-dark: #D97706;
+
+    /* Product Colors - F*** Waste */
+    --product-fw-green: #52B788;
+    --product-fw-green-light: #EBF7F0;
+    --product-fw-green-dark: #429970;
+  }
+}

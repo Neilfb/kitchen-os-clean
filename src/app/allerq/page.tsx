@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { CheckCircle, QrCode, Globe, Smartphone, Shield, Zap, Languages, Utensils } from 'lucide-react';
 import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
+import { ProductLogo } from '@/components/ProductLogo';
 
 export const metadata: Metadata = {
   title: 'AllerQ - Digital Allergen Menus with QR Codes',
@@ -274,25 +275,34 @@ export default function AllerQPage() {
             alt="Restaurant dining experience"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-gradient-to-br from-product-allerq-orange/95 to-product-allerq-orange-dark/95"></div>
+          {/* Lighter gradient overlay - shows image more */}
+          <div className="absolute inset-0 bg-gradient-to-r from-product-allerq-orange/75 via-product-allerq-orange/65 to-product-allerq-orange-dark/70"></div>
         </div>
         <div className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white">
+          {/* Full logo will go here once provided */}
+          <div className="mb-8 flex justify-center">
+            <ProductLogo
+              fullLogoSrc="/logos/allerq/allerq-full-logo-white.png"
+              iconFallbackSrc="/logos/allerq/allerq-icon.png"
+              alt="AllerQ"
+            />
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white drop-shadow-lg">
             Ready to Go Digital with Allergen Menus?
           </h2>
-          <p className="text-xl mb-8 text-white/90">
+          <p className="text-xl mb-8 text-white drop-shadow-md">
             Join hundreds of restaurants using AllerQ. 14-day free trial, no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
               href="/contact"
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-allerq-orange font-semibold rounded-lg hover:bg-gray-50 transition-all shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-allerq-orange font-bold rounded-xl hover:bg-gray-50 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               Book a Demo
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center px-8 py-4 bg-product-allerq-orange-dark text-white font-semibold rounded-lg hover:bg-opacity-90 transition-all border-2 border-white shadow-xl"
+              className="inline-flex items-center justify-center px-8 py-4 bg-product-allerq-orange-dark text-white font-bold rounded-xl hover:bg-opacity-90 transition-all border-2 border-white shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               View Pricing
             </Link>
