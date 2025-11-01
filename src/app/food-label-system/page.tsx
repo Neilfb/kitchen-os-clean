@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, Printer, Barcode, Clock, Shield, TrendingDown, Zap, Database } from 'lucide-react';
+import { CheckCircle, Printer, Clock, Shield, TrendingDown, Zap, Database } from 'lucide-react';
 import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
 import { ProductLogo } from '@/components/ProductLogo';
 
@@ -33,46 +33,44 @@ export const metadata: Metadata = {
 };
 
 export default function FoodLabelSystemPage() {
-  const features = [
+  const keyBenefits = [
     {
       icon: Printer,
-      title: 'Print Labels in Seconds',
-      description: 'Create and print food labels instantly from your phone or tablet. No complicated systems or training required.',
-    },
-    {
-      icon: Barcode,
-      title: 'Barcode Tracking',
-      description: 'Every label includes a unique barcode. Scan to view preparation date, use-by date, ingredients, and allergens.',
-    },
-    {
-      icon: Clock,
-      title: 'Automated Use-By Dates',
-      description: 'System calculates use-by dates automatically based on food type and storage method. Never guess again.',
-    },
-    {
-      icon: Shield,
-      title: 'Allergen Warnings',
-      description: 'Add allergen information to labels with one tap. Clear, compliant labelling for all 14 major allergens.',
-    },
-    {
-      icon: Database,
-      title: 'Batch Tracking',
-      description: 'Track which batch ingredients came from. Full traceability for recalls or quality issues.',
+      title: 'Replace Handwriting',
+      description: 'Eliminate illegible labels and inconsistent information',
     },
     {
       icon: Zap,
-      title: 'Template Library',
-      description: 'Pre-built templates for common dishes and prep items. Customize once, use forever.',
+      title: 'Faster Process',
+      description: 'Print labels in seconds with standardised information',
     },
     {
-      icon: TrendingDown,
-      title: 'Reduce Waste',
-      description: 'Accurate date labels mean less food thrown out unnecessarily. FIFO rotation made easy.',
+      icon: Shield,
+      title: 'Safety Compliance',
+      description: 'Ensure consistent food safety protocols across operations',
+    },
+  ];
+
+  const features = [
+    {
+      icon: Clock,
+      title: 'Saves chef time',
+      description: 'No more handwriting or confusion between shifts. Labels printed in seconds.',
     },
     {
       icon: CheckCircle,
-      title: 'Inspection-Ready',
-      description: 'Complete labelling records stored in the cloud. Show EHO officers everything instantly.',
+      title: 'Clear food safety standards',
+      description: 'Consistent labelling ensures compliance. Reduces risk of food safety incidents.',
+    },
+    {
+      icon: TrendingDown,
+      title: 'Reduces food waste',
+      description: 'Better shelf-life tracking means less wastage. Clear dates prevent early disposal.',
+    },
+    {
+      icon: Database,
+      title: 'Boosts management confidence',
+      description: 'Visible, reliable kitchen practices. Easy auditing and compliance verification.',
     },
   ];
 
@@ -150,11 +148,13 @@ export default function FoodLabelSystemPage() {
               className="h-16 md:h-20 w-auto mb-6"
             />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Automated Date Labels & Barcodes
+              Smart Digital Solution for Modern Kitchens
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-brand-navy-light">
-              Print compliant food labels in seconds. Automated use-by dates, allergen warnings,
-              and complete traceability for every dish.
+            <p className="text-xl md:text-2xl mb-8 text-brand-navy-dark font-semibold">
+              Introducing a revolutionary approach to food labelling that saves time, reduces waste and ensures compliance.
+            </p>
+            <p className="text-lg md:text-xl mb-8 text-brand-navy-light">
+              Replace handwriting. Print labels in seconds. Maintain safety compliance across all operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -174,15 +174,45 @@ export default function FoodLabelSystemPage() {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Key Benefits - Smarter Labelling */}
+      <section className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              Smarter Labelling, Better Kitchens
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {keyBenefits.map((benefit, index) => (
+              <div
+                key={index}
+                className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-soft hover:shadow-soft-lg transition-all duration-300 border border-gray-200"
+              >
+                <div className="w-16 h-16 bg-gradient-to-br from-product-fls-green to-product-fls-green-dark rounded-xl flex items-center justify-center mb-6">
+                  <benefit.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-xl font-bold text-brand-navy mb-3">
+                  {benefit.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed">
+                  {benefit.description}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Operational Benefits */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
-              Smart Food Labelling for Professional Kitchens
+              Operational Benefits
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Food Label System eliminates handwritten labels and gives you complete traceability from delivery to service.
+              Transform your kitchen operations with smart, automated food labelling.
             </p>
           </div>
 
@@ -207,8 +237,95 @@ export default function FoodLabelSystemPage() {
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Pricing That Works */}
       <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              Pricing That Works
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-soft border border-gray-200">
+              <h3 className="text-2xl font-bold text-brand-navy mb-4">£35/month per site</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Predictable monthly cost with no hidden charges. Simple budgeting for multi-site operations.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-soft border border-gray-200">
+              <h3 className="text-2xl font-bold text-brand-navy mb-4">No upfront cost</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Start immediately without capital expenditure. See ROI from the first month of implementation.
+              </p>
+            </div>
+
+            <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-soft border border-gray-200">
+              <h3 className="text-2xl font-bold text-brand-navy mb-4">2,000 free labels included</h3>
+              <p className="text-gray-600 leading-relaxed">
+                One-off starter pack covers initial implementation. Additional labels just 1.25p each thereafter.
+              </p>
+            </div>
+          </div>
+
+          {/* Cost Comparison */}
+          <div className="bg-gradient-to-br from-product-fls-green-light to-white p-10 rounded-2xl shadow-lg">
+            <h3 className="text-2xl font-bold text-brand-navy mb-8 text-center">
+              Cost Comparison: Digital vs Pre-Printed
+            </h3>
+
+            <div className="overflow-x-auto">
+              <table className="w-full">
+                <thead>
+                  <tr className="border-b-2 border-brand-navy">
+                    <th className="text-left py-4 px-4 text-brand-navy font-bold">Label Type</th>
+                    <th className="text-left py-4 px-4 text-brand-navy font-bold">Cost Per Label</th>
+                    <th className="text-left py-4 px-4 text-brand-navy font-bold">Monthly Volume</th>
+                    <th className="text-left py-4 px-4 text-brand-navy font-bold">Est. Monthly Cost</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr className="border-b border-gray-300">
+                    <td className="py-4 px-4 text-gray-700">Pre-Printed Rolls</td>
+                    <td className="py-4 px-4 text-gray-700">3-5p</td>
+                    <td className="py-4 px-4 text-gray-700">2,000</td>
+                    <td className="py-4 px-4 font-bold text-gray-700">£60-£100</td>
+                  </tr>
+                  <tr className="bg-product-fls-green/10">
+                    <td className="py-4 px-4 text-brand-navy font-semibold">Food Label System</td>
+                    <td className="py-4 px-4 text-brand-navy font-semibold">1.25p</td>
+                    <td className="py-4 px-4 text-brand-navy font-semibold">2,000</td>
+                    <td className="py-4 px-4 font-bold text-product-fls-green-dark text-lg">£60*</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p className="text-sm text-gray-600 mt-6 text-center">
+              *£35 subscription + ~£25 for labels (after initial 2,000 free)
+            </p>
+
+            <div className="flex flex-wrap justify-center gap-6 mt-8">
+              <div className="flex items-center">
+                <CheckCircle className="w-5 h-5 text-product-fls-green-dark mr-2" />
+                <span className="text-brand-navy font-semibold">Cheaper per label</span>
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-5 h-5 text-product-fls-green-dark mr-2" />
+                <span className="text-brand-navy font-semibold">No over-ordering</span>
+              </div>
+              <div className="flex items-center">
+                <CheckCircle className="w-5 h-5 text-product-fls-green-dark mr-2" />
+                <span className="text-brand-navy font-semibold">No wasted rolls</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Chefs Love It */}
+      <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
