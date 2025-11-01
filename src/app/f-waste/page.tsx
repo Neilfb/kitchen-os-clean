@@ -1,12 +1,12 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, TrendingDown, BarChart3, Target, Leaf, DollarSign, Camera, Users } from 'lucide-react';
+import { BarChart3, Scale, Wifi, DollarSign, Zap, Building2 } from 'lucide-react';
 import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
 import { ProductLogo } from '@/components/ProductLogo';
 
 export const metadata: Metadata = {
-  title: 'F*** Waste - Food Waste Tracking & Reduction',
-  description: 'Track food waste, identify patterns, and reduce costs. AI-powered insights, photo capture, and sustainability reporting for professional kitchens.',
+  title: 'F*** Waste - Turning Waste into Profit | IoT Smart Scales',
+  description: 'IoT smart under-bin scales with AI analytics. 50%+ waste reduction, 14:1 ROI. Zero workflow disruption. Reduce food waste by half and save thousands annually.',
   keywords: [
     'food waste tracking',
     'food waste reduction',
@@ -18,16 +18,16 @@ export const metadata: Metadata = {
     'commercial kitchen waste',
   ],
   openGraph: {
-    title: 'F*** Waste - Food Waste Tracking & Reduction | Kitchen OS',
-    description: 'Track food waste, identify patterns, and reduce costs. AI-powered insights, photo capture, and sustainability reporting for professional kitchens.',
+    title: 'F*** Waste - Turning Waste into Profit | Kitchen OS',
+    description: 'IoT smart under-bin scales with AI analytics. 50%+ waste reduction, 14:1 ROI. Zero workflow disruption.',
     url: '/f-waste',
     type: 'website',
-    images: [{ url: '/assets/fuckwaste-02.png', width: 1200, height: 630, alt: 'F*** Waste - AI Food Waste Tracking' }],
+    images: [{ url: '/assets/fuckwaste-02.png', width: 1200, height: 630, alt: 'F*** Waste - IoT Smart Scales' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'F*** Waste - Food Waste Tracking & Reduction',
-    description: 'Track food waste, identify patterns, and reduce costs. AI-powered insights, photo capture, and sustainability reporting for professional kitchens.',
+    title: 'F*** Waste - Turning Waste into Profit',
+    description: 'IoT smart under-bin scales with AI analytics. 50%+ waste reduction, 14:1 ROI.',
     images: ['/assets/fuckwaste-02.png'],
   },
 };
@@ -35,76 +35,56 @@ export const metadata: Metadata = {
 export default function FWastePage() {
   const features = [
     {
-      icon: Camera,
-      title: 'Photo Capture',
-      description: 'Take a photo of waste before discarding. AI identifies items and suggests prevention strategies.',
+      icon: Scale,
+      title: 'Wireless Stainless Smart Scales',
+      description: 'Built for commercial kitchen environments with food-grade materials, wireless connectivity, and precision weighing technology that captures every gram of waste data.',
+    },
+    {
+      icon: Wifi,
+      title: 'Under-Bin Placement',
+      description: 'Completely invisible installation beneath existing waste bins means zero kitchen disruption whilst capturing 100% of waste streams for comprehensive analysis.',
+    },
+    {
+      icon: Zap,
+      title: 'Automated Data Capture',
+      description: 'Real-time synchronisation with cloud-based analytics platform provides instant visibility into waste patterns, costs, and reduction opportunities.',
     },
     {
       icon: BarChart3,
-      title: 'Real-Time Analytics',
-      description: 'See exactly what you\'re wasting, when, and why. Identify patterns and trends instantly.',
+      title: 'Analytics Dashboard',
+      description: 'Intuitive reporting interface delivers actionable insights, cost breakdowns, and ESG metrics that transform data into immediate operational improvements.',
     },
     {
-      icon: TrendingDown,
-      title: 'Waste Reduction Targets',
-      description: 'Set reduction goals and track progress. Celebrate wins with your team as waste decreases.',
+      icon: Building2,
+      title: 'Scalable Architecture',
+      description: 'From single-site independents to multi-property hotel groups, the system scales effortlessly to meet any operational requirement or kitchen configuration.',
     },
-    {
-      icon: DollarSign,
-      title: 'Cost Tracking',
-      description: 'Calculate the financial impact of waste. See how much money you\'re throwing away each month.',
-    },
-    {
-      icon: Leaf,
-      title: 'Sustainability Reporting',
-      description: 'Generate CO2 impact reports. Prove your environmental credentials to customers and stakeholders.',
-    },
-    {
-      icon: Target,
-      title: 'Root Cause Analysis',
-      description: 'Understand why waste happens. Over-prepping? Customer plate waste? Spoilage? Get answers.',
-    },
-    {
-      icon: Users,
-      title: 'Team Engagement',
-      description: 'Gamify waste reduction with team leaderboards. Turn waste tracking into a team effort.',
-    },
-    {
-      icon: CheckCircle,
-      title: 'Multi-Site Comparison',
-      description: 'Compare waste across locations. Identify best practices and share them across your operation.',
-    },
-  ];
-
-  const benefits = [
-    'Reduce food waste by 30-50%',
-    'Save £5,000-£20,000 per site annually',
-    'Cut CO2 emissions and hit sustainability targets',
-    'Identify over-ordering and over-prepping',
-    'Improve portion control and reduce plate waste',
-    'Generate ESG and sustainability reports',
   ];
 
   const faqs = [
     {
-      question: 'How does F*** Waste actually help reduce waste?',
-      answer: 'F*** Waste makes waste visible. Most kitchens have no idea what they\'re actually throwing away. By tracking waste with photos and categorization, you quickly identify patterns - like over-prepping salads on Mondays or customers consistently leaving chips. Once you know the problem, you can fix it with better ordering, portion control, or menu changes.',
+      question: 'How does F*** Waste work without disrupting our kitchen?',
+      answer: 'Our IoT smart scales install beneath your existing waste bins - completely invisible to kitchen staff. There\'s no additional workflow required. Staff simply use bins as normal, and the scales automatically capture precise weight data in real-time. No training, no disruption, just instant visibility.',
     },
     {
-      question: 'Do we have to weigh every item we throw away?',
-      answer: 'No. F*** Waste uses AI-powered photo recognition to estimate weights and identify items. Just take a quick photo before discarding. For more accuracy, you can optionally weigh items, but it\'s not required.',
+      question: 'What kind of ROI can we expect?',
+      answer: 'F*** Waste delivers a proven 14:1 ROI. Most operations achieve 50%+ waste reduction within the first 3-6 months. For a typical restaurant wasting 4-10% of purchased food, this translates to thousands in annual savings. The system typically pays for itself within the first month.',
     },
     {
-      question: 'What kind of savings can we expect?',
-      answer: 'Most kitchens reduce waste by 30-50% within 6 months. For a typical restaurant doing £500k annual revenue, that translates to £5,000-£15,000 in annual savings. Larger operations save even more - we\'ve seen sites save £20k+ per year.',
+      question: 'How is this different from Winnow or Leanpath?',
+      answer: 'Unlike competitors that require expensive hardware, complex workflows, and significant staff training, F*** Waste offers plug-and-play simplicity. Our under-bin scales are completely invisible, require zero workflow changes, and cost a fraction of competitor solutions. You get the same insights without the friction.',
     },
     {
-      question: 'Can this help with sustainability reporting?',
-      answer: 'Absolutely. F*** Waste generates detailed sustainability reports including CO2 emissions saved, waste diverted from landfill, and progress toward net-zero targets. Perfect for ESG reporting, B Corp certification, or marketing your green credentials.',
+      question: 'Can this scale across multiple sites?',
+      answer: 'Absolutely. Our architecture is designed to scale from single independent restaurants to multi-property hotel groups. We currently support 105+ customers across 9 countries, including enterprise clients with dozens of locations. The cloud-based dashboard provides unified visibility across all your operations.',
+    },
+    {
+      question: 'What about ESG and sustainability reporting?',
+      answer: 'F*** Waste generates comprehensive ESG reports including CO2 emissions saved, waste diverted from landfill, and progress toward sustainability targets. We\'re endorsed by the United Nations World Tourism Organisation (UNWTO) as the sustainability standard for global hospitality. Perfect for investor reporting and marketing your green credentials.',
     },
     {
       question: 'How much does F*** Waste cost?',
-      answer: '£150/month per site with a one-time setup fee of £300. This includes unlimited photo uploads, AI recognition, analytics, and sustainability reporting. Most customers see ROI within the first month through waste reduction. Volume discounts available for multi-site operators. See our pricing page for full details.',
+      answer: '£150/month per site with flexible deployment options for multi-site operators. This includes IoT smart scales, cloud analytics platform, real-time insights, and ESG reporting. Most customers achieve ROI within 30 days through waste reduction. Volume discounts available. See our pricing page for details.',
     },
   ];
 
@@ -113,7 +93,7 @@ export default function FWastePage() {
       {/* JSON-LD Schema Markup */}
       <ProductSchema
         name="F*** Waste"
-        description="AI-powered food waste tracking and reduction software for professional kitchens. Photo capture, real-time analytics, and sustainability reporting. Reduce waste by 30-50% and save thousands annually."
+        description="IoT smart under-bin scales with AI analytics for food waste tracking. 50%+ waste reduction, 14:1 ROI, zero workflow disruption. Wireless scales install beneath existing bins for seamless kitchen integration."
         price="150"
         currency="GBP"
         image="/logos/fwaste/fwaste-icon.png"
@@ -121,7 +101,7 @@ export default function FWastePage() {
         sku="FW-001"
         aggregateRating={{
           ratingValue: "4.9",
-          reviewCount: "17"
+          reviewCount: "105"
         }}
       />
       <FAQSchema faqs={faqs} />
@@ -133,9 +113,9 @@ export default function FWastePage() {
       />
       <SoftwareApplicationSchema
         name="F*** Waste"
-        description="AI-powered food waste tracking and reduction software with photo recognition for restaurants"
+        description="IoT smart under-bin scales with AI analytics for food waste tracking and reduction in professional kitchens"
         applicationCategory="BusinessApplication"
-        operatingSystem="Web, iOS, Android"
+        operatingSystem="Cloud-based with IoT hardware"
         price="150"
         currency="GBP"
       />
@@ -150,11 +130,13 @@ export default function FWastePage() {
               className="h-16 md:h-20 w-auto mb-6"
             />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-              Track Food Waste, Reduce Costs
+              Less Waste, More Profits
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-product-fw-green-light">
-              AI-powered food waste tracking for professional kitchens. Reduce waste by 30-50%,
-              save thousands, and hit your sustainability targets.
+            <p className="text-xl md:text-2xl mb-8 text-white font-semibold">
+              IoT smart under-bin scales paired with AI analytics deliver real-time insights without disrupting kitchen workflow.
+            </p>
+            <p className="text-lg md:text-xl mb-8 text-white">
+              Install beneath existing bins and immediately start capturing precise waste data. The system delivers 50%+ waste reduction with a proven 14:1 ROI.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <Link
@@ -174,32 +156,60 @@ export default function FWastePage() {
         </div>
       </section>
 
-      {/* Features Grid */}
+      {/* Key Stats Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              Smart Technology, Invisible Integration
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              No staff training required. No workflow changes. Just intelligent monitoring that turns waste visibility into immediate savings.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-10 rounded-2xl shadow-lg text-center">
+              <div className="text-6xl font-bold text-product-fw-green mb-3">50%+</div>
+              <div className="text-xl font-semibold text-brand-navy mb-2">Waste Reduction</div>
+              <p className="text-gray-600">Proven results across hospitality</p>
+            </div>
+            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-10 rounded-2xl shadow-lg text-center">
+              <div className="text-6xl font-bold text-product-fw-green mb-3">14:1</div>
+              <div className="text-xl font-semibold text-brand-navy mb-2">ROI Ratio</div>
+              <p className="text-gray-600">Immediate return on investment</p>
+            </div>
+            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-10 rounded-2xl shadow-lg text-center">
+              <div className="text-6xl font-bold text-product-fw-green mb-3">0</div>
+              <div className="text-xl font-semibold text-brand-navy mb-2">Workflow Disruption</div>
+              <p className="text-gray-600">Seamless kitchen integration</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Product Overview - Engineering Excellence */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
-              Turn Waste Into Savings
+              Product Overview: Engineering Excellence
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              F*** Waste gives you complete visibility into food waste, helping you identify problems
-              and implement solutions that stick.
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {features.map((feature, index) => (
               <div
                 key={index}
-                className="bg-white p-6 rounded-lg shadow-soft hover:shadow-soft-lg transition-shadow"
+                className="bg-white p-8 rounded-2xl shadow-soft hover:shadow-soft-lg transition-shadow border-2 border-product-fw-green/20"
               >
-                <div className="w-12 h-12 bg-product-fw-green-light rounded-lg flex items-center justify-center mb-4">
-                  <feature.icon className="w-6 h-6 text-product-fw-green" />
+                <div className="w-16 h-16 bg-gradient-to-br from-product-fw-green-light to-product-fw-green rounded-xl flex items-center justify-center mb-6">
+                  <feature.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-brand-navy mb-2">
+                <h3 className="text-xl font-bold text-brand-navy mb-3">
                   {feature.title}
                 </h3>
-                <p className="text-gray-600">
+                <p className="text-gray-600 leading-relaxed">
                   {feature.description}
                 </p>
               </div>
@@ -208,69 +218,189 @@ export default function FWastePage() {
         </div>
       </section>
 
-      {/* Impact Stats */}
+      {/* How It Works */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
+          <div className="text-center mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
-              Real Impact, Real Savings
+              How It Works: Simple. Smart. Profitable.
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Kitchen OS customers have collectively achieved incredible results with F*** Waste.
-            </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-8 rounded-2xl">
-              <div className="text-5xl font-bold text-product-fw-green mb-2">£9M+</div>
-              <div className="text-xl text-gray-700">Total Savings</div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-product-fw-green-light to-product-fw-green rounded-full flex items-center justify-center mx-auto mb-6">
+                <Scale className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-brand-navy mb-3">Weigh</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Smart scales capture precise waste data automatically as bins are used throughout service, requiring zero additional staff effort or workflow changes.
+              </p>
             </div>
-            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-8 rounded-2xl">
-              <div className="text-5xl font-bold text-product-fw-green mb-2">42%</div>
-              <div className="text-xl text-gray-700">Average Waste Reduction</div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-product-fw-green-light to-product-fw-green rounded-full flex items-center justify-center mx-auto mb-6">
+                <Wifi className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-brand-navy mb-3">Sync</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Data transmits wirelessly to our cloud platform in real-time, building comprehensive waste profiles and identifying patterns across all kitchen operations.
+              </p>
             </div>
-            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-8 rounded-2xl">
-              <div className="text-5xl font-bold text-product-fw-green mb-2">2,400</div>
-              <div className="text-xl text-gray-700">Tonnes CO2 Saved</div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-product-fw-green-light to-product-fw-green rounded-full flex items-center justify-center mx-auto mb-6">
+                <BarChart3 className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-brand-navy mb-3">Insights</h3>
+              <p className="text-gray-600 leading-relaxed">
+                AI analytics transform raw data into actionable intelligence, highlighting waste hotspots, cost implications, and specific reduction opportunities.
+              </p>
+            </div>
+
+            <div className="text-center">
+              <div className="w-20 h-20 bg-gradient-to-br from-product-fw-green-light to-product-fw-green rounded-full flex items-center justify-center mx-auto mb-6">
+                <DollarSign className="w-10 h-10 text-white" />
+              </div>
+              <h3 className="text-2xl font-bold text-brand-navy mb-3">Savings</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Operators implement targeted interventions based on data-driven insights, achieving immediate cost reductions and long-term operational efficiency gains.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Benefits Section */}
+      {/* Proven Traction */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              Proven Traction Across Global Markets
+            </h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-2xl shadow-soft">
+              <h3 className="text-xl font-bold text-product-fw-green mb-3">105+ Customers, 9 Countries</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Rapid expansion across diverse hospitality markets demonstrates universal appeal and proven value proposition in varied operational environments.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-soft">
+              <h3 className="text-xl font-bold text-product-fw-green mb-3">Blue-Chip Pilot Programme</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Active deployments with Roe Park Hotel, Fish City, and Fadiga validate technology across different hospitality segments and operational scales.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-soft">
+              <h3 className="text-xl font-bold text-product-fw-green mb-3">UNWTO Recognition</h3>
+              <p className="text-gray-600 leading-relaxed">
+                United Nations World Tourism Organisation endorsement establishes credibility and positions F*** Waste as the sustainability standard for global hospitality.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-2xl shadow-soft">
+              <h3 className="text-xl font-bold text-product-fw-green mb-3">Enterprise Pipeline</h3>
+              <p className="text-gray-600 leading-relaxed">
+                Advanced discussions with ByteDance and major Saudi hospitality groups signal massive scalability potential and enterprise-grade market validation.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* The Hidden Crisis Section */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              The Hidden Crisis in Hospitality
+            </h2>
+            <p className="text-xl font-semibold text-gray-700 mb-3">
+              Food Waste is Bleeding Your Bottom Line
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-soft mb-8">
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Hotels and restaurants routinely waste between <strong className="text-product-fw-green">4-10% of all purchased food</strong>,
+                contributing to a staggering <strong className="text-product-fw-green">$1 trillion global waste crisis</strong>.
+                This isn&apos;t just an environmental issue—it&apos;s a direct hit to profitability.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Modern guests increasingly expect sustainable practices, with <strong className="text-product-fw-green">78% of travellers</strong> actively
+                choosing eco-conscious hotels. Meanwhile, ESG reporting requirements are tightening across the hospitality sector.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Every plate scraped, every spoiled ingredient, every over-ordered item represents lost revenue and mounting pressure
+                from stakeholders demanding change.
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl shadow-soft border-2 border-red-100">
+                <h3 className="text-xl font-bold text-brand-navy mb-3">Hidden Daily Losses</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Every kitchen haemorrhages money through invisible waste streams. Over-purchasing, spoilage, and plate waste
+                  create a constant drain on margins that most operators never properly quantify.
+                </p>
+              </div>
+              <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl shadow-soft border-2 border-orange-100">
+                <h3 className="text-xl font-bold text-brand-navy mb-3">Catastrophic Failures</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  Fish City lost £25,000 in a single day after freezer failure destroyed premium stock. Without proper monitoring,
+                  these disasters become expensive surprises rather than preventable incidents.
+                </p>
+              </div>
+              <div className="bg-gradient-to-br from-yellow-50 to-white p-6 rounded-xl shadow-soft border-2 border-yellow-100">
+                <h3 className="text-xl font-bold text-brand-navy mb-3">Reputation at Risk</h3>
+                <p className="text-gray-600 leading-relaxed">
+                  ESG scrutiny intensifies whilst guests demand sustainability. Operators who ignore waste face reputational damage
+                  and lose competitive advantage in an increasingly conscious market.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Why F*** Waste Wins */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              Why F*** Waste Wins
+            </h2>
+          </div>
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
-                Why F*** Waste Works
-              </h2>
-              <p className="text-xl text-gray-600 mb-8">
-                Most kitchens throw away 10-15% of the food they buy. That&apos;s money straight into
-                the bin. F*** Waste helps you identify exactly what&apos;s being wasted and why,
-                so you can take targeted action.
-              </p>
-              <ul className="space-y-4">
-                {benefits.map((benefit, index) => (
-                  <li key={index} className="flex items-start">
-                    <CheckCircle className="w-6 h-6 text-product-fw-green mr-3 flex-shrink-0 mt-0.5" />
-                    <span className="text-lg text-gray-700">{benefit}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-8 rounded-2xl">
-              <blockquote className="text-lg text-gray-700 mb-4">
-                &quot;F*** Waste opened our eyes to how much we were throwing away. We discovered
-                we were over-prepping vegetables by 40% on weekdays. Once we adjusted our prep
-                quantities, we cut waste in half and saved over £12,000 in the first year.
-                The photo tracking is brilliant - takes 5 seconds and the AI does the rest.&quot;
-              </blockquote>
-              <div className="flex items-center">
-                <div>
-                  <p className="font-semibold text-brand-navy">Emma Williams</p>
-                  <p className="text-gray-600">Operations Manager, GreenLeaf Restaurants (5 sites)</p>
-                </div>
+              <div className="bg-white p-8 rounded-2xl shadow-soft border-2 border-product-fw-green/20 mb-8">
+                <h3 className="text-2xl font-bold text-product-fw-green mb-4">$1 Trillion Problem</h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Global food waste represents the world&apos;s third-largest carbon emitter. The hospitality sector sits at
+                  the epicentre of this crisis, creating massive opportunity for solutions.
+                </p>
               </div>
+              <div className="bg-white p-8 rounded-2xl shadow-soft border-2 border-product-fw-green/20">
+                <h3 className="text-2xl font-bold text-product-fw-green mb-4">$20 Billion SAM</h3>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Serviceable addressable market in foodservice technology continues expanding as operators seek competitive
+                  advantage through operational efficiency and sustainability credentials.
+                </p>
+              </div>
+            </div>
+            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-10 rounded-2xl shadow-lg">
+              <h3 className="text-2xl font-bold text-brand-navy mb-6">Plug-and-Play Simplicity</h3>
+              <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                Competitors like <strong>Winnow, Leanpath, and Orbisk</strong> offer expensive, complex systems requiring
+                significant operational changes. F*** Waste delivers <strong className="text-product-fw-green">plug-and-play
+                simplicity</strong> at accessible pricing whilst remaining completely invisible to kitchen workflow.
+              </p>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                Our approach eliminates barriers to adoption, accelerates implementation timelines, and delivers immediate value
+                without the friction that has limited competitor market penetration.
+              </p>
             </div>
           </div>
         </div>
@@ -318,10 +448,10 @@ export default function FWastePage() {
             />
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-white drop-shadow-lg">
-            Ready to Slash Your Food Waste?
+            Turn Waste Into Profit
           </h2>
           <p className="text-xl mb-8 text-white drop-shadow-md">
-            Join hundreds of kitchens using F*** Waste. 14-day free trial, no credit card required.
+            Join 105+ kitchens across 9 countries using F*** Waste. 50%+ waste reduction. 14:1 ROI. Zero disruption.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
