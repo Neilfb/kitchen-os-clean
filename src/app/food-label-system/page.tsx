@@ -145,9 +145,9 @@ export default function FoodLabelSystemPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <img
-              src="/logos/food-label-system/fls-icon.png"
+              src="/logos/food-label-system/fls-full-logo.png"
               alt="Food Label System"
-              className="w-20 h-20 mb-6"
+              className="h-16 md:h-20 w-auto mb-6"
             />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Automated Date Labels & Barcodes

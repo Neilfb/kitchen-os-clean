@@ -141,13 +141,13 @@ export default function FWastePage() {
       />
 
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-product-fw-green to-product-fw-green-dark text-white py-20">
+      <section className="bg-gradient-to-br from-product-fw-green-light to-product-fw-green text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <img
-              src="/logos/fwaste/fwaste-icon.png"
+              src="/logos/fwaste/fwaste-full-logo-white.png"
               alt="F*** Waste"
-              className="w-20 h-20 mb-6"
+              className="h-16 md:h-20 w-auto mb-6"
             />
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               Track Food Waste, Reduce Costs

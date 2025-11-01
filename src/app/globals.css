@@ -4,24 +4,38 @@
 
 @layer base {
   :root {
+    /* Kitchen OS Brand Colors */
+    --brand-navy: #1B2159;
+    --brand-navy-light: #2A3A7C;
+    --brand-navy-dark: #13174A;
+    --brand-teal: #2A7699;
+    --brand-teal-light: #67C4E6;
+    --brand-teal-lighter: #71D5F4;
+
     /* Product Colors - Food Safe System */
-    --product-fss-green: #00B589;
-    --product-fss-green-light: #E6F9F4;
-    --product-fss-green-dark: #009B75;
+    --product-fss-green: #0f7d3f;
+    --product-fss-green-light: #91C73E;
+    --product-fss-green-dark: #0a5c2e;
+    --product-fss-blue: #2E86AB;
+    --product-fss-navy: #29335C;
 
     /* Product Colors - Food Label System */
-    --product-fls-green: #C3E941;
-    --product-fls-green-light: #F5FCE4;
-    --product-fls-green-dark: #A8C935;
+    --product-fls-primary: #13135B;
+    --product-fls-green: #73BD1F;
+    --product-fls-blue: #00AEEF;
+    --product-fls-green-light: #E8F5D9;
+    --product-fls-green-dark: #5A9818;
 
     /* Product Colors - AllerQ */
-    --product-allerq-orange: #F58A07;
-    --product-allerq-orange-light: #FEF3E7;
-    --product-allerq-orange-dark: #D97706;
+    --product-allerq-orange: #FF4E00;
+    --product-allerq-yellow: #FFA300;
+    --product-allerq-orange-light: #FFF3ED;
+    --product-allerq-orange-dark: #E64600;
 
     /* Product Colors - F*** Waste */
-    --product-fw-green: #52B788;
-    --product-fw-green-light: #EBF7F0;
-    --product-fw-green-dark: #429970;
+    --product-fw-green: #558B2F;
+    --product-fw-green-light: #81C684;
+    --product-fw-green-dark: #3A6020;
+    --product-fw-navy: #100D49;
   }
 }
