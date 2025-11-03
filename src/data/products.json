@@ -11,7 +11,7 @@
       {
         "id": "labels-1000",
         "name": "1,000 Labels",
-        "price": 12.50,
+        "price": 12.5,
         "pricePerLabel": 1.25,
         "savings": null
       },
@@ -25,8 +25,8 @@
       {
         "id": "labels-10000",
         "name": "10,000 Labels",
-        "price": 100.00,
-        "pricePerLabel": 1.00,
+        "price": 100,
+        "pricePerLabel": 1,
         "savings": 20,
         "popular": true
       }
@@ -57,34 +57,34 @@
       {
         "id": "probe-1",
         "name": "Single Probe",
-        "price": 89.00,
+        "price": 89,
         "note": "Minimum 3 probes required for Food Safe System",
         "disabled": true
       },
       {
         "id": "probe-3",
         "name": "3 Probes",
-        "price": 249.00,
-        "pricePerProbe": 83.00,
+        "price": 249,
+        "pricePerProbe": 83,
         "savings": null,
-        "setupFee": 200.00
+        "setupFee": 200
       },
       {
         "id": "probe-5",
         "name": "5 Probes",
-        "price": 399.00,
-        "pricePerProbe": 79.80,
+        "price": 399,
+        "pricePerProbe": 79.8,
         "savings": 5,
-        "setupFee": 200.00,
+        "setupFee": 200,
         "popular": true
       },
       {
         "id": "probe-10",
         "name": "10 Probes",
-        "price": 749.00,
-        "pricePerProbe": 74.90,
+        "price": 749,
+        "pricePerProbe": 74.9,
         "savings": 10,
-        "setupFee": 200.00
+        "setupFee": 200
       }
     ],
     "features": [
@@ -99,6 +99,153 @@
       "name": "Food Safe System",
       "href": "/food-safe-system",
       "note": "Requires Food Safe System subscription (£12/probe/month)"
+    }
+  },
+  {
+    "id": "kosbtp1",
+    "name": "Thermapen ONE Blue Thermometer",
+    "category": "Bluetooth Probes",
+    "tagline": "Bluetooth-enabled HACCP compliance thermometer",
+    "description": "The new Thermapen ONE Blue makes HACCP compliance easier than ever before. With item names, high/low limits, and pass/fail feedback displayed on the screen, users can work through checklists with confidence and accuracy.",
+    "image": "/logos/food-safe-system/fss-icon.png",
+    "icon": "Thermometer",
+    "variants": [
+      {
+        "id": "kosbtp1-single",
+        "name": "Single Thermometer",
+        "price": 175,
+        "savings": null,
+        "popular": true
+      }
+    ],
+    "features": [
+      "Intuitive display with custom checklists",
+      "Provides instant pass/fail feedback",
+      "Integrate into existing software systems",
+      "Time-saving paperless recordings",
+      "Free traceable certificate of calibration"
+    ],
+    "relatedProduct": {
+      "name": "Food Safe System",
+      "href": "/food-safe-system",
+      "note": "Requires Food Safe System subscription"
+    }
+  },
+  {
+    "id": "kosbta1",
+    "name": "Thermapen Stainless Steel Wall Bracket",
+    "category": "Accessories",
+    "tagline": "Stainless steel wall-mounted bracket",
+    "description": "Stainless steel Thermapen wall bracket can be wall-mounted. Lets you store your Thermapen safely for easy access, whenever you need it. Simple to keep track of your Thermapen, and helps to avoid accidental damage.",
+    "image": "/logos/food-safe-system/fss-icon.png",
+    "icon": "Package",
+    "variants": [
+      {
+        "id": "kosbta1-single",
+        "name": "Single Bracket",
+        "price": 13,
+        "savings": null
+      }
+    ],
+    "features": [
+      "Simple wall fixing",
+      "Durable stainless steel construction",
+      "Dimensions: H: 115 x W: 58 x D: 27 mm",
+      "Bracket excludes instrument"
+    ],
+    "relatedProduct": {
+      "name": "Food Safe System",
+      "href": "/food-safe-system",
+      "note": "Compatible with all Thermapen models"
+    }
+  },
+  {
+    "id": "kosbtp2",
+    "name": "Thermapen IR Blue Thermometer",
+    "category": "Bluetooth Probes",
+    "tagline": "Infrared thermometer with penetration probe and Bluetooth",
+    "description": "The Thermapen IR Blue infrared Bluetooth thermometer combines the latest Bluetooth technology with the versatility of the Thermapen IR. Easily switch between surface and internal temperature readings whilst wirelessly transferring the data to your device for a robust paperless backup.",
+    "image": "/logos/food-safe-system/fss-icon.png",
+    "icon": "Thermometer",
+    "variants": [
+      {
+        "id": "kosbtp2-single",
+        "name": "Single Thermometer",
+        "price": 190,
+        "savings": null,
+        "popular": true
+      }
+    ],
+    "features": [
+      "High accuracy ideal for HACCP procedures",
+      "Measures surface and internal temperatures",
+      "Adjustable emissivity for different surfaces",
+      "Securely transmits data to your smart device",
+      "Time-saving paperless recordings",
+      "Free traceable certificate of calibration"
+    ],
+    "relatedProduct": {
+      "name": "Food Safe System",
+      "href": "/food-safe-system",
+      "note": "Requires Food Safe System subscription"
+    }
+  },
+  {
+    "id": "kosbtp3",
+    "name": "TempTest Blue Thermometer",
+    "category": "Bluetooth Probes",
+    "tagline": "Compact Bluetooth thermometer with 360° rotating display",
+    "description": "The TempTest Blue wireless thermometer combines Bluetooth connectivity with the ergonomic design of the TempTest thermometer. Compact, waterproof IP67 design with automatic 360° rotating display.",
+    "image": "/logos/food-safe-system/fss-icon.png",
+    "icon": "Thermometer",
+    "variants": [
+      {
+        "id": "kosbtp3-single",
+        "name": "Single Thermometer",
+        "price": 145,
+        "savings": null
+      }
+    ],
+    "features": [
+      "Compact waterproof IP67 design",
+      "Automatic 360° rotating display",
+      "Securely transmits data to your smart device",
+      "Time-saving paperless recordings",
+      "Polygiene BioMaster product protection",
+      "UKAS 3-point certificate available"
+    ],
+    "relatedProduct": {
+      "name": "Food Safe System",
+      "href": "/food-safe-system",
+      "note": "Requires Food Safe System subscription"
+    }
+  },
+  {
+    "id": "kosbtp4",
+    "name": "RayTemp Blue Infrared Thermometer",
+    "category": "Bluetooth Probes",
+    "tagline": "Bluetooth infrared thermometer with 5:1 distance ratio",
+    "description": "RayTemp Blue Infrared Thermometer with Bluetooth wireless technology. Professional infrared temperature measurement with wireless data transmission.",
+    "image": "/logos/food-safe-system/fss-icon.png",
+    "icon": "Thermometer",
+    "variants": [
+      {
+        "id": "kosbtp4-single",
+        "name": "Single Thermometer",
+        "price": 145,
+        "savings": null
+      }
+    ],
+    "features": [
+      "Securely transmits data to your smart device",
+      "Free traceable certificate of calibration",
+      "Time saving paperless recordings",
+      "Target distance/diameter ratio 5:1"
+    ],
+    "relatedProduct": {
+      "name": "Food Safe System",
+      "href": "/food-safe-system",
+      "note": "Requires Food Safe System subscription"
     }
   }
 ]
