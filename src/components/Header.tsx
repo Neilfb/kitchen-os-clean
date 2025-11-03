@@ -2,11 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { Menu, X, ChevronDown } from 'lucide-react';
+import { Menu, X, ChevronDown, ShoppingCart } from 'lucide-react';
+import { useCart } from '@/contexts/CartContext';
+import { CartDrawer } from './cart/CartDrawer';
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [isProductsOpen, setIsProductsOpen] = useState(false);
+  const [isCartOpen, setIsCartOpen] = useState(false);
+  const { itemCount } = useCart();
 
   const products = [
     {
@@ -115,6 +119,19 @@ export default function Header() {
             </Link>
 
             <div className="flex items-center space-x-3 ml-4 pl-4 border-l border-white/20">
+              {/* Cart Icon */}
+              <button
+                onClick={() => setIsCartOpen(true)}
+                className="relative text-white/90 hover:text-white hover:bg-white/10 transition-all p-2.5 rounded-lg focus:outline-none focus:ring-2 focus:ring-white/30"
+                aria-label="Shopping cart"
+              >
+                <ShoppingCart className="w-5 h-5" />
+                {itemCount > 0 && (
+                  <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                    {itemCount > 9 ? '9+' : itemCount}
+                  </span>
+                )}
+              </button>
               <Link href="/login" className="text-white/90 hover:text-white hover:bg-white/10 transition-all px-4 py-2.5 rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-white/30">
                 Login
               </Link>
@@ -124,15 +141,34 @@ export default function Header() {
             </div>
           </div>
 
-          <button
-            className="md:hidden text-white p-2 hover:bg-white/10 rounded-lg transition-all touch-target"
-            onClick={() => setIsOpen(!isOpen)}
-            aria-label={isOpen ? 'Close menu' : 'Open menu'}
-          >
-            {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
+          {/* Mobile Cart Icon and Menu Toggle */}
+          <div className="flex items-center md:hidden space-x-2">
+            <button
+              onClick={() => setIsCartOpen(true)}
+              className="relative text-white p-2 hover:bg-white/10 rounded-lg transition-all touch-target"
+              aria-label="Shopping cart"
+            >
+              <ShoppingCart className="w-6 h-6" />
+              {itemCount > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                  {itemCount > 9 ? '9+' : itemCount}
+                </span>
+              )}
+            </button>
+
+            <button
+              className="text-white p-2 hover:bg-white/10 rounded-lg transition-all touch-target"
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? 'Close menu' : 'Open menu'}
+            >
+              {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            </button>
+          </div>
         </div>
       </div>
+
+      {/* Cart Drawer */}
+      <CartDrawer isOpen={isCartOpen} onClose={() => setIsCartOpen(false)} />
 
       {isOpen && (
         <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">

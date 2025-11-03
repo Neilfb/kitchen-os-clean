@@ -20,12 +20,14 @@ import {
   Truck,
   CreditCard,
   LucideIcon,
+  CheckCircle,
 } from 'lucide-react';
 import { SystemCategory, ProductType, Product } from '@/data/types';
 import { filterProducts, groupByCategory } from '@/utils/productFilters';
 import { CategoryNav } from '@/components/shop/CategoryNav';
 import { FilterBar } from '@/components/shop/FilterBar';
 import { SubscriptionCard } from '@/components/shop/SubscriptionCard';
+import { useCart } from '@/contexts/CartContext';
 
 interface ShopClientProps {
   products: Product[];
@@ -423,9 +425,30 @@ function ProductCard({ product }: { product: ProductWithIcon }) {
 }
 
 // Variant Card Component
-function VariantCard({ variant }: { variant: ProductVariant; product: ProductWithIcon }) {
+function VariantCard({ variant, product }: { variant: ProductVariant; product: ProductWithIcon }) {
+  const { addItem } = useCart();
+  const [showAdded, setShowAdded] = useState(false);
   const isDisabled = variant.disabled;
   const isPopular = variant.popular;
+
+  const handleAddToCart = () => {
+    addItem({
+      productId: product.id,
+      productName: product.name,
+      productImage: product.image,
+      variantId: variant.id,
+      variantName: variant.name,
+      price: variant.price,
+      pricePerLabel: variant.pricePerLabel,
+      pricePerProbe: variant.pricePerProbe,
+      systemCategory: product.systemCategory,
+      productType: product.productType,
+    });
+
+    // Show success feedback
+    setShowAdded(true);
+    setTimeout(() => setShowAdded(false), 2000);
+  };
 
   return (
     <div
@@ -468,17 +491,29 @@ function VariantCard({ variant }: { variant: ProductVariant; product: ProductWit
         </div>
 
         <button
+          onClick={handleAddToCart}
           disabled={isDisabled}
           className={`
-            px-6 py-3 rounded-lg font-semibold transition-colors whitespace-nowrap
+            px-6 py-3 rounded-lg font-semibold transition-all whitespace-nowrap flex items-center gap-2
             ${
               isDisabled
                 ? 'bg-gray-200 text-gray-500 cursor-not-allowed'
+                : showAdded
+                ? 'bg-green-700 text-white'
                 : 'bg-green-600 text-white hover:bg-green-700'
             }
           `}
         >
-          {isDisabled ? 'Not Available' : 'Add to Cart'}
+          {isDisabled ? (
+            'Not Available'
+          ) : showAdded ? (
+            <>
+              <CheckCircle className="w-5 h-5" />
+              Added!
+            </>
+          ) : (
+            'Add to Cart'
+          )}
         </button>
       </div>
     </div>
