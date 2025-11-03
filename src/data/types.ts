@@ -24,6 +24,9 @@ export interface RelatedProduct {
   note: string;
 }
 
+export type SystemCategory = 'food-safe' | 'food-label' | 'allerq' | 'fwaste';
+export type ProductType = 'hardware' | 'consumable' | 'accessory' | 'subscription' | 'merchandise' | 'digital';
+
 export interface Product {
   id: string;
   name: string;
@@ -35,6 +38,9 @@ export interface Product {
   variants: ProductVariant[];
   features: string[];
   relatedProduct: RelatedProduct;
+  systemCategory?: SystemCategory; // Which Kitchen OS system this belongs to
+  productType?: ProductType; // Type of product for filtering
+  isFeatured?: boolean; // For homepage/promotional placement
 }
 
 /**

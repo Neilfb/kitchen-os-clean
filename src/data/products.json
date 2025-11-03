@@ -2,11 +2,14 @@
   {
     "id": "thermal-labels",
     "name": "Thermal Labels",
-    "category": "Food Label System",
+    "category": "Labels & Consumables",
     "tagline": "Premium thermal labels for your Food Label System printer",
     "description": "High-quality 58mm thermal labels compatible with your Food Label System printer. Each label includes day dots, use-by fields, and allergen warnings.",
     "image": "/logos/food-label-system/fls-icon.png",
     "icon": "FileText",
+    "systemCategory": "food-label",
+    "productType": "consumable",
+    "isFeatured": true,
     "variants": [
       {
         "id": "labels-1000",
@@ -48,11 +51,14 @@
   {
     "id": "bluetooth-probes",
     "name": "Bluetooth Temperature Probes",
-    "category": "Food Safe System",
+    "category": "Temperature Monitoring",
     "tagline": "Industrial-grade Bluetooth probes for automatic temperature monitoring",
     "description": "Professional wireless temperature sensors with real-time monitoring and alerts. IP67 waterproof rating with ±0.3°C accuracy.",
     "image": "/logos/food-safe-system/fss-icon.png",
     "icon": "Thermometer",
+    "systemCategory": "food-safe",
+    "productType": "hardware",
+    "isFeatured": true,
     "variants": [
       {
         "id": "probe-1",
@@ -104,11 +110,13 @@
   {
     "id": "kosbtp1",
     "name": "Thermapen ONE Blue Thermometer",
-    "category": "Bluetooth Probes",
+    "category": "Temperature Monitoring",
     "tagline": "Bluetooth-enabled HACCP compliance thermometer",
     "description": "The new Thermapen ONE Blue makes HACCP compliance easier than ever before. With item names, high/low limits, and pass/fail feedback displayed on the screen, users can work through checklists with confidence and accuracy.",
     "image": "/logos/food-safe-system/fss-icon.png",
     "icon": "Thermometer",
+    "systemCategory": "food-safe",
+    "productType": "hardware",
     "variants": [
       {
         "id": "kosbtp1-single",
@@ -139,6 +147,8 @@
     "description": "Stainless steel Thermapen wall bracket can be wall-mounted. Lets you store your Thermapen safely for easy access, whenever you need it. Simple to keep track of your Thermapen, and helps to avoid accidental damage.",
     "image": "/logos/food-safe-system/fss-icon.png",
     "icon": "Package",
+    "systemCategory": "food-safe",
+    "productType": "accessory",
     "variants": [
       {
         "id": "kosbta1-single",
@@ -162,11 +172,13 @@
   {
     "id": "kosbtp2",
     "name": "Thermapen IR Blue Thermometer",
-    "category": "Bluetooth Probes",
+    "category": "Temperature Monitoring",
     "tagline": "Infrared thermometer with penetration probe and Bluetooth",
     "description": "The Thermapen IR Blue infrared Bluetooth thermometer combines the latest Bluetooth technology with the versatility of the Thermapen IR. Easily switch between surface and internal temperature readings whilst wirelessly transferring the data to your device for a robust paperless backup.",
     "image": "/logos/food-safe-system/fss-icon.png",
     "icon": "Thermometer",
+    "systemCategory": "food-safe",
+    "productType": "hardware",
     "variants": [
       {
         "id": "kosbtp2-single",
@@ -193,11 +205,13 @@
   {
     "id": "kosbtp3",
     "name": "TempTest Blue Thermometer",
-    "category": "Bluetooth Probes",
+    "category": "Temperature Monitoring",
     "tagline": "Compact Bluetooth thermometer with 360° rotating display",
     "description": "The TempTest Blue wireless thermometer combines Bluetooth connectivity with the ergonomic design of the TempTest thermometer. Compact, waterproof IP67 design with automatic 360° rotating display.",
     "image": "/logos/food-safe-system/fss-icon.png",
     "icon": "Thermometer",
+    "systemCategory": "food-safe",
+    "productType": "hardware",
     "variants": [
       {
         "id": "kosbtp3-single",
@@ -223,11 +237,13 @@
   {
     "id": "kosbtp4",
     "name": "RayTemp Blue Infrared Thermometer",
-    "category": "Bluetooth Probes",
+    "category": "Temperature Monitoring",
     "tagline": "Bluetooth infrared thermometer with 5:1 distance ratio",
     "description": "RayTemp Blue Infrared Thermometer with Bluetooth wireless technology. Professional infrared temperature measurement with wireless data transmission.",
     "image": "/logos/food-safe-system/fss-icon.png",
     "icon": "Thermometer",
+    "systemCategory": "food-safe",
+    "productType": "hardware",
     "variants": [
       {
         "id": "kosbtp4-single",
