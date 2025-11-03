@@ -1,0 +1,4 @@
+id,name,price,pricePerLabel,pricePerProbe,setupFee,savings,note,disabled,popular
+labels-1000,1000 Labels,12.50,1.25,,,null,,,
+labels-5000,5000 Labels,56.25,1.13,,,10,,,
+labels-10000,10000 Labels,100.00,1.00,,,20,,,true

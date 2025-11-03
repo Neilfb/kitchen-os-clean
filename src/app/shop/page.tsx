@@ -1,116 +1,26 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { ShoppingCart, Package, Thermometer, FileText, Check, ArrowRight, Shield, Truck, CreditCard } from 'lucide-react';
+import { ShoppingCart, Package, Thermometer, FileText, Check, ArrowRight, Shield, Truck, CreditCard, LucideIcon } from 'lucide-react';
+import productsData from '@/data/products.json';
 
 export const metadata: Metadata = {
   title: 'Shop - Kitchen OS Hardware & Consumables',
   description: 'Purchase thermal labels for your Food Label System and Bluetooth temperature probes for your Food Safe System. Fast UK delivery with Revolut Pay.',
 };
 
-const products = [
-  {
-    id: 'thermal-labels',
-    name: 'Thermal Labels',
-    category: 'Food Label System',
-    tagline: 'Premium thermal labels for your Food Label System printer',
-    description: 'High-quality 58mm thermal labels compatible with your Food Label System printer. Each label includes day dots, use-by fields, and allergen warnings.',
-    image: '/logos/food-label-system/fls-icon.png',
-    icon: FileText,
-    variants: [
-      {
-        id: 'labels-1000',
-        name: '1,000 Labels',
-        price: 12.50,
-        pricePerLabel: 1.25,
-        savings: null,
-      },
-      {
-        id: 'labels-5000',
-        name: '5,000 Labels',
-        price: 56.25,
-        pricePerLabel: 1.13,
-        savings: 10,
-      },
-      {
-        id: 'labels-10000',
-        name: '10,000 Labels',
-        price: 100.00,
-        pricePerLabel: 1.00,
-        savings: 20,
-        popular: true,
-      },
-    ],
-    features: [
-      'Compatible with Food Label System printers',
-      'Pre-printed day dots and use-by fields',
-      'Allergen warning sections included',
-      'Strong adhesive for cold surfaces',
-      'Certified food-safe materials',
-      'Free UK delivery on orders over £50',
-    ],
-    relatedProduct: {
-      name: 'Food Label System',
-      href: '/food-label-system',
-      note: 'Requires Food Label System subscription',
-    },
-  },
-  {
-    id: 'bluetooth-probes',
-    name: 'Bluetooth Temperature Probes',
-    category: 'Food Safe System',
-    tagline: 'Industrial-grade Bluetooth probes for automatic temperature monitoring',
-    description: 'Professional wireless temperature sensors with real-time monitoring and alerts. IP67 waterproof rating with ±0.3°C accuracy.',
-    image: '/logos/food-safe-system/fss-icon.png',
-    icon: Thermometer,
-    variants: [
-      {
-        id: 'probe-1',
-        name: 'Single Probe',
-        price: 89.00,
-        note: 'Minimum 3 probes required for Food Safe System',
-        disabled: true,
-      },
-      {
-        id: 'probe-3',
-        name: '3 Probes',
-        price: 249.00,
-        pricePerProbe: 83.00,
-        savings: null,
-        setupFee: 200.00,
-      },
-      {
-        id: 'probe-5',
-        name: '5 Probes',
-        price: 399.00,
-        pricePerProbe: 79.80,
-        savings: 5,
-        setupFee: 200.00,
-        popular: true,
-      },
-      {
-        id: 'probe-10',
-        name: '10 Probes',
-        price: 749.00,
-        pricePerProbe: 74.90,
-        savings: 10,
-        setupFee: 200.00,
-      },
-    ],
-    features: [
-      'IP67 waterproof rating (1m depth)',
-      '±0.3°C accuracy across -40°C to +125°C',
-      '100m Bluetooth range (open space)',
-      '2-year battery life with replaceable CR2032',
-      'Real-time alerts via Food Safe System app',
-      'Includes mounting hardware and setup',
-    ],
-    relatedProduct: {
-      name: 'Food Safe System',
-      href: '/food-safe-system',
-      note: 'Requires Food Safe System subscription (£12/probe/month)',
-    },
-  },
-];
+// Icon mapping - maps icon names from JSON to Lucide components
+const iconMap: Record<string, LucideIcon> = {
+  FileText,
+  Thermometer,
+  Package,
+  ShoppingCart,
+};
+
+// Transform products from JSON to include icon components
+const products = productsData.map((product) => ({
+  ...product,
+  icon: iconMap[product.icon] || FileText, // Fallback to FileText if icon not found
+}));
 
 export default function ShopPage() {
   return (
