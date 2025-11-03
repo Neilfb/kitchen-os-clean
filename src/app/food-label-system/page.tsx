@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, Printer, Clock, Shield, TrendingDown, Zap, Database } from 'lucide-react';
+import { CheckCircle, Printer, Clock, Shield, TrendingDown, Zap, Database, ExternalLink } from 'lucide-react';
 import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
 import { ProductLogo } from '@/components/ProductLogo';
 
@@ -163,6 +163,15 @@ export default function FoodLabelSystemPage() {
               >
                 Book a Demo
               </Link>
+              <a
+                href="https://foodlabelsystem.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-navy font-semibold rounded-lg hover:bg-gray-50 transition-colors border-2 border-brand-navy"
+              >
+                Visit Website
+                <ExternalLink className="w-4 h-4" />
+              </a>
               <Link
                 href="/pricing"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-navy font-semibold rounded-lg hover:bg-gray-50 transition-colors border-2 border-brand-navy"
@@ -418,6 +427,15 @@ export default function FoodLabelSystemPage() {
             >
               Book a Demo
             </Link>
+            <a
+              href="https://foodlabelsystem.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-brand-navy font-bold rounded-xl hover:bg-gray-50 transition-all border-2 border-brand-navy shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
+            >
+              Visit Website
+              <ExternalLink className="w-4 h-4" />
+            </a>
             <Link
               href="/pricing"
               className="inline-flex items-center justify-center px-8 py-4 bg-product-fls-green-dark text-white font-bold rounded-xl hover:bg-opacity-90 transition-all border-2 border-brand-navy shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"

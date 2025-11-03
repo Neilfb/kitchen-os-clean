@@ -1,12 +1,12 @@
 import Link from 'next/link';
-import { Twitter, Linkedin, Instagram, Youtube } from 'lucide-react';
+import { Twitter, Linkedin, Instagram, Youtube, ExternalLink } from 'lucide-react';
 
 export default function Footer() {
   const productLinks = [
-    { name: 'Food Safe System', href: '/food-safe-system' },
-    { name: 'AllerQ', href: '/allerq' },
-    { name: 'Food Label System', href: '/food-label-system' },
-    { name: 'F*** Waste', href: '/f-waste' },
+    { name: 'Food Safe System', href: '/food-safe-system', website: 'https://www.foodsafesystem.com' },
+    { name: 'AllerQ', href: '/allerq', website: 'https://allerq.com' },
+    { name: 'Food Label System', href: '/food-label-system', website: 'https://foodlabelsystem.com' },
+    { name: 'F*** Waste', href: '/f-waste', website: 'https://f-waste.com' },
   ];
 
   const companyLinks = [
@@ -78,15 +78,24 @@ export default function Footer() {
 
           <div>
             <h3 className="text-white font-bold mb-5 text-sm uppercase tracking-wider">Products</h3>
-            <ul className="space-y-3">
+            <ul className="space-y-4">
               {productLinks.map((link) => (
-                <li key={link.href}>
+                <li key={link.href} className="space-y-1">
                   <Link
                     href={link.href}
                     className="text-white/70 hover:text-white hover:translate-x-1 inline-block transition-all focus:outline-none focus:text-white"
                   >
                     {link.name}
                   </Link>
+                  <a
+                    href={link.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-1 text-white/50 hover:text-white/80 text-sm transition-colors"
+                  >
+                    Visit website
+                    <ExternalLink className="w-3 h-3" />
+                  </a>
                 </li>
               ))}
             </ul>
