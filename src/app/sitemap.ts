@@ -1,4 +1,5 @@
 import { MetadataRoute } from 'next';
+import { getAllPosts } from '@/data/blogPosts';
 
 /**
  * Dynamic sitemap generation for Kitchen OS website
@@ -152,12 +153,36 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly' as const,
       priority: 0.5,
     },
+    {
+      url: `${baseUrl}/podcast`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.6,
+    },
+  ];
+
+  // Blog pages - dynamically generated from blog posts
+  const blogPosts = getAllPosts();
+  const blogPages = [
+    {
+      url: `${baseUrl}/blog`,
+      lastModified: currentDate,
+      changeFrequency: 'weekly' as const,
+      priority: 0.85,
+    },
+    ...blogPosts.map((post) => ({
+      url: `${baseUrl}/blog/${post.slug}`,
+      lastModified: new Date(post.updatedDate || post.publishedDate),
+      changeFrequency: 'monthly' as const,
+      priority: 0.7,
+    })),
   ];
 
   // Combine all pages
   return [
     ...corePages,
     ...productPages,
+    ...blogPages,
     ...comparisonPages,
     ...legalPages,
     ...utilityPages,

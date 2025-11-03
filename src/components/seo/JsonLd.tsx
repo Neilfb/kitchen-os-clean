@@ -345,3 +345,57 @@ export function ReviewSchema({
 
   return <JsonLd data={schema} />;
 }
+
+/**
+ * BlogPosting Schema for blog articles
+ */
+interface BlogPostingSchemaProps {
+  headline: string;
+  description: string;
+  image?: string;
+  datePublished: string;
+  dateModified: string;
+  author: {
+    name: string;
+  };
+  wordCount?: number;
+}
+
+export function BlogPostingSchema({
+  headline,
+  description,
+  image,
+  datePublished,
+  dateModified,
+  author,
+  wordCount,
+}: BlogPostingSchemaProps) {
+  const schema = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    headline,
+    description,
+    ...(image && { image }),
+    datePublished,
+    dateModified,
+    author: {
+      '@type': 'Person',
+      name: author.name,
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'Kitchen OS',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://kitchen-os.com/assets/KitchenOS-03.png',
+      },
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': 'https://kitchen-os.com',
+    },
+    ...(wordCount && { wordCount }),
+  };
+
+  return <JsonLd data={schema} />;
+}
