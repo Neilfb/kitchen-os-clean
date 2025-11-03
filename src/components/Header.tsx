@@ -44,12 +44,12 @@ export default function Header() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 bg-gradient-to-r from-product-fss-green via-product-fss-green-dark to-product-fss-green backdrop-blur-md border-b border-product-fss-green-dark/50 shadow-lg">
+    <nav className="sticky top-0 z-50 bg-gradient-to-r from-[#71D5F4] via-[#67C4E6] to-[#2A7699] backdrop-blur-md border-b border-[#2A7699]/50 shadow-lg">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-20">
           <Link href="/" className="flex items-center space-x-3 group">
             <img
-              src="/assets/KitchenOS-01.png"
+              src="/logos/kitchen-os/kitchenos-full-logo-white.png"
               alt="Kitchen OS"
               className="h-10 w-auto transition-transform duration-200 group-hover:scale-105"
             />
@@ -118,6 +118,10 @@ export default function Header() {
               Podcast
             </Link>
 
+            <Link href="/blog" className="text-white/90 hover:text-white hover:bg-white/10 transition-all px-4 py-2.5 rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-white/30">
+              Blog
+            </Link>
+
             <div className="flex items-center space-x-3 ml-4 pl-4 border-l border-white/20">
               {/* Cart Icon */}
               <button
@@ -135,7 +139,7 @@ export default function Header() {
               <Link href="/login" className="text-white/90 hover:text-white hover:bg-white/10 transition-all px-4 py-2.5 rounded-lg font-medium focus:outline-none focus:ring-2 focus:ring-white/30">
                 Login
               </Link>
-              <Link href="/signup" className="bg-white text-product-fss-green-dark px-6 py-2.5 rounded-xl font-bold hover:bg-white/90 hover:shadow-lg active:scale-[0.98] transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-product-fss-green min-h-[44px]">
+              <Link href="/signup" className="bg-white text-[#2A7699] px-6 py-2.5 rounded-xl font-bold hover:bg-white/90 hover:shadow-lg active:scale-[0.98] transition-all focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#2A7699] min-h-[44px]">
                 Sign Up
               </Link>
             </div>
@@ -233,6 +237,13 @@ export default function Header() {
               onClick={() => setIsOpen(false)}
             >
               Podcast
+            </Link>
+            <Link
+              href="/blog"
+              className="block text-brand-medium-text hover:text-brand-dark-text hover:bg-brand-subtle-bg transition-all py-3 px-3 rounded-lg font-bold min-h-[44px] flex items-center"
+              onClick={() => setIsOpen(false)}
+            >
+              Blog
             </Link>
             <div className="pt-4 mt-4 border-t border-gray-200 space-y-3">
               <Link href="/login" className="w-full block text-center text-brand-navy hover:bg-brand-subtle-bg transition-all py-3 px-3 rounded-lg font-bold min-h-[44px]">
