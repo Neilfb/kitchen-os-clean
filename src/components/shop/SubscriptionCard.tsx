@@ -8,6 +8,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { Check, ArrowRight } from 'lucide-react';
 
 interface SubscriptionCardProps {
@@ -40,8 +41,15 @@ export function SubscriptionCard({
     `}
     >
       {/* Logo */}
-      <div className="mb-6">
-        <img src={logoSrc} alt={name} className="h-12 w-auto" />
+      <div className="mb-6 relative h-12">
+        <Image
+          src={logoSrc}
+          alt={name}
+          width={200}
+          height={48}
+          className="h-12 w-auto object-contain"
+          style={{ objectFit: 'contain', height: '48px', width: 'auto' }}
+        />
       </div>
 
       {/* Title & Tagline */}

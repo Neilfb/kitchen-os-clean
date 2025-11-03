@@ -6,6 +6,7 @@
  * Individual cart item with image, name, price, quantity controls, and remove button.
  */
 
+import Image from 'next/image';
 import { Minus, Plus, Trash2 } from 'lucide-react';
 import { useCart } from '@/contexts/CartContext';
 import type { CartItem as CartItemType } from '@/types/cart';
@@ -36,11 +37,13 @@ export function CartItem({ item }: CartItemProps) {
   return (
     <div className="flex gap-4 p-4 bg-gray-50 rounded-xl">
       {/* Product Image */}
-      <div className="flex-shrink-0 w-20 h-20 bg-white rounded-lg p-2">
-        <img
+      <div className="flex-shrink-0 w-20 h-20 bg-white rounded-lg p-2 relative">
+        <Image
           src={item.productImage}
           alt={item.productName}
-          className="w-full h-full object-contain"
+          fill
+          className="object-contain p-1"
+          sizes="80px"
         />
       </div>
 

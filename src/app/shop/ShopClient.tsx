@@ -9,6 +9,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import {
   ShoppingCart,
   Package,
@@ -351,8 +352,14 @@ function ProductCard({ product }: { product: ProductWithIcon }) {
       <div className="flex items-start gap-6 mb-6">
         <div className="flex-shrink-0">
           {/* Main Product Image */}
-          <div className="w-48 h-48 bg-white rounded-2xl shadow-md p-4 flex items-center justify-center mb-3">
-            <img src={currentImage} alt={product.name} className="w-full h-full object-contain" />
+          <div className="w-48 h-48 bg-white rounded-2xl shadow-md p-4 flex items-center justify-center mb-3 relative">
+            <Image
+              src={currentImage}
+              alt={product.name}
+              fill
+              className="object-contain p-4"
+              sizes="(max-width: 768px) 100vw, 192px"
+            />
           </div>
           {/* Image Gallery Thumbnails */}
           {images.length > 1 && (
@@ -361,13 +368,19 @@ function ProductCard({ product }: { product: ProductWithIcon }) {
                 <button
                   key={index}
                   onClick={() => setSelectedImageIndex(index)}
-                  className={`w-12 h-12 bg-white rounded-lg border-2 p-1 transition-all ${
+                  className={`w-12 h-12 bg-white rounded-lg border-2 p-1 transition-all relative ${
                     selectedImageIndex === index
                       ? 'border-green-500 shadow-md'
                       : 'border-gray-200 hover:border-gray-300'
                   }`}
                 >
-                  <img src={image} alt={`${product.name} ${index + 1}`} className="w-full h-full object-contain" />
+                  <Image
+                    src={image}
+                    alt={`${product.name} ${index + 1}`}
+                    fill
+                    className="object-contain p-0.5"
+                    sizes="48px"
+                  />
                 </button>
               ))}
             </div>
