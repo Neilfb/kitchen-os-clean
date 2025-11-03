@@ -69,7 +69,7 @@ export default function HomePage() {
     {
       name: 'Food Label System',
       tagline: 'Automated Date Labels',
-      description: 'Print compliant labels in seconds. 2,000 free labels included every month.',
+      description: 'Print compliant labels in seconds. Free 2,000 labels included with 1st month\'s subscription.',
       price: '£35/month',
       href: '/food-label-system',
       icon: '/logos/food-label-system/fls-icon.png',
@@ -278,17 +278,12 @@ export default function HomePage() {
 
                 <div className="relative">
                   <div className="flex items-start mb-6">
-                    {/* Icon with gradient background */}
-                    <div
-                      className="w-16 h-16 rounded-xl flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300"
-                      style={{
-                        background: `linear-gradient(135deg, var(--${product.color}) 0%, var(--${product.colorDark}) 100%)`
-                      }}
-                    >
+                    {/* Icon without frame */}
+                    <div className="w-16 h-16 flex items-center justify-center mr-4 group-hover:scale-110 transition-transform duration-300">
                       <img
                         src={product.icon}
                         alt={product.name}
-                        className="w-10 h-10"
+                        className="w-16 h-16 rounded-xl"
                       />
                     </div>
                     <div className="flex-1">
