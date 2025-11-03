@@ -152,26 +152,25 @@ export default function Footer() {
         </div>
 
         {/* Partners & Certifications */}
-        <div className="border-t border-white/10 pt-12 pb-12">
-          <h3 className="text-white font-bold mb-8 text-center text-sm uppercase tracking-wider">
+        <div className="border-t border-white/10 pt-16 pb-16">
+          <h3 className="text-white font-bold mb-12 text-center text-sm uppercase tracking-wider">
             Partners & Certifications
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 items-center">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-center">
             {/* UN Tourism */}
             <div className="flex justify-center">
               <a
                 href="https://www.untourism.int/events/9-world-forum-gastronomy-tourism-bahrain"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30 rounded-lg"
+                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
                 aria-label="UN Tourism - 9th World Forum on Gastronomy Tourism"
               >
-                <Image
+                <img
                   src="/assets/Logo_UN_Tourism.svg"
                   alt="UN Tourism Logo"
-                  width={180}
-                  height={80}
-                  className="h-20 w-auto opacity-90 hover:opacity-100 transition-opacity"
+                  className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"
+                  loading="lazy"
                 />
               </a>
             </div>
@@ -182,52 +181,52 @@ export default function Footer() {
                 href="https://www.innovateni.com/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30 rounded-lg"
+                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
                 aria-label="Innovate NI Gold Innovator"
               >
                 <Image
                   src="/assets/gold-innovator.png"
                   alt="Innovate NI Gold Innovator Logo"
-                  width={180}
-                  height={80}
-                  className="h-20 w-auto opacity-90 hover:opacity-100 transition-opacity"
+                  width={240}
+                  height={96}
+                  className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"
                 />
               </a>
             </div>
 
             {/* UN Sustainable Development Goals */}
-            <div className="flex flex-col items-center gap-4">
+            <div className="flex flex-col items-center gap-6">
               <a
                 href="https://www.un.org/sustainabledevelopment/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/30 rounded-lg"
+                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
                 aria-label="UN Sustainable Development Goals"
               >
                 <Image
-                  src="/assets/E_SDG_logo_Square_Transparent_WEB.png.png"
+                  src="/assets/E_SDG_logo_Square_Transparent_WEB.png"
                   alt="UN Sustainable Development Goals Logo"
-                  width={120}
-                  height={120}
-                  className="h-16 w-auto opacity-90 hover:opacity-100 transition-opacity"
+                  width={160}
+                  height={160}
+                  className="h-20 w-auto opacity-90 hover:opacity-100 transition-opacity"
                 />
               </a>
-              <div className="flex flex-wrap justify-center gap-2">
+              <div className="flex flex-wrap justify-center gap-3 max-w-sm">
                 {['01', '02', '08', '11', '12', '13'].map((num) => (
                   <a
                     key={num}
                     href="https://www.un.org/sustainabledevelopment/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/30 rounded"
+                    className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/30 rounded-lg"
                     aria-label={`UN SDG Goal ${num}`}
                   >
                     <Image
                       src={`/assets/E_WEB_${num}.png`}
                       alt={`UN SDG Goal ${num}`}
-                      width={60}
-                      height={60}
-                      className="h-12 w-12 opacity-90 hover:opacity-100 transition-opacity"
+                      width={80}
+                      height={80}
+                      className="h-16 w-16 opacity-90 hover:opacity-100 transition-opacity rounded-lg"
                     />
                   </a>
                 ))}
