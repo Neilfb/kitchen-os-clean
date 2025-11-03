@@ -197,7 +197,7 @@ export default function OrderConfirmationEmail({ order }: OrderConfirmationEmail
           <Section style={section}>
             <Text style={text}>
               Questions about your order?{' '}
-              <Link href="https://www.kitchen-os.com/contact" style={link}>
+              <Link href="https://kitchen-os.com/contact" style={link}>
                 Contact our support team
               </Link>
             </Text>
@@ -208,8 +208,8 @@ export default function OrderConfirmationEmail({ order }: OrderConfirmationEmail
             <Text style={footerText}>
               Kitchen OS - Revolutionizing Commercial Kitchen Operations
               <br />
-              <Link href="https://www.kitchen-os.com" style={link}>
-                www.kitchen-os.com
+              <Link href="https://kitchen-os.com" style={link}>
+                kitchen-os.com
               </Link>
             </Text>
           </Section>

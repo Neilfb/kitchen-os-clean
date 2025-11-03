@@ -91,8 +91,8 @@ export async function sendOrderFailedEmail(
         <p>We encountered an issue processing your payment for order <strong>${order.orderNumber}</strong>.</p>
         ${reason ? `<p><strong>Reason:</strong> ${reason}</p>` : ''}
         <p>Your cart items are still saved. Please try again or contact our support team if you continue to experience issues.</p>
-        <p><a href="https://www.kitchen-os.com/checkout">Return to Checkout</a></p>
-        <p>Need help? <a href="https://www.kitchen-os.com/contact">Contact Support</a></p>
+        <p><a href="https://kitchen-os.com/checkout">Return to Checkout</a></p>
+        <p>Need help? <a href="https://kitchen-os.com/contact">Contact Support</a></p>
       `,
     });
 
@@ -164,9 +164,9 @@ function generatePlainTextConfirmation(order: Order): string {
   text += `- Your order will be dispatched within 1-2 business days\n`;
   text += `- You'll receive shipping confirmation with tracking details once dispatched\n\n`;
 
-  text += `Questions? Contact us at https://www.kitchen-os.com/contact\n\n`;
+  text += `Questions? Contact us at https://kitchen-os.com/contact\n\n`;
   text += `Kitchen OS - Revolutionizing Commercial Kitchen Operations\n`;
-  text += `www.kitchen-os.com\n`;
+  text += `kitchen-os.com\n`;
 
   return text;
 }
