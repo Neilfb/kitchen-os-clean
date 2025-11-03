@@ -89,7 +89,7 @@ const SUBSCRIPTIONS = [
       'Barcode inventory tracking',
     ],
     href: '/food-label-system',
-    logoSrc: '/logos/food-label-system/fls-full-logo-white.png',
+    logoSrc: '/logos/food-label-system/fls-full-logo.png',
     gradientFrom: 'from-product-fls-primary',
     gradientTo: 'to-product-fls-blue',
     systemCategory: 'food-label' as SystemCategory,
