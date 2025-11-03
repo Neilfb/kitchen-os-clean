@@ -33,7 +33,8 @@ export interface Product {
   category: string;
   tagline: string;
   description: string;
-  image: string;
+  image: string; // Primary product image
+  images?: string[]; // Optional: Multiple product images for gallery
   icon: string; // Icon name from lucide-react (e.g., 'FileText', 'Thermometer')
   variants: ProductVariant[];
   features: string[];

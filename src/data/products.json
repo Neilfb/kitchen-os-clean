@@ -5,7 +5,11 @@
     "category": "Labels & Consumables",
     "tagline": "Premium thermal labels for your Food Label System printer",
     "description": "High-quality 58mm thermal labels compatible with your Food Label System printer. Each label includes day dots, use-by fields, and allergen warnings.",
-    "image": "/logos/food-label-system/fls-icon.png",
+    "image": "https://placehold.co/600x400/2563eb/FFFFFF/png?text=Thermal+Labels",
+    "images": [
+      "https://placehold.co/600x400/2563eb/FFFFFF/png?text=Thermal+Labels",
+      "https://placehold.co/600x400/1d4ed8/FFFFFF/png?text=Label+Detail"
+    ],
     "icon": "FileText",
     "systemCategory": "food-label",
     "productType": "consumable",
@@ -49,71 +53,16 @@
     }
   },
   {
-    "id": "bluetooth-probes",
-    "name": "Bluetooth Temperature Probes",
-    "category": "Temperature Monitoring",
-    "tagline": "Industrial-grade Bluetooth probes for automatic temperature monitoring",
-    "description": "Professional wireless temperature sensors with real-time monitoring and alerts. IP67 waterproof rating with ±0.3°C accuracy.",
-    "image": "/logos/food-safe-system/fss-icon.png",
-    "icon": "Thermometer",
-    "systemCategory": "food-safe",
-    "productType": "hardware",
-    "isFeatured": true,
-    "variants": [
-      {
-        "id": "probe-1",
-        "name": "Single Probe",
-        "price": 89,
-        "note": "Minimum 3 probes required for Food Safe System",
-        "disabled": true
-      },
-      {
-        "id": "probe-3",
-        "name": "3 Probes",
-        "price": 249,
-        "pricePerProbe": 83,
-        "savings": null,
-        "setupFee": 200
-      },
-      {
-        "id": "probe-5",
-        "name": "5 Probes",
-        "price": 399,
-        "pricePerProbe": 79.8,
-        "savings": 5,
-        "setupFee": 200,
-        "popular": true
-      },
-      {
-        "id": "probe-10",
-        "name": "10 Probes",
-        "price": 749,
-        "pricePerProbe": 74.9,
-        "savings": 10,
-        "setupFee": 200
-      }
-    ],
-    "features": [
-      "IP67 waterproof rating (1m depth)",
-      "±0.3°C accuracy across -40°C to +125°C",
-      "100m Bluetooth range (open space)",
-      "2-year battery life with replaceable CR2032",
-      "Real-time alerts via Food Safe System app",
-      "Includes mounting hardware and setup"
-    ],
-    "relatedProduct": {
-      "name": "Food Safe System",
-      "href": "/food-safe-system",
-      "note": "Requires Food Safe System subscription (£12/probe/month)"
-    }
-  },
-  {
     "id": "kosbtp1",
     "name": "Thermapen ONE Blue Thermometer",
     "category": "Temperature Monitoring",
     "tagline": "Bluetooth-enabled HACCP compliance thermometer",
     "description": "The new Thermapen ONE Blue makes HACCP compliance easier than ever before. With item names, high/low limits, and pass/fail feedback displayed on the screen, users can work through checklists with confidence and accuracy.",
-    "image": "/logos/food-safe-system/fss-icon.png",
+    "image": "https://placehold.co/600x400/0f7d3f/FFFFFF/png?text=Thermapen+ONE+Blue",
+    "images": [
+      "https://placehold.co/600x400/0f7d3f/FFFFFF/png?text=Thermapen+ONE+Blue",
+      "https://placehold.co/600x400/0a5c2e/FFFFFF/png?text=Thermapen+Detail"
+    ],
     "icon": "Thermometer",
     "systemCategory": "food-safe",
     "productType": "hardware",
@@ -145,7 +94,11 @@
     "category": "Accessories",
     "tagline": "Stainless steel wall-mounted bracket",
     "description": "Stainless steel Thermapen wall bracket can be wall-mounted. Lets you store your Thermapen safely for easy access, whenever you need it. Simple to keep track of your Thermapen, and helps to avoid accidental damage.",
-    "image": "/logos/food-safe-system/fss-icon.png",
+    "image": "https://placehold.co/600x400/6b7280/FFFFFF/png?text=Wall+Bracket",
+    "images": [
+      "https://placehold.co/600x400/6b7280/FFFFFF/png?text=Wall+Bracket",
+      "https://placehold.co/600x400/4b5563/FFFFFF/png?text=Bracket+Mounted"
+    ],
     "icon": "Package",
     "systemCategory": "food-safe",
     "productType": "accessory",
@@ -175,7 +128,11 @@
     "category": "Temperature Monitoring",
     "tagline": "Infrared thermometer with penetration probe and Bluetooth",
     "description": "The Thermapen IR Blue infrared Bluetooth thermometer combines the latest Bluetooth technology with the versatility of the Thermapen IR. Easily switch between surface and internal temperature readings whilst wirelessly transferring the data to your device for a robust paperless backup.",
-    "image": "/logos/food-safe-system/fss-icon.png",
+    "image": "https://placehold.co/600x400/0f7d3f/FFFFFF/png?text=Thermapen+IR+Blue",
+    "images": [
+      "https://placehold.co/600x400/0f7d3f/FFFFFF/png?text=Thermapen+IR+Blue",
+      "https://placehold.co/600x400/0a5c2e/FFFFFF/png?text=IR+Thermometer"
+    ],
     "icon": "Thermometer",
     "systemCategory": "food-safe",
     "productType": "hardware",
@@ -208,7 +165,11 @@
     "category": "Temperature Monitoring",
     "tagline": "Compact Bluetooth thermometer with 360° rotating display",
     "description": "The TempTest Blue wireless thermometer combines Bluetooth connectivity with the ergonomic design of the TempTest thermometer. Compact, waterproof IP67 design with automatic 360° rotating display.",
-    "image": "/logos/food-safe-system/fss-icon.png",
+    "image": "https://placehold.co/600x400/0f7d3f/FFFFFF/png?text=TempTest+Blue",
+    "images": [
+      "https://placehold.co/600x400/0f7d3f/FFFFFF/png?text=TempTest+Blue",
+      "https://placehold.co/600x400/0a5c2e/FFFFFF/png?text=Rotating+Display"
+    ],
     "icon": "Thermometer",
     "systemCategory": "food-safe",
     "productType": "hardware",
@@ -240,7 +201,11 @@
     "category": "Temperature Monitoring",
     "tagline": "Bluetooth infrared thermometer with 5:1 distance ratio",
     "description": "RayTemp Blue Infrared Thermometer with Bluetooth wireless technology. Professional infrared temperature measurement with wireless data transmission.",
-    "image": "/logos/food-safe-system/fss-icon.png",
+    "image": "https://placehold.co/600x400/0f7d3f/FFFFFF/png?text=RayTemp+Blue",
+    "images": [
+      "https://placehold.co/600x400/0f7d3f/FFFFFF/png?text=RayTemp+Blue",
+      "https://placehold.co/600x400/0a5c2e/FFFFFF/png?text=Infrared+Sensor"
+    ],
     "icon": "Thermometer",
     "systemCategory": "food-safe",
     "productType": "hardware",

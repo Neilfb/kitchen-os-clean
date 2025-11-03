@@ -35,8 +35,8 @@ export function SubscriptionCard({
     <div
       className={`
       bg-gradient-to-br ${gradientFrom} ${gradientTo}
-      rounded-2xl shadow-lg hover:shadow-xl transition-all p-8 text-white
-      border-2 border-white/20 hover:border-white/40
+      rounded-2xl shadow-lg hover:shadow-xl transition-all p-8
+      border-2 border-gray-200 hover:border-gray-300
     `}
     >
       {/* Logo */}
@@ -45,12 +45,12 @@ export function SubscriptionCard({
       </div>
 
       {/* Title & Tagline */}
-      <h3 className="text-2xl font-bold mb-2">{name}</h3>
-      <p className="text-white/90 mb-4">{tagline}</p>
+      <h3 className="text-2xl font-bold mb-2 text-gray-900">{name}</h3>
+      <p className="text-gray-700 mb-4">{tagline}</p>
 
       {/* Pricing */}
       <div className="mb-6">
-        <div className="flex items-baseline gap-2">
+        <div className="flex items-baseline gap-2 text-gray-900">
           <span className="text-sm font-medium">From</span>
           <span className="text-3xl font-bold">{priceFrom}</span>
           <span className="text-sm">/month</span>
@@ -60,8 +60,8 @@ export function SubscriptionCard({
       {/* Features */}
       <ul className="space-y-3 mb-8">
         {features.map((feature, index) => (
-          <li key={index} className="flex items-start gap-3">
-            <Check className="w-5 h-5 flex-shrink-0 mt-0.5" />
+          <li key={index} className="flex items-start gap-3 text-gray-700">
+            <Check className="w-5 h-5 flex-shrink-0 mt-0.5 text-gray-900" />
             <span className="text-sm leading-relaxed">{feature}</span>
           </li>
         ))}
@@ -71,14 +71,14 @@ export function SubscriptionCard({
       <div className="flex flex-col sm:flex-row gap-3">
         <Link
           href={href}
-          className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors flex-1"
+          className="inline-flex items-center justify-center px-6 py-3 bg-gray-900 text-white font-semibold rounded-lg hover:bg-gray-800 transition-colors flex-1"
         >
           Learn More
           <ArrowRight className="ml-2 w-4 h-4" />
         </Link>
         <Link
           href="/contact"
-          className="inline-flex items-center justify-center px-6 py-3 bg-white/20 backdrop-blur-sm text-white font-semibold rounded-lg hover:bg-white/30 transition-colors border border-white/30"
+          className="inline-flex items-center justify-center px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-50 transition-colors border-2 border-gray-900"
         >
           Book Demo
         </Link>

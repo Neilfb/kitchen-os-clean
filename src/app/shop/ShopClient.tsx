@@ -339,13 +339,37 @@ export function ShopClient({ products: productsData }: ShopClientProps) {
 
 // Product Card Component
 function ProductCard({ product }: { product: ProductWithIcon }) {
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const images = product.images || [product.image];
+  const currentImage = images[selectedImageIndex];
 
   return (
     <div id={product.id} className="scroll-mt-24">
       {/* Product Header */}
       <div className="flex items-start gap-6 mb-6">
-        <div className="w-20 h-20 bg-white rounded-2xl shadow-md p-4 flex items-center justify-center flex-shrink-0">
-          <img src={product.image} alt={product.name} className="w-full h-full object-contain" />
+        <div className="flex-shrink-0">
+          {/* Main Product Image */}
+          <div className="w-48 h-48 bg-white rounded-2xl shadow-md p-4 flex items-center justify-center mb-3">
+            <img src={currentImage} alt={product.name} className="w-full h-full object-contain" />
+          </div>
+          {/* Image Gallery Thumbnails */}
+          {images.length > 1 && (
+            <div className="flex gap-2">
+              {images.map((image, index) => (
+                <button
+                  key={index}
+                  onClick={() => setSelectedImageIndex(index)}
+                  className={`w-12 h-12 bg-white rounded-lg border-2 p-1 transition-all ${
+                    selectedImageIndex === index
+                      ? 'border-green-500 shadow-md'
+                      : 'border-gray-200 hover:border-gray-300'
+                  }`}
+                >
+                  <img src={image} alt={`${product.name} ${index + 1}`} className="w-full h-full object-contain" />
+                </button>
+              ))}
+            </div>
+          )}
         </div>
         <div className="flex-1">
           <div className="text-sm font-semibold text-green-600 mb-1">{product.category}</div>
