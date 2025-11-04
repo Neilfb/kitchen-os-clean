@@ -6,10 +6,9 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-// Email service imports ready for database integration
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+import * as db from '@/services/nocodebackend';
+import type { DBOrder, DBOrderItem } from '@/types/database';
 import { sendOrderConfirmationEmail, sendOrderFailedEmail } from '@/services/emailService';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import type { Order } from '@/types/order';
 
 export async function POST(request: NextRequest) {
@@ -33,25 +32,87 @@ export async function POST(request: NextRequest) {
         // Payment successful
         console.log(`Order ${orderId} completed`);
 
-        // TODO: Fetch order from database
-        // For now, we'll need to retrieve the order details
-        // const order = await getOrderById(orderId);
+        // Fetch order from database by Revolut order ID
+        const orders = await db.search<DBOrder>('orders', {
+          revolut_order_id: orderId,
+        });
 
-        // TODO: Update order status in database
-        // await updateOrderStatus(orderId, 'paid');
+        if (orders.length === 0) {
+          console.error(`Order not found for Revolut ID: ${orderId}`);
+          return NextResponse.json({ error: 'Order not found' }, { status: 404 });
+        }
+
+        const dbOrder = orders[0];
+
+        // Update order status in database
+        await db.update('orders', dbOrder.id, {
+          status: 'paid',
+          paid_at: new Date().toISOString(),
+        });
+
+        console.log(`Order ${dbOrder.order_number} marked as paid`);
+
+        // Convert DB order to Order type for email
+        // Parse customer name into first and last name
+        const nameParts = dbOrder.customer_name.trim().split(' ');
+        const firstName = nameParts[0] || '';
+        const lastName = nameParts.slice(1).join(' ') || '';
+
+        const order: Order = {
+          id: dbOrder.revolut_order_id || `db_${dbOrder.id}`,
+          orderNumber: dbOrder.order_number,
+          status: dbOrder.status as 'pending' | 'paid' | 'failed' | 'cancelled',
+          customer: {
+            email: dbOrder.customer_email,
+            phone: dbOrder.customer_phone || '',
+            firstName,
+            lastName,
+            company: dbOrder.customer_company || undefined,
+            addressLine1: dbOrder.billing_address_line1,
+            addressLine2: dbOrder.billing_address_line2 || undefined,
+            city: dbOrder.billing_city,
+            postcode: dbOrder.billing_postcode,
+            country: dbOrder.billing_country,
+            vatNumber: dbOrder.vat_number || undefined,
+            isVatExempt: !!dbOrder.vat_number,
+          },
+          items: [], // We'll fetch these next
+          summary: {
+            subtotal: dbOrder.subtotal,
+            shippingCost: dbOrder.shipping_cost,
+            taxRate: dbOrder.tax / dbOrder.subtotal, // Calculate tax rate
+            taxAmount: dbOrder.tax,
+            total: dbOrder.total,
+            currency: 'GBP',
+          },
+          createdAt: dbOrder.created_at,
+          paidAt: dbOrder.paid_at || undefined,
+          cancelledAt: dbOrder.cancelled_at || undefined,
+        };
+
+        // Fetch order items
+        const items = await db.read<DBOrderItem>('order_items', { order_id: dbOrder.id });
+        order.items = items.map((item) => ({
+          productId: item.product_id,
+          productName: item.product_name,
+          productImage: item.product_image || undefined,
+          variantId: item.variant_id,
+          variantName: item.variant_name,
+          quantity: item.quantity,
+          price: item.unit_price,
+        }));
 
         // Send confirmation email
-        // Note: This will work once you have the order object from database
-        // const emailResult = await sendOrderConfirmationEmail(order);
-        // if (!emailResult.success) {
-        //   console.error('Failed to send confirmation email:', emailResult.error);
-        //   // Note: We don't fail the webhook if email fails
-        // }
+        const emailResult = await sendOrderConfirmationEmail(order);
+        if (!emailResult.success) {
+          console.error('Failed to send confirmation email:', emailResult.error);
+          // Note: We don't fail the webhook if email fails
+        }
 
         // TODO: Trigger fulfillment process
         // await triggerFulfillment(orderId);
 
-        console.log(`Order ${orderId} confirmation email queued`);
+        console.log(`Order ${dbOrder.order_number} confirmation email sent`);
         break;
       }
 
@@ -59,13 +120,81 @@ export async function POST(request: NextRequest) {
         // Payment failed
         console.log(`Order ${orderId} failed`);
 
-        // TODO: Update order status in database
-        // await updateOrderStatus(orderId, 'failed');
+        // Fetch order from database by Revolut order ID
+        const failedOrders = await db.search<DBOrder>('orders', {
+          revolut_order_id: orderId,
+        });
 
-        // TODO: Fetch order and send failure notification
-        // const order = await getOrderById(orderId);
-        // const reason = body.failure_reason || 'Payment processing failed';
-        // await sendOrderFailedEmail(order, reason);
+        if (failedOrders.length === 0) {
+          console.error(`Order not found for Revolut ID: ${orderId}`);
+          return NextResponse.json({ error: 'Order not found' }, { status: 404 });
+        }
+
+        const dbOrder = failedOrders[0];
+
+        // Update order status in database
+        await db.update('orders', dbOrder.id, {
+          status: 'failed',
+        });
+
+        console.log(`Order ${dbOrder.order_number} marked as failed`);
+
+        // Convert DB order to Order type for email
+        // Parse customer name into first and last name
+        const failedNameParts = dbOrder.customer_name.trim().split(' ');
+        const failedFirstName = failedNameParts[0] || '';
+        const failedLastName = failedNameParts.slice(1).join(' ') || '';
+
+        const order: Order = {
+          id: dbOrder.revolut_order_id || `db_${dbOrder.id}`,
+          orderNumber: dbOrder.order_number,
+          status: dbOrder.status as 'pending' | 'paid' | 'failed' | 'cancelled',
+          customer: {
+            email: dbOrder.customer_email,
+            phone: dbOrder.customer_phone || '',
+            firstName: failedFirstName,
+            lastName: failedLastName,
+            company: dbOrder.customer_company || undefined,
+            addressLine1: dbOrder.billing_address_line1,
+            addressLine2: dbOrder.billing_address_line2 || undefined,
+            city: dbOrder.billing_city,
+            postcode: dbOrder.billing_postcode,
+            country: dbOrder.billing_country,
+            vatNumber: dbOrder.vat_number || undefined,
+            isVatExempt: !!dbOrder.vat_number,
+          },
+          items: [],
+          summary: {
+            subtotal: dbOrder.subtotal,
+            shippingCost: dbOrder.shipping_cost,
+            taxRate: dbOrder.tax / dbOrder.subtotal,
+            taxAmount: dbOrder.tax,
+            total: dbOrder.total,
+            currency: 'GBP',
+          },
+          createdAt: dbOrder.created_at,
+          paidAt: dbOrder.paid_at || undefined,
+          cancelledAt: dbOrder.cancelled_at || undefined,
+        };
+
+        // Fetch order items
+        const failedItems = await db.read<DBOrderItem>('order_items', { order_id: dbOrder.id });
+        order.items = failedItems.map((item) => ({
+          productId: item.product_id,
+          productName: item.product_name,
+          productImage: item.product_image || undefined,
+          variantId: item.variant_id,
+          variantName: item.variant_name,
+          quantity: item.quantity,
+          price: item.unit_price,
+        }));
+
+        // Send failure notification email
+        const reason = body.failure_reason || 'Payment processing failed';
+        const emailResult = await sendOrderFailedEmail(order, reason);
+        if (!emailResult.success) {
+          console.error('Failed to send failure notification email:', emailResult.error);
+        }
 
         break;
       }
@@ -74,8 +203,25 @@ export async function POST(request: NextRequest) {
         // Payment cancelled by user
         console.log(`Order ${orderId} cancelled`);
 
-        // TODO: Update order status in database
-        // await updateOrderStatus(orderId, 'cancelled');
+        // Fetch order from database by Revolut order ID
+        const cancelledOrders = await db.search<DBOrder>('orders', {
+          revolut_order_id: orderId,
+        });
+
+        if (cancelledOrders.length === 0) {
+          console.error(`Order not found for Revolut ID: ${orderId}`);
+          return NextResponse.json({ error: 'Order not found' }, { status: 404 });
+        }
+
+        const dbOrder = cancelledOrders[0];
+
+        // Update order status in database
+        await db.update('orders', dbOrder.id, {
+          status: 'cancelled',
+          cancelled_at: new Date().toISOString(),
+        });
+
+        console.log(`Order ${dbOrder.order_number} marked as cancelled`);
 
         break;
       }

@@ -75,6 +75,25 @@ export default function Footer() {
                 </a>
               ))}
             </div>
+
+            {/* Chef Kaos */}
+            <div className="mt-8">
+              <a
+                href="https://www.facebook.com/chef.kaos.2025/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-product-fss-green/50 rounded-lg"
+                aria-label="Chef Kaos on Facebook"
+              >
+                <Image
+                  src="/assets/chef_kaos.png"
+                  alt="Chef Kaos"
+                  width={200}
+                  height={200}
+                  className="w-auto h-32 opacity-90 hover:opacity-100 transition-opacity"
+                />
+              </a>
+            </div>
           </div>
 
           <div>
@@ -156,7 +175,7 @@ export default function Footer() {
           <h3 className="text-white font-bold mb-12 text-center text-sm uppercase tracking-wider">
             Partners & Certifications
           </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16 items-center">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16 items-center">
             {/* UN Tourism */}
             <div className="flex justify-center">
               <a
@@ -187,6 +206,44 @@ export default function Footer() {
                 <Image
                   src="/assets/gold-innovator.png"
                   alt="Innovate NI Gold Innovator Logo"
+                  width={240}
+                  height={96}
+                  className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"
+                />
+              </a>
+            </div>
+
+            {/* MassChallenge */}
+            <div className="flex justify-center">
+              <a
+                href="https://masschallenge.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+                aria-label="MassChallenge"
+              >
+                <Image
+                  src="/assets/masschallenge-seeklogo.png"
+                  alt="MassChallenge Logo"
+                  width={240}
+                  height={96}
+                  className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"
+                />
+              </a>
+            </div>
+
+            {/* EIT Food */}
+            <div className="flex justify-center">
+              <a
+                href="https://www.eitfood.eu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+                aria-label="EIT Food"
+              >
+                <Image
+                  src="/assets/EIT-Food_landscape_square.png"
+                  alt="EIT Food Logo"
                   width={240}
                   height={96}
                   className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"

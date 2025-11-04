@@ -6,7 +6,8 @@
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import type { OrderCreationRequest, OrderCreationResponse, Order } from '@/types/order';
+import type { OrderCreationRequest, OrderCreationResponse } from '@/types/order';
+import * as db from '@/services/nocodebackend';
 
 export async function POST(request: NextRequest) {
   try {
@@ -23,24 +24,61 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Generate order ID and number
-    const orderId = crypto.randomUUID();
+    // Generate order number
     const orderNumber = `KOS-${new Date().getFullYear()}-${String(Date.now()).slice(-6)}`;
 
-    // Create order object
-    const order: Order = {
-      id: orderId,
-      orderNumber,
+    // Save order to database
+    const customerName = `${body.customer.firstName} ${body.customer.lastName}`;
+    const dbOrderId = await db.create('orders', {
+      order_number: orderNumber,
+      revolut_order_id: null,
+      customer_email: body.customer.email,
+      customer_name: customerName,
+      customer_phone: body.customer.phone || null,
+      customer_company: body.customer.company || null,
+      billing_address_line1: body.customer.addressLine1,
+      billing_address_line2: body.customer.addressLine2 || null,
+      billing_city: body.customer.city,
+      billing_county: null, // Not in CustomerDetails type
+      billing_postcode: body.customer.postcode,
+      billing_country: body.customer.country,
+      // Use billing address for shipping (no separate shipping address in CustomerDetails)
+      shipping_address_line1: body.customer.addressLine1,
+      shipping_address_line2: body.customer.addressLine2 || null,
+      shipping_city: body.customer.city,
+      shipping_county: null, // Not in CustomerDetails type
+      shipping_postcode: body.customer.postcode,
+      shipping_country: body.customer.country,
+      vat_number: body.customer.vatNumber || null,
+      vat_country: body.customer.country, // Use billing country
+      subtotal: body.summary.subtotal,
+      shipping_cost: body.summary.shippingCost,
+      tax: body.summary.taxAmount,
+      total: body.summary.total,
       status: 'pending',
-      customer: body.customer,
-      items: body.items,
-      summary: body.summary,
-      createdAt: new Date().toISOString(),
-    };
+      payment_method: null,
+      created_at: new Date().toISOString(),
+      paid_at: null,
+      cancelled_at: null,
+    });
 
-    // TODO: Save order to database
-    // For now, we'll just log it and store in memory/localStorage
-    console.log('Order created:', order);
+    // Save order items to database
+    for (const item of body.items) {
+      await db.create('order_items', {
+        order_id: dbOrderId,
+        product_id: item.productId,
+        product_name: item.productName,
+        product_image: item.productImage || null,
+        variant_id: item.variantId,
+        variant_name: item.variantName,
+        quantity: item.quantity,
+        unit_price: item.price,
+        line_total: item.price * item.quantity,
+        created_at: new Date().toISOString(),
+      });
+    }
+
+    console.log(`Order created in database: ${orderNumber} (ID: ${dbOrderId})`);
 
     // Check if Revolut is configured
     const revolutSecretKey = process.env.REVOLUT_SECRET_KEY;
@@ -79,11 +117,11 @@ export async function POST(request: NextRequest) {
     */
 
     // For now, return a mock token
-    const mockRevolutToken = `mock_token_${orderId}`;
+    const mockRevolutToken = `mock_token_${orderNumber}`;
 
     return NextResponse.json({
       success: true,
-      orderId,
+      orderId: orderNumber,
       revolutOrderToken: mockRevolutToken,
     } as OrderCreationResponse);
   } catch (error) {

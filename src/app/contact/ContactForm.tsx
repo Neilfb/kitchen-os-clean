@@ -22,11 +22,19 @@ export default function ContactForm() {
     setIsSubmitting(true);
     setSubmitStatus('idle');
 
-    // TODO: Implement actual form submission (e.g., to Supabase, email service, or API)
-    // For now, simulate submission
-    setTimeout(() => {
-      console.log('Form data:', formData);
-      setIsSubmitting(false);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+
       setSubmitStatus('success');
 
       // Reset form after successful submission
@@ -39,7 +47,12 @@ export default function ContactForm() {
         interest: 'food-safe-system',
         message: '',
       });
-    }, 1000);
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitStatus('error');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
