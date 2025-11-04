@@ -104,7 +104,7 @@ export default function FoodSafeSystemPage() {
     },
     {
       question: 'How much does it cost?',
-      answer: 'Two options: Option 1 - £22.50/month for software only (you manage HACCP digitally with custom plans, checklists, and compliance reports). Option 2 - £12/month per sensor (minimum 3 sensors) + £200 one-time setup fee for automatic temperature monitoring with real-time alerts. Typical setup with 3 sensors costs £36/month + £200 setup. See our pricing page for full details.',
+      answer: 'Three tiers available: FSS Chef (£15/month or £150/year) for single users, FSS Kitchens (£25/month or £225/year) for multi-user teams, and FSS Kitchens & Sensors (£15/month per sensor, minimum 3 sensors) which includes all software and apps. All tiers include twice weekly hygiene & compliance reports. £200 one-time setup fee applies to sensor installations. Typical 3-sensor setup costs £45/month + £200 setup. See our pricing page for full details.',
     },
   ];
 
@@ -114,7 +114,7 @@ export default function FoodSafeSystemPage() {
       <ProductSchema
         name="Food Safe System"
         description="Automated HACCP management and temperature monitoring for professional kitchens. Real-time alerts, cloud backup, and complete compliance documentation. Save 3+ hours per week on paperwork while ensuring 100% compliance."
-        price="22.50"
+        price="15.00"
         currency="GBP"
         image="/logos/food-safe-system/fss-icon.png"
         url="/food-safe-system"
@@ -136,7 +136,7 @@ export default function FoodSafeSystemPage() {
         description="Digital HACCP and temperature monitoring software for restaurants and professional kitchens"
         applicationCategory="BusinessApplication"
         operatingSystem="Web, iOS, Android"
-        price="22.50"
+        price="15.00"
         currency="GBP"
       />
 

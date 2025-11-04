@@ -8,19 +8,19 @@ interface DiscountTier {
 
 export default function VolumeDiscountTable() {
   const tiers: DiscountTier[] = [
-    { locations: '1-2 locations', discount: 'Standard pricing', example: '£7.49/mo per location' },
-    { locations: '3-5 locations', discount: '5% off', example: '£7.12/mo per location' },
-    { locations: '6-12 locations', discount: '10% off', example: '£6.74/mo per location' },
-    { locations: '13+ locations', discount: '15% off', example: '£6.37/mo per location' },
+    { locations: '1-2 locations', discount: 'Standard pricing', example: 'Full price per location' },
+    { locations: '3-5 locations', discount: '5% off', example: 'All products discounted 5%' },
+    { locations: '6-12 locations', discount: '10% off', example: 'All products discounted 10%' },
+    { locations: '13+ locations', discount: '15% off', example: 'All products discounted 15%' },
   ];
 
   return (
     <div className="bg-white rounded-2xl shadow-soft p-8">
       <div className="flex items-center gap-3 mb-6">
-        <Building2 className="w-8 h-8 text-product-allerq-orange" />
+        <Building2 className="w-8 h-8 text-product-fss-green" />
         <div>
           <h3 className="text-2xl font-bold text-brand-navy">Multi-Location Discounts</h3>
-          <p className="text-gray-600">Save more as you scale across locations</p>
+          <p className="text-gray-600">Save more as you scale across locations - applies to ALL products</p>
         </div>
       </div>
 
@@ -30,7 +30,7 @@ export default function VolumeDiscountTable() {
             <tr className="border-b-2 border-gray-200">
               <th className="text-left py-4 px-4 font-bold text-brand-navy">Number of Locations</th>
               <th className="text-left py-4 px-4 font-bold text-brand-navy">Discount</th>
-              <th className="text-left py-4 px-4 font-bold text-brand-navy">Price per Location</th>
+              <th className="text-left py-4 px-4 font-bold text-brand-navy">Applies To</th>
             </tr>
           </thead>
           <tbody>
@@ -50,9 +50,9 @@ export default function VolumeDiscountTable() {
                 <td className="py-4 px-4 font-semibold text-brand-navy">{tier.example}</td>
               </tr>
             ))}
-            <tr className="bg-gradient-to-br from-product-allerq-orange-light to-white">
+            <tr className="bg-gradient-to-br from-product-fss-green-light to-white">
               <td className="py-4 px-4 font-bold text-brand-navy">Enterprise (20+ locations)</td>
-              <td className="py-4 px-4 font-bold text-product-allerq-orange" colSpan={2}>
+              <td className="py-4 px-4 font-bold text-product-fss-green" colSpan={2}>
                 Custom pricing - Contact us for a quote
               </td>
             </tr>
@@ -60,10 +60,9 @@ export default function VolumeDiscountTable() {
         </table>
       </div>
 
-      <div className="mt-6 p-4 bg-product-allerq-orange-light rounded-lg">
+      <div className="mt-6 p-4 bg-product-fss-green-light rounded-lg border border-product-fss-green/30">
         <p className="text-sm text-gray-700">
-          <span className="font-bold">Note:</span> Volume discounts apply to AllerQ subscriptions. Mix and match with
-          other Kitchen OS products for even greater savings.
+          <span className="font-bold">Important:</span> Volume discounts apply to ALL Kitchen OS products - Food Safe System, AllerQ, Food Label System, and F*** Waste. The more locations you have, the more you save across your entire Kitchen OS subscription.
         </p>
       </div>
     </div>

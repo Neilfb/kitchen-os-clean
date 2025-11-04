@@ -137,17 +137,21 @@ export default function PricingPage() {
                   description: 'Multi-user access for teams',
                   features: ['Multi-user access', 'Team management', 'Advanced reporting'],
                 },
+                {
+                  name: 'FSS Kitchens & Sensors',
+                  monthlyPrice: 15,
+                  annualPrice: 125,
+                  description: '£15/mo per sensor (minimum 3 sensors)',
+                  features: ['All FSS software & apps included', '2+ year battery life', '1000m range to base station', 'No kitchen WiFi required'],
+                },
               ]}
               features={[
                 'Digital food safety logs (replaces paper)',
-                'Automated temperature monitoring',
                 'SMS/email alerts for refrigeration issues',
                 'Customizable digital checklists',
                 'Instant audit-ready reports',
+                'Twice weekly hygiene & compliance reports',
                 'Unlimited support',
-              ]}
-              additionalCosts={[
-                { label: 'Sensors (optional)', price: '£15/mo or £125/yr each' },
               ]}
               setupFee={200}
               bonusOffer="Free sensors with bulk purchase!"
@@ -222,10 +226,10 @@ export default function PricingPage() {
               ]}
               setupFee={300}
               bonusOffer="14:1 ROI - Pays for itself in the first month!"
-              badge="BEST ROI"
+              badge="COMING SOON"
               isAnnual={isAnnual}
-              ctaText="Get F*** Waste"
-              popular={true}
+              ctaText="Join Waitlist"
+              popular={false}
             />
           </div>
         </div>
@@ -301,13 +305,13 @@ export default function PricingPage() {
                 { name: 'Food Label System' },
                 { name: 'F*** Waste' },
               ]}
-              monthlyPrice={210}
-              annualPrice={2400}
+              monthlyPrice={200}
+              annualPrice={2280}
               regularMonthlyPrice={217.49}
-              regularAnnualPrice={2549}
+              regularAnnualPrice={2609.88}
               isAnnual={isAnnual}
               features={[
-                'Save 13% vs individual products',
+                'Save 8% vs individual products',
                 'Everything you need in one platform',
                 'Maximum ROI across all operations',
                 'Comprehensive kitchen management',

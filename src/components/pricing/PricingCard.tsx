@@ -95,7 +95,7 @@ export default function PricingCard({
                 </div>
                 {isAnnual && tier.monthlyPrice * 12 > tier.annualPrice && (
                   <p className="text-sm text-product-fss-green font-semibold">
-                    Save £{tier.monthlyPrice * 12 - tier.annualPrice}/year
+                    Save £{(tier.monthlyPrice * 12 - tier.annualPrice).toFixed(2)}/year
                   </p>
                 )}
                 <p className="text-sm text-gray-600 mt-1">{tier.description}</p>
@@ -112,7 +112,7 @@ export default function PricingCard({
             </div>
             {isAnnual && singlePrice.monthly * 12 > singlePrice.annual && (
               <p className="text-sm text-product-fss-green font-semibold">
-                Save £{singlePrice.monthly * 12 - singlePrice.annual}/year
+                Save £{(singlePrice.monthly * 12 - singlePrice.annual).toFixed(2)}/year
               </p>
             )}
           </div>

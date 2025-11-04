@@ -78,13 +78,13 @@ export default function PackageCard({
 
         {/* Pricing */}
         <div className="flex items-baseline gap-3 mb-2">
-          <span className="text-5xl font-bold">£{currentPrice}</span>
+          <span className="text-5xl font-bold">£{currentPrice.toFixed(2)}</span>
           <span className="text-xl">/{isAnnual ? 'year' : 'month'}</span>
         </div>
 
         {/* Savings */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-white/80 line-through text-lg">£{regularPrice}</span>
+          <span className="text-white/80 line-through text-lg">£{regularPrice.toFixed(2)}</span>
           <div className="flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
             <TrendingDown className="w-4 h-4" />
             <span className="font-bold text-sm">Save {savingsPercent}%</span>
@@ -92,7 +92,7 @@ export default function PackageCard({
         </div>
 
         <p className="text-sm text-white/90">
-          Save £{savings} {isAnnual ? 'per year' : 'per month'} vs buying separately
+          Save £{savings.toFixed(2)} {isAnnual ? 'per year' : 'per month'} vs buying separately
         </p>
       </div>
 
