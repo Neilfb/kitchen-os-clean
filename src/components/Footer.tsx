@@ -37,7 +37,7 @@ export default function Footer() {
 
   const socialLinks = [
     { icon: Twitter, href: 'https://twitter.com/KitchenOS', label: 'Twitter' },
-    { icon: Linkedin, href: 'https://linkedin.com/company/kitchen-os', label: 'LinkedIn' },
+    { icon: Linkedin, href: 'https://www.linkedin.com/company/kitchenos', label: 'LinkedIn' },
     { icon: Instagram, href: 'https://instagram.com/kitchenos', label: 'Instagram' },
     { icon: Youtube, href: 'https://youtube.com/@kitchenos', label: 'YouTube' },
   ];
