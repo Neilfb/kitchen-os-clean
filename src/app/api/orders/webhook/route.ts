@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
         order.items = items.map((item) => ({
           productId: item.product_id,
           productName: item.product_name,
-          productImage: item.product_image || undefined,
+          productImage: item.product_image || '',
           variantId: item.variant_id,
           variantName: item.variant_name,
           quantity: item.quantity,
@@ -182,7 +182,7 @@ export async function POST(request: NextRequest) {
         order.items = failedItems.map((item) => ({
           productId: item.product_id,
           productName: item.product_name,
-          productImage: item.product_image || undefined,
+          productImage: item.product_image || '',
           variantId: item.variant_id,
           variantName: item.variant_name,
           quantity: item.quantity,
