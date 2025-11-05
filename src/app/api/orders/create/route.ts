@@ -29,37 +29,46 @@ export async function POST(request: NextRequest) {
 
     // Save order to database
     const customerName = `${body.customer.firstName} ${body.customer.lastName}`;
-    const dbOrderId = await db.create('orders', {
+
+    // Log the data we're about to send
+    console.log('Creating order with data:', {
       order_number: orderNumber,
-      revolut_order_id: null,
       customer_email: body.customer.email,
       customer_name: customerName,
-      customer_phone: body.customer.phone || null,
-      customer_company: body.customer.company || null,
-      billing_address_line1: body.customer.addressLine1,
-      billing_address_line2: body.customer.addressLine2 || null,
-      billing_city: body.customer.city,
-      billing_county: null, // Not in CustomerDetails type
-      billing_postcode: body.customer.postcode,
-      billing_country: body.customer.country,
-      // Use billing address for shipping (no separate shipping address in CustomerDetails)
-      shipping_address_line1: body.customer.addressLine1,
-      shipping_address_line2: body.customer.addressLine2 || null,
-      shipping_city: body.customer.city,
-      shipping_county: null, // Not in CustomerDetails type
-      shipping_postcode: body.customer.postcode,
-      shipping_country: body.customer.country,
-      vat_number: body.customer.vatNumber || null,
-      vat_country: body.customer.country, // Use billing country
       subtotal: body.summary.subtotal,
       shipping_cost: body.summary.shippingCost,
       tax: body.summary.taxAmount,
       total: body.summary.total,
       status: 'pending',
-      payment_method: null,
+    });
+
+    const dbOrderId = await db.create('orders', {
+      order_number: orderNumber,
+      customer_email: body.customer.email,
+      customer_name: customerName,
+      customer_phone: body.customer.phone || '',
+      customer_company: body.customer.company || '',
+      billing_address_line1: body.customer.addressLine1,
+      billing_address_line2: body.customer.addressLine2 || '',
+      billing_city: body.customer.city,
+      billing_county: '',
+      billing_postcode: body.customer.postcode,
+      billing_country: body.customer.country,
+      shipping_address_line1: body.customer.addressLine1,
+      shipping_address_line2: body.customer.addressLine2 || '',
+      shipping_city: body.customer.city,
+      shipping_county: '',
+      shipping_postcode: body.customer.postcode,
+      shipping_country: body.customer.country,
+      vat_number: body.customer.vatNumber || '',
+      vat_country: body.customer.country,
+      subtotal: body.summary.subtotal,
+      shipping_cost: body.summary.shippingCost,
+      tax: body.summary.taxAmount,
+      total: body.summary.total,
+      status: 'pending',
+      payment_method: '',
       created_at: new Date().toISOString(),
-      paid_at: null,
-      cancelled_at: null,
     });
 
     // Save order items to database
@@ -68,7 +77,7 @@ export async function POST(request: NextRequest) {
         order_id: dbOrderId,
         product_id: item.productId,
         product_name: item.productName,
-        product_image: item.productImage || null,
+        product_image: item.productImage || '',
         variant_id: item.variantId,
         variant_name: item.variantName,
         quantity: item.quantity,
