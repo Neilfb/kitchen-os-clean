@@ -80,49 +80,67 @@ export async function POST(request: NextRequest) {
 
     console.log(`Order created in database: ${orderNumber} (ID: ${dbOrderId})`);
 
-    // Check if Revolut is configured
-    const revolutSecretKey = process.env.REVOLUT_SECRET_KEY;
-    const revolutPublicKey = process.env.NEXT_PUBLIC_REVOLUT_PUBLIC_KEY;
-
-    if (!revolutSecretKey || !revolutPublicKey) {
-      return NextResponse.json(
-        {
-          success: false,
-          error: 'Payment provider not configured. Please contact support.',
-        } as OrderCreationResponse,
-        { status: 503 }
-      );
-    }
-
-    // TODO: Create Revolut order
-    // Example Revolut API call (simplified - actual implementation depends on Revolut SDK):
-    /*
-    const revolutOrder = await fetch('https://merchant.revolut.com/api/1.0/orders', {
+    // Create Revolut payment order
+    const revolutResponse = await fetch(`${request.nextUrl.origin}/api/orders/revolut`, {
       method: 'POST',
       headers: {
-        'Authorization': `Bearer ${revolutSecretKey}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        amount: Math.round(body.summary.total * 100), // Convert to pence
-        currency: body.summary.currency,
-        capture_mode: 'AUTOMATIC',
-        merchant_order_ext_ref: orderNumber,
-        email: body.customer.email,
+        amount: body.summary.total,
+        currency: body.summary.currency || 'GBP',
+        orderNumber: orderNumber,
+        customerEmail: body.customer.email,
+        customerPhone: body.customer.phone,
         description: `Kitchen OS Order ${orderNumber}`,
+        billingAddress: {
+          line1: body.customer.addressLine1,
+          line2: body.customer.addressLine2,
+          city: body.customer.city,
+          postcode: body.customer.postcode,
+          country: body.customer.country,
+        },
+        shippingAddress: {
+          line1: body.customer.addressLine1,
+          line2: body.customer.addressLine2,
+          city: body.customer.city,
+          postcode: body.customer.postcode,
+          country: body.customer.country,
+        },
       }),
     });
 
-    const revolutData = await revolutOrder.json();
-    */
+    if (!revolutResponse.ok) {
+      const revolutError = await revolutResponse.json();
+      console.error('Revolut order creation failed:', revolutError);
 
-    // For now, return a mock token
-    const mockRevolutToken = `mock_token_${orderNumber}`;
+      // Clean up: Delete the database order since payment setup failed
+      await db.deleteRecord('orders', dbOrderId);
+
+      return NextResponse.json(
+        {
+          success: false,
+          error: revolutError.message || 'Failed to initialize payment. Please try again.',
+        } as OrderCreationResponse,
+        { status: revolutResponse.status }
+      );
+    }
+
+    const revolutData = await revolutResponse.json();
+
+    // Update order with Revolut order ID
+    await db.update('orders', dbOrderId, {
+      revolut_order_id: revolutData.revolutOrderId,
+    });
+
+    console.log(`Revolut order created: ${revolutData.revolutOrderId} for ${orderNumber}`);
 
     return NextResponse.json({
       success: true,
       orderId: orderNumber,
-      revolutOrderToken: mockRevolutToken,
+      dbOrderId: dbOrderId,
+      revolutOrderToken: revolutData.publicToken,
+      revolutOrderId: revolutData.revolutOrderId,
     } as OrderCreationResponse);
   } catch (error) {
     console.error('Error creating order:', error);

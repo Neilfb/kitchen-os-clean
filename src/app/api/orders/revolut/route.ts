@@ -1,0 +1,171 @@
+import { NextRequest, NextResponse } from 'next/server';
+import type { RevolutOrderRequest, RevolutOrderResponse, RevolutErrorResponse } from '@/types/revolut';
+
+/**
+ * Revolut Order Creation API
+ * Creates an order with Revolut and returns the public token for payment widget
+ *
+ * Documentation: https://developer.revolut.com/docs/merchant/create-order
+ */
+
+export async function POST(request: NextRequest) {
+  try {
+    const body = await request.json();
+
+    // Validate required fields
+    if (!body.amount || !body.currency) {
+      return NextResponse.json(
+        { error: 'Missing required fields: amount, currency' },
+        { status: 400 }
+      );
+    }
+
+    // Prepare Revolut order request
+    const revolutOrderData: RevolutOrderRequest = {
+      amount: Math.round(body.amount * 100), // Convert to smallest currency unit (pence)
+      currency: body.currency || 'GBP',
+      description: body.description || 'Kitchen OS Order',
+      merchant_order_ext_ref: body.orderNumber,
+      customer_email: body.customerEmail,
+      customer_phone: body.customerPhone,
+    };
+
+    // Add billing address if provided
+    if (body.billingAddress) {
+      revolutOrderData.billing_address = {
+        street_line_1: body.billingAddress.line1,
+        street_line_2: body.billingAddress.line2,
+        city: body.billingAddress.city,
+        region: body.billingAddress.county,
+        postcode: body.billingAddress.postcode,
+        country_code: body.billingAddress.country,
+      };
+    }
+
+    // Add shipping address if provided
+    if (body.shippingAddress) {
+      revolutOrderData.shipping_address = {
+        street_line_1: body.shippingAddress.line1,
+        street_line_2: body.shippingAddress.line2,
+        city: body.shippingAddress.city,
+        region: body.shippingAddress.county,
+        postcode: body.shippingAddress.postcode,
+        country_code: body.shippingAddress.country,
+      };
+    }
+
+    // Get Revolut configuration from environment
+    const revolutApiUrl = process.env.REVOLUT_API_URL || 'https://sandbox-merchant.revolut.com/api/1.0';
+    const revolutSecretKey = process.env.REVOLUT_SECRET_KEY;
+
+    if (!revolutSecretKey) {
+      console.error('REVOLUT_SECRET_KEY is not configured');
+      return NextResponse.json(
+        { error: 'Payment service not configured' },
+        { status: 500 }
+      );
+    }
+
+    // Call Revolut API to create order
+    const revolutResponse = await fetch(`${revolutApiUrl}/orders`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${revolutSecretKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(revolutOrderData),
+    });
+
+    if (!revolutResponse.ok) {
+      const errorData: RevolutErrorResponse = await revolutResponse.json();
+      console.error('Revolut API Error:', errorData);
+
+      return NextResponse.json(
+        {
+          error: 'Failed to create payment order',
+          message: errorData.message || 'Unknown error from payment provider',
+        },
+        { status: revolutResponse.status }
+      );
+    }
+
+    const revolutOrder: RevolutOrderResponse = await revolutResponse.json();
+
+    // Return the public token and order details
+    return NextResponse.json({
+      success: true,
+      revolutOrderId: revolutOrder.id,
+      publicToken: revolutOrder.public_id,
+      orderState: revolutOrder.state,
+      checkoutUrl: revolutOrder.checkout_url,
+    });
+
+  } catch (error) {
+    console.error('Error creating Revolut order:', error);
+    return NextResponse.json(
+      {
+        error: 'Internal server error',
+        message: error instanceof Error ? error.message : 'Unknown error',
+      },
+      { status: 500 }
+    );
+  }
+}
+
+/**
+ * GET handler to retrieve order status
+ */
+export async function GET(request: NextRequest) {
+  try {
+    const { searchParams } = new URL(request.url);
+    const orderId = searchParams.get('orderId');
+
+    if (!orderId) {
+      return NextResponse.json(
+        { error: 'Missing orderId parameter' },
+        { status: 400 }
+      );
+    }
+
+    const revolutApiUrl = process.env.REVOLUT_API_URL || 'https://sandbox-merchant.revolut.com/api/1.0';
+    const revolutSecretKey = process.env.REVOLUT_SECRET_KEY;
+
+    if (!revolutSecretKey) {
+      return NextResponse.json(
+        { error: 'Payment service not configured' },
+        { status: 500 }
+      );
+    }
+
+    // Call Revolut API to get order details
+    const revolutResponse = await fetch(`${revolutApiUrl}/orders/${orderId}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${revolutSecretKey}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!revolutResponse.ok) {
+      const errorData = await revolutResponse.json();
+      return NextResponse.json(
+        { error: 'Failed to retrieve order', message: errorData.message },
+        { status: revolutResponse.status }
+      );
+    }
+
+    const revolutOrder: RevolutOrderResponse = await revolutResponse.json();
+
+    return NextResponse.json({
+      success: true,
+      order: revolutOrder,
+    });
+
+  } catch (error) {
+    console.error('Error retrieving Revolut order:', error);
+    return NextResponse.json(
+      { error: 'Internal server error' },
+      { status: 500 }
+    );
+  }
+}
