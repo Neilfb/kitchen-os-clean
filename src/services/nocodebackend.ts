@@ -31,6 +31,14 @@ async function request<T = unknown>(
 ): Promise<NoCodeBackendResponse<T>> {
   const url = `${BASE_URL}${endpoint}${endpoint.includes('?') ? '&' : '?'}Instance=${INSTANCE}`;
 
+  // Debug logging
+  console.log('NoCodeBackend Request:', {
+    url,
+    method: options.method || 'GET',
+    body: options.body ? JSON.parse(options.body as string) : undefined,
+    hasAuthHeader: !!API_KEY,
+  });
+
   const response = await fetch(url, {
     ...options,
     headers: {
@@ -40,8 +48,20 @@ async function request<T = unknown>(
     },
   });
 
+  // Debug logging
+  console.log('NoCodeBackend Response:', {
+    status: response.status,
+    ok: response.ok,
+  });
+
   if (!response.ok) {
     const errorText = await response.text();
+    console.error('NoCodeBackend Error Details:', {
+      status: response.status,
+      errorText,
+      url,
+      requestBody: options.body,
+    });
     throw new Error(`NoCodeBackend API error: ${response.status} - ${errorText}`);
   }
 
