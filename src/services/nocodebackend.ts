@@ -2,18 +2,25 @@
  * NoCodeBackend API Client
  *
  * Handles all database operations through NoCodeBackend REST API.
- * Uses bearer token authentication and instance parameter.
+ * Uses bearer token authentication (API_KEY) in header and secret_key in body.
+ *
+ * API Format:
+ * - URL: https://backend.nocodebackend.io/api/{action}/{table}?Instance={INSTANCE}
+ * - Headers: Authorization: Bearer {API_KEY}
+ * - Body: { secret_key: SECRET_KEY, data: {...} }
  */
 
 const API_KEY = process.env.NOCODEBACKEND_API_KEY!;
+const SECRET_KEY = process.env.NOCODEBACKEND_SECRET_KEY!;
 const INSTANCE = process.env.NOCODEBACKEND_INSTANCE!;
-const BASE_URL = process.env.NOCODEBACKEND_BASE_URL || 'https://openapi.nocodebackend.com';
+const BASE_URL = process.env.NOCODEBACKEND_BASE_URL || 'https://backend.nocodebackend.io/api';
 
 interface NoCodeBackendResponse<T = unknown> {
   status: string;
   message?: string;
   data?: T;
   id?: number;
+  error?: string;
 }
 
 /**
@@ -48,7 +55,10 @@ async function request<T = unknown>(
 export async function create<T = unknown>(table: string, data: Record<string, unknown>): Promise<number> {
   const response = await request<T>(`/create/${table}`, {
     method: 'POST',
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      secret_key: SECRET_KEY,
+      data: data,
+    }),
   });
 
   if (!response.id) {
@@ -109,7 +119,10 @@ export async function search<T = unknown>(
 ): Promise<T[]> {
   const response = await request<T[]>(`/search/${table}`, {
     method: 'POST',
-    body: JSON.stringify(criteria),
+    body: JSON.stringify({
+      secret_key: SECRET_KEY,
+      data: criteria,
+    }),
   });
   return response.data || [];
 }
@@ -124,7 +137,10 @@ export async function update(
 ): Promise<void> {
   await request(`/update/${table}/${id}`, {
     method: 'PUT',
-    body: JSON.stringify(data),
+    body: JSON.stringify({
+      secret_key: SECRET_KEY,
+      data: data,
+    }),
   });
 }
 
