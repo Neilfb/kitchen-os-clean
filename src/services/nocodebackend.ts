@@ -7,10 +7,11 @@
  * API Format:
  * - URL: https://backend.nocodebackend.io/api/{action}/{table}?Instance={INSTANCE}
  * - Headers: Authorization: Bearer {API_KEY}
- * - Body: { field1: value1, field2: value2, ... } (data fields directly, no wrapper)
+ * - Body: { secret_key: SECRET_KEY, field1: value1, field2: value2, ... }
  */
 
 const API_KEY = process.env.NOCODEBACKEND_API_KEY!;
+const SECRET_KEY = process.env.NOCODEBACKEND_SECRET_KEY!;
 const INSTANCE = process.env.NOCODEBACKEND_INSTANCE!;
 const BASE_URL = process.env.NOCODEBACKEND_BASE_URL || 'https://backend.nocodebackend.io/api';
 
@@ -72,9 +73,12 @@ async function request<T = unknown>(
  * Create a new record in a table
  */
 export async function create<T = unknown>(table: string, data: Record<string, unknown>): Promise<number> {
+  // Add secret_key at top level with data fields
+  const payload = { secret_key: SECRET_KEY, ...data };
+
   const response = await request<T>(`/create/${table}`, {
     method: 'POST',
-    body: JSON.stringify(data), // Send data fields directly, no wrapper
+    body: JSON.stringify(payload),
   });
 
   if (!response.id) {
@@ -133,9 +137,12 @@ export async function search<T = unknown>(
   table: string,
   criteria: Record<string, unknown>
 ): Promise<T[]> {
+  // Add secret_key at top level with criteria fields
+  const payload = { secret_key: SECRET_KEY, ...criteria };
+
   const response = await request<T[]>(`/search/${table}`, {
     method: 'POST',
-    body: JSON.stringify(criteria), // Send criteria fields directly, no wrapper
+    body: JSON.stringify(payload),
   });
   return response.data || [];
 }
@@ -148,9 +155,12 @@ export async function update(
   id: number,
   data: Record<string, unknown>
 ): Promise<void> {
+  // Add secret_key at top level with data fields
+  const payload = { secret_key: SECRET_KEY, ...data };
+
   await request(`/update/${table}/${id}`, {
     method: 'PUT',
-    body: JSON.stringify(data), // Send data fields directly, no wrapper
+    body: JSON.stringify(payload),
   });
 }
 
