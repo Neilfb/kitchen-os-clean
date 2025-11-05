@@ -2,16 +2,15 @@
  * NoCodeBackend API Client
  *
  * Handles all database operations through NoCodeBackend REST API.
- * Uses bearer token authentication (API_KEY) in header and secret_key in body.
+ * Uses API key authentication in URL query parameter.
  *
  * API Format:
  * - URL: https://backend.nocodebackend.io/api/{action}/{table}?Instance={INSTANCE}
  * - Headers: Authorization: Bearer {API_KEY}
- * - Body: { secret_key: SECRET_KEY, data: {...} }
+ * - Body: { field1: value1, field2: value2, ... } (data fields directly, no wrapper)
  */
 
 const API_KEY = process.env.NOCODEBACKEND_API_KEY!;
-const SECRET_KEY = process.env.NOCODEBACKEND_SECRET_KEY!;
 const INSTANCE = process.env.NOCODEBACKEND_INSTANCE!;
 const BASE_URL = process.env.NOCODEBACKEND_BASE_URL || 'https://backend.nocodebackend.io/api';
 
@@ -55,10 +54,7 @@ async function request<T = unknown>(
 export async function create<T = unknown>(table: string, data: Record<string, unknown>): Promise<number> {
   const response = await request<T>(`/create/${table}`, {
     method: 'POST',
-    body: JSON.stringify({
-      secret_key: SECRET_KEY,
-      data: data,
-    }),
+    body: JSON.stringify(data), // Send data fields directly, no wrapper
   });
 
   if (!response.id) {
@@ -119,10 +115,7 @@ export async function search<T = unknown>(
 ): Promise<T[]> {
   const response = await request<T[]>(`/search/${table}`, {
     method: 'POST',
-    body: JSON.stringify({
-      secret_key: SECRET_KEY,
-      data: criteria,
-    }),
+    body: JSON.stringify(criteria), // Send criteria fields directly, no wrapper
   });
   return response.data || [];
 }
@@ -137,10 +130,7 @@ export async function update(
 ): Promise<void> {
   await request(`/update/${table}/${id}`, {
     method: 'PUT',
-    body: JSON.stringify({
-      secret_key: SECRET_KEY,
-      data: data,
-    }),
+    body: JSON.stringify(data), // Send data fields directly, no wrapper
   });
 }
 
