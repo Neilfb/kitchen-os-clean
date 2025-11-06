@@ -35,15 +35,15 @@ export function CartItem({ item }: CartItemProps) {
   const itemTotal = item.price * item.quantity;
 
   return (
-    <div className="flex gap-4 p-4 bg-gray-50 rounded-xl">
+    <div className="flex gap-3 p-3 bg-gray-50 rounded-lg border border-gray-200">
       {/* Product Image */}
-      <div className="flex-shrink-0 w-20 h-20 bg-white rounded-lg p-2 relative">
+      <div className="flex-shrink-0 w-16 h-16 bg-white rounded-lg p-1 relative">
         <Image
           src={item.productImage}
           alt={item.productName}
           fill
           className="object-contain p-1"
-          sizes="80px"
+          sizes="64px"
         />
       </div>
 
@@ -52,45 +52,33 @@ export function CartItem({ item }: CartItemProps) {
         <h3 className="text-sm font-semibold text-gray-900 truncate">
           {item.productName}
         </h3>
-        <p className="text-xs text-gray-600 mt-1">{item.variantName}</p>
+        <p className="text-xs text-gray-600">{item.variantName}</p>
 
-        {/* Price */}
-        <div className="flex items-baseline gap-2 mt-2">
-          <span className="text-sm font-bold text-gray-900">
-            £{item.price.toFixed(2)}
-          </span>
-          {item.pricePerLabel && (
-            <span className="text-xs text-gray-500">
-              ({item.pricePerLabel.toFixed(2)}p per label)
-            </span>
-          )}
-        </div>
-
-        {/* Quantity Controls */}
-        <div className="flex items-center gap-3 mt-3">
-          <div className="flex items-center border border-gray-300 rounded-lg">
+        {/* Quantity Controls & Price */}
+        <div className="flex items-center justify-between mt-2">
+          <div className="flex items-center border border-gray-300 rounded-md">
             <button
               onClick={handleDecrement}
-              className="p-2 hover:bg-gray-100 transition-colors"
+              className="p-1.5 hover:bg-gray-100 transition-colors"
               aria-label="Decrease quantity"
             >
-              <Minus className="w-4 h-4 text-gray-600" />
+              <Minus className="w-3.5 h-3.5 text-gray-600" />
             </button>
-            <span className="px-4 py-2 text-sm font-medium text-gray-900 min-w-[3rem] text-center">
+            <span className="px-3 py-1 text-sm font-medium text-gray-900 min-w-[2.5rem] text-center">
               {item.quantity}
             </span>
             <button
               onClick={handleIncrement}
-              className="p-2 hover:bg-gray-100 transition-colors"
+              className="p-1.5 hover:bg-gray-100 transition-colors"
               aria-label="Increase quantity"
             >
-              <Plus className="w-4 h-4 text-gray-600" />
+              <Plus className="w-3.5 h-3.5 text-gray-600" />
             </button>
           </div>
 
           <button
             onClick={handleRemove}
-            className="p-2 text-red-600 hover:bg-red-50 rounded-lg transition-colors"
+            className="p-1.5 text-red-600 hover:bg-red-50 rounded-md transition-colors"
             aria-label="Remove item"
           >
             <Trash2 className="w-4 h-4" />

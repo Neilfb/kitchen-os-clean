@@ -50,8 +50,8 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
           </button>
         </div>
 
-        {/* Cart Items - Scrollable Area */}
-        <div className="flex-1 overflow-y-auto overflow-x-hidden px-6 py-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
+        {/* Cart Items - Static List */}
+        <div className="flex-1 px-6 py-4 overflow-y-auto">
           {isEmpty ? (
             <div className="text-center py-12">
               <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -61,7 +61,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
               </p>
             </div>
           ) : (
-            <div className="space-y-4 pr-2">
+            <div className="space-y-3">
               {cart.items.map((item) => (
                 <CartItem key={item.variantId} item={item} />
               ))}
@@ -71,13 +71,13 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
         {/* Footer with Summary and Checkout */}
         {!isEmpty && (
-          <div className="border-t border-gray-200 p-6 space-y-4 bg-gray-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
+          <div className="border-t-2 border-gray-200 p-5 space-y-3 bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.06)]">
             <CartSummary cart={cart} />
 
             <Link
               href="/checkout"
               onClick={onClose}
-              className="w-full flex items-center justify-center gap-2 bg-green-600 text-white font-bold py-4 px-6 rounded-xl hover:bg-green-700 transition-colors shadow-lg"
+              className="w-full flex items-center justify-center gap-2 bg-green-600 text-white font-bold py-3.5 px-6 rounded-xl hover:bg-green-700 transition-colors shadow-md"
             >
               Proceed to Checkout
               <ArrowRight className="w-5 h-5" />
@@ -85,7 +85,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
             <button
               onClick={onClose}
-              className="w-full text-center text-gray-600 hover:text-gray-900 font-medium py-2"
+              className="w-full text-center text-gray-600 hover:text-gray-900 font-medium py-1.5 text-sm"
             >
               Continue Shopping
             </button>
