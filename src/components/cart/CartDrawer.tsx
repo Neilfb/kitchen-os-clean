@@ -50,8 +50,8 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
           </button>
         </div>
 
-        {/* Cart Items */}
-        <div className="flex-1 overflow-y-auto p-6">
+        {/* Cart Items - Scrollable Area */}
+        <div className="flex-1 overflow-y-auto overflow-x-hidden px-6 py-4 scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-gray-100">
           {isEmpty ? (
             <div className="text-center py-12">
               <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -61,7 +61,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
               </p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-4 pr-2">
               {cart.items.map((item) => (
                 <CartItem key={item.variantId} item={item} />
               ))}
@@ -71,7 +71,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
         {/* Footer with Summary and Checkout */}
         {!isEmpty && (
-          <div className="border-t border-gray-200 p-6 space-y-4">
+          <div className="border-t border-gray-200 p-6 space-y-4 bg-gray-50 shadow-[0_-4px_6px_-1px_rgba(0,0,0,0.05)]">
             <CartSummary cart={cart} />
 
             <Link

@@ -98,5 +98,33 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function({ addUtilities }) {
+      addUtilities({
+        '.scrollbar-thin': {
+          'scrollbar-width': 'thin',
+        },
+        '.scrollbar-thin::-webkit-scrollbar': {
+          width: '8px',
+        },
+        '.scrollbar-thin::-webkit-scrollbar-track': {
+          'background-color': '#f1f1f1',
+          'border-radius': '10px',
+        },
+        '.scrollbar-thin::-webkit-scrollbar-thumb': {
+          'background-color': '#d1d5db',
+          'border-radius': '10px',
+        },
+        '.scrollbar-thin::-webkit-scrollbar-thumb:hover': {
+          'background-color': '#9ca3af',
+        },
+        '.scrollbar-track-gray-100::-webkit-scrollbar-track': {
+          'background-color': '#f3f4f6',
+        },
+        '.scrollbar-thumb-gray-300::-webkit-scrollbar-thumb': {
+          'background-color': '#d1d5db',
+        },
+      });
+    },
+  ],
 };
