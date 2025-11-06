@@ -22,8 +22,8 @@ invariant(BASE_URL && INSTANCE && API_KEY && SECRET, 'NCB env vars missing');
 /**
  * Sanitize payload according to NCB standards
  */
-function sanitise<T extends Record<string, any>>(input: T): T {
-  const out: Record<string, any> = {};
+function sanitise<T extends Record<string, unknown>>(input: T): T {
+  const out: Record<string, unknown> = {};
 
   for (const [k, v] of Object.entries(input)) {
     // Remove undefined values
@@ -58,7 +58,7 @@ function sanitise<T extends Record<string, any>>(input: T): T {
  */
 async function ncbFetch<T>(
   url: string,
-  body: Record<string, any>,
+  body: Record<string, unknown>,
   method: 'POST' | 'PUT' | 'PATCH' = 'POST'
 ): Promise<T> {
   // Add secret_key at top level with sanitized fields
@@ -101,9 +101,9 @@ async function ncbFetch<T>(
 /**
  * Create a new record in a NoCodeBackend table
  */
-export async function ncbCreate<T = any>(
+export async function ncbCreate<T = unknown>(
   table: string,
-  payload: Record<string, any>
+  payload: Record<string, unknown>
 ): Promise<T> {
   const url = `${BASE_URL}/create/${encodeURIComponent(table)}?Instance=${encodeURIComponent(INSTANCE)}`;
   return ncbFetch<T>(url, sanitise(payload), 'POST');
@@ -112,10 +112,10 @@ export async function ncbCreate<T = any>(
 /**
  * Update a record in a NoCodeBackend table
  */
-export async function ncbUpdate<T = any>(
+export async function ncbUpdate<T = unknown>(
   table: string,
   id: number,
-  payload: Record<string, any>
+  payload: Record<string, unknown>
 ): Promise<T> {
   const url = `${BASE_URL}/update/${encodeURIComponent(table)}/${id}?Instance=${encodeURIComponent(INSTANCE)}`;
   return ncbFetch<T>(url, sanitise(payload), 'PUT');
@@ -124,9 +124,9 @@ export async function ncbUpdate<T = any>(
 /**
  * Search for records in a NoCodeBackend table
  */
-export async function ncbSearch<T = any>(
+export async function ncbSearch<T = unknown>(
   table: string,
-  criteria: Record<string, any>
+  criteria: Record<string, unknown>
 ): Promise<T[]> {
   const url = `${BASE_URL}/search/${encodeURIComponent(table)}?Instance=${encodeURIComponent(INSTANCE)}`;
   const result = await ncbFetch<{ data?: T[] }>(url, criteria, 'POST');
@@ -136,9 +136,9 @@ export async function ncbSearch<T = any>(
 /**
  * Read records from a NoCodeBackend table
  */
-export async function ncbRead<T = any>(
+export async function ncbRead<T = unknown>(
   table: string,
-  filters?: Record<string, any>
+  filters?: Record<string, unknown>
 ): Promise<T[]> {
   let url = `${BASE_URL}/read/${encodeURIComponent(table)}?Instance=${encodeURIComponent(INSTANCE)}`;
 
@@ -185,7 +185,7 @@ export async function ncbRead<T = any>(
 /**
  * Read a single record by ID
  */
-export async function ncbReadById<T = any>(table: string, id: number): Promise<T | null> {
+export async function ncbReadById<T = unknown>(table: string, id: number): Promise<T | null> {
   const url = `${BASE_URL}/read/${encodeURIComponent(table)}/${id}?Instance=${encodeURIComponent(INSTANCE)}`;
 
   try {
