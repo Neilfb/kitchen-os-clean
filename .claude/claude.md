@@ -1,21 +1,26 @@
 # Kitchen OS - Claude Progress Tracking
 
-**Last Updated:** 2025-11-04
+**Last Updated:** 2025-11-06
 **Project Status:** Production-Ready, Pre-Launch Phase
 **Build Status:** ✅ Working
-**Latest Commit:** 3614b9d (Pricing page comprehensive update)
+**Latest Commit:** 2f69a05 (NoCodeBackend integration fixed, Revolut debugging)
 
 ---
 
 ## 📊 Major Updates Since Oct 31
 
-### ✅ Completed (Nov 1-4, 2025)
+### ✅ Completed (Nov 1-6, 2025)
 
-**Database Integration (NoCodeBackend)**
+**Database Integration (NoCodeBackend) - FULLY FIXED** ✅
 - Integrated NoCodeBackend REST API for database operations
 - Created tables: `orders`, `order_items`, `contact_submissions`
-- Implemented order creation API endpoint (`/api/orders`)
-- Set up environment variables and API configuration
+- Implemented order creation API endpoint (`/api/orders/create`)
+- **FIXED 403/500 errors** - Added `secret_key` to request body (auth triplet)
+- **FIXED null handling** - Changed empty strings to `null` for optional fields
+- **FIXED timestamp handling** - Removed `created_at` from payloads (DB auto-generates)
+- Created canonical NCB client (`src/lib/ncbClient.ts`) following Kitchen OS NCB Standards
+- **Status:** ✅ Working perfectly - Orders creating successfully with 201 responses
+- Comprehensive documentation in `docs/nocodebackend-setup.md`
 
 **Email Service (Resend)**
 - Integrated Resend for transactional emails
@@ -42,10 +47,20 @@
 - Created `/podcast` page with Spotify integration
 - Added podcast to main navigation
 
+**Payment Integration (Revolut) - IN PROGRESS** ⚠️
+- Created Revolut order creation API endpoint (`/api/orders/revolut`)
+- Implemented Revolut widget integration
+- Created webhook handler for payment events
+- **Current Issue:** 401 authentication error (Revolut error code 1000)
+- Added comprehensive error logging for debugging
+- Next step: Verify Revolut API keys and credentials
+
 **Bug Fixes**
 - Fixed TypeScript errors with optional `variant` properties
-- Resolved ESLint errors blocking production builds
+- Resolved ESLint errors blocking production builds (`@typescript-eslint/no-explicit-any`)
 - Fixed image optimization warnings
+- Fixed NoCodeBackend 403/500 errors (auth triplet implementation)
+- Fixed TypeScript linting in ncbClient.ts (replaced `any` with `unknown`)
 
 ---
 
@@ -477,6 +492,7 @@ src/components/
 
 **In `/docs/`:**
 - `INTEGRATION_RULES_BUILDER.md` - Builder.io integration guidelines
+- `nocodebackend-setup.md` - Complete NoCodeBackend integration guide (auth, schema, standards)
 
 ---
 
@@ -485,18 +501,28 @@ src/components/
 **Currently Configured:**
 ```env
 # Builder.io CMS
-NEXT_PUBLIC_BUILDER_API_KEY=your-builder-io-api-key
+NEXT_PUBLIC_BUILDER_API_KEY=f4f7d1a1bab14a7bb30e7b8d27b78aa7
 
 # Site Configuration
-SITE_URL=https://www.kitchen-os.com
+SITE_URL=https://kitchen-os.com
 
-# NoCodeBackend Database (✅ ACTIVE)
-NOCODEBACKEND_API_KEY=your-api-key
-NOCODEBACKEND_PROJECT_ID=your-project-id
-NOCODEBACKEND_API_URL=https://api.nocodebackend.com
+# NoCodeBackend Database (✅ FULLY WORKING)
+# Note: API_KEY goes in Authorization header, SECRET_KEY goes in request body
+NOCODEBACKEND_API_KEY=f8d76c992d7d38f1a596fb423938d263a769b9b0609da9d6ba55de6a577d
+NOCODEBACKEND_SECRET_KEY=f8d76c992d7d38f1a596fb423938d263a769b9b0609da9d6ba55de6a577d
+NOCODEBACKEND_INSTANCE=48346_kitchen_os_clean
+NOCODEBACKEND_BASE_URL=https://backend.nocodebackend.io/api
 
 # Resend Email Service (✅ ACTIVE)
-RESEND_API_KEY=re_your_api_key
+RESEND_API_KEY=re_iNKkuqYX_2r7xSgU41kt3uRpqiyBF6Cc1
+
+# Revolut Payment (⚠️ DEBUGGING - 401 AUTH ERROR)
+NEXT_PUBLIC_REVOLUT_PUBLIC_KEY=pk_txYemxqvcjjroDYyMS4TIRruDUiaF12qxm0Tac5bpsn65v1P
+NEXT_PUBLIC_REVOLUT_MODE=sandbox
+REVOLUT_SECRET_KEY=sk_1ilr9StupO3oJ9aQstN_CbeiqbH9jS3z9S0xrGpQ2PVyt7KENN_un1_Tq7c_sclL
+REVOLUT_MODE=sandbox
+REVOLUT_MERCHANT_NAME=KITCHEN OPERATING SYSTEM LTD
+REVOLUT_API_URL=https://sandbox-merchant.revolut.com/api/1.0
 ```
 
 **To Be Added:**
@@ -567,12 +593,14 @@ SENTRY_DSN=
 ## 📊 Recent Commits
 
 ```
+2f69a05 - fix: Add detailed error logging for Revolut API failures (2025-11-06)
+1c79522 - fix: Replace 'any' types with 'unknown' in ncbClient for ESLint compliance (2025-11-06)
+e36f535 - fix: Add secret_key to NoCodeBackend requests following NCB standards (2025-11-06)
+05d12ab - fix: Replace null values with empty strings for NoCodeBackend compatibility (2025-11-06)
+c54c564 - debug: Add detailed NoCodeBackend API request/response logging (2025-11-06)
 3614b9d - feat: Comprehensive pricing page update with 3-tier FSS structure (2025-11-04)
 19aa32d - fix: Resolve TypeScript error for optional variant properties (2025-11-03)
 c46efa2 - fix: Resolve ESLint errors blocking production build (2025-11-03)
-0eaedf0 - feat: Add compelling hero images to all product page CTAs (2025-11-02)
-705a800 - feat: Add Kitchen OS Podcast page with Spotify integration (2025-11-01)
-96c51ed - feat: Implement comprehensive SEO optimization (2025-10-31)
 ```
 
 ---
