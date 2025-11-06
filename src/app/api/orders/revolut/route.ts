@@ -77,13 +77,28 @@ export async function POST(request: NextRequest) {
     });
 
     if (!revolutResponse.ok) {
-      const errorData: RevolutErrorResponse = await revolutResponse.json();
-      console.error('Revolut API Error:', errorData);
+      const errorText = await revolutResponse.text();
+      let errorData: RevolutErrorResponse;
+
+      try {
+        errorData = JSON.parse(errorText);
+      } catch {
+        errorData = { error: 'Parse error', message: errorText };
+      }
+
+      console.error('Revolut API Error:', {
+        status: revolutResponse.status,
+        statusText: revolutResponse.statusText,
+        errorData,
+        requestUrl: `${revolutApiUrl}/orders`,
+        hasApiKey: !!revolutSecretKey,
+      });
 
       return NextResponse.json(
         {
           error: 'Failed to create payment order',
           message: errorData.message || 'Unknown error from payment provider',
+          details: process.env.NODE_ENV === 'development' ? errorData : undefined,
         },
         { status: revolutResponse.status }
       );
