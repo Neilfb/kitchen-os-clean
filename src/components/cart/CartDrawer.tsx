@@ -34,7 +34,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
       {/* Drawer */}
       <div className="fixed right-0 top-0 h-full w-full max-w-md bg-white shadow-2xl z-[9999] flex flex-col animate-slide-in-right">
         {/* Header */}
-        <div className="flex items-center justify-between p-6 border-b border-gray-200">
+        <div className="flex items-center justify-between px-6 py-4 border-b border-gray-200 flex-shrink-0">
           <div className="flex items-center gap-3">
             <ShoppingBag className="w-6 h-6 text-green-600" />
             <h2 className="text-xl font-bold text-gray-900">
@@ -51,7 +51,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
         </div>
 
         {/* Cart Items - Scrollable with Visible Scrollbar */}
-        <div className="flex-1 px-6 py-4 overflow-y-scroll">
+        <div className="flex-1 px-6 py-6 overflow-y-scroll min-h-0">
           {isEmpty ? (
             <div className="text-center py-12">
               <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -71,13 +71,13 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
         {/* Footer with Summary and Checkout */}
         {!isEmpty && (
-          <div className="border-t-2 border-gray-200 p-5 space-y-3 bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.06)]">
+          <div className="border-t-2 border-gray-200 px-6 py-4 space-y-3 bg-white shadow-[0_-2px_8px_rgba(0,0,0,0.06)] flex-shrink-0">
             <CartSummary cart={cart} />
 
             <Link
               href="/checkout"
               onClick={onClose}
-              className="w-full flex items-center justify-center gap-2 bg-green-600 text-white font-bold py-3.5 px-6 rounded-xl hover:bg-green-700 transition-colors shadow-md"
+              className="w-full flex items-center justify-center gap-2 bg-green-600 text-white font-bold py-3 px-6 rounded-xl hover:bg-green-700 transition-colors shadow-md"
             >
               Proceed to Checkout
               <ArrowRight className="w-5 h-5" />
@@ -85,7 +85,7 @@ export function CartDrawer({ isOpen, onClose }: CartDrawerProps) {
 
             <button
               onClick={onClose}
-              className="w-full text-center text-gray-600 hover:text-gray-900 font-medium py-1.5 text-sm"
+              className="w-full text-center text-gray-600 hover:text-gray-900 font-medium py-1 text-sm"
             >
               Continue Shopping
             </button>
