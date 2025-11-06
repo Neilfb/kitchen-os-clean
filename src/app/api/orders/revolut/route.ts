@@ -5,6 +5,10 @@ import type { RevolutOrderRequest, RevolutOrderResponse, RevolutErrorResponse } 
  * Revolut Order Creation API
  * Creates an order with Revolut and returns the public token for payment widget
  *
+ * Required Headers:
+ * - Authorization: Bearer {SECRET_KEY}
+ * - Revolut-Api-Version: YYYY-MM-DD format (e.g., 2024-09-01)
+ *
  * Documentation: https://developer.revolut.com/docs/merchant/create-order
  */
 
@@ -67,11 +71,20 @@ export async function POST(request: NextRequest) {
     }
 
     // Call Revolut API to create order
+    console.log('Revolut API Request:', {
+      url: `${revolutApiUrl}/orders`,
+      method: 'POST',
+      hasSecretKey: !!revolutSecretKey,
+      secretKeyPrefix: revolutSecretKey?.substring(0, 10) + '...',
+      payload: revolutOrderData,
+    });
+
     const revolutResponse = await fetch(`${revolutApiUrl}/orders`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${revolutSecretKey}`,
         'Content-Type': 'application/json',
+        'Revolut-Api-Version': '2024-09-01', // Required: API version in YYYY-MM-DD format
       },
       body: JSON.stringify(revolutOrderData),
     });
@@ -158,6 +171,7 @@ export async function GET(request: NextRequest) {
       headers: {
         'Authorization': `Bearer ${revolutSecretKey}`,
         'Content-Type': 'application/json',
+        'Revolut-Api-Version': '2024-09-01', // Required: API version in YYYY-MM-DD format
       },
     });
 
