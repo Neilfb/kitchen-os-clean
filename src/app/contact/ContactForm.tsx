@@ -219,7 +219,7 @@ export default function ContactForm() {
                   {submitStatus === 'error' && (
                     <div className="bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded-lg">
                       <p className="font-semibold">Something went wrong.</p>
-                      <p className="text-sm">Please try again or email us directly at support@kitchen-os.com</p>
+                      <p className="text-sm">Please try again or email us directly at neil@kitchen-os.com</p>
                     </div>
                   )}
 
@@ -255,8 +255,8 @@ export default function ContactForm() {
                     <Mail className="w-6 h-6 text-product-fss-green mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold text-gray-900">Email</p>
-                      <a href="mailto:support@kitchen-os.com" className="text-product-fss-green hover:underline">
-                        support@kitchen-os.com
+                      <a href="mailto:neil@kitchen-os.com" className="text-product-fss-green hover:underline">
+                        neil@kitchen-os.com
                       </a>
                     </div>
                   </div>
@@ -264,8 +264,8 @@ export default function ContactForm() {
                     <Phone className="w-6 h-6 text-product-fss-green mr-3 flex-shrink-0 mt-1" />
                     <div>
                       <p className="font-semibold text-gray-900">Phone</p>
-                      <a href="tel:+442012345678" className="text-product-fss-green hover:underline">
-                        +44 20 1234 5678
+                      <a href="tel:+447588427222" className="text-product-fss-green hover:underline">
+                        +44 7588 427222
                       </a>
                     </div>
                   </div>
@@ -306,12 +306,12 @@ export default function ContactForm() {
                   Book a 30-minute call with our team to discuss your specific needs and see a live demo.
                 </p>
                 <a
-                  href="https://calendly.com/kitchen-os"
+                  href="https://www.foodsafesystem.com/book-a-demo/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="inline-block bg-white text-brand-navy font-semibold px-6 py-3 rounded-lg hover:bg-gray-100 transition-colors"
                 >
-                  Schedule a Call
+                  Book a Demo
                 </a>
               </div>
             </div>

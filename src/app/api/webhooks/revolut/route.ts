@@ -132,7 +132,7 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
           <p>We'll send you another email with tracking information once your order ships.</p>
 
           <p style="color: #666; font-size: 14px; margin-top: 30px;">
-            Questions? Reply to this email or contact us at hello@kitchen-os.com
+            Questions? Reply to this email or contact us at neil@kitchen-os.com
           </p>
         </div>
       `,
@@ -178,7 +178,7 @@ async function handleOrderCancelled(order: Record<string, unknown>, _webhook: Re
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #dc2626;">Order Cancelled</h1>
           <p>Your order ${order.order_number} has been cancelled.</p>
-          <p>If you didn't request this cancellation or have questions, please contact us at hello@kitchen-os.com</p>
+          <p>If you didn't request this cancellation or have questions, please contact us at neil@kitchen-os.com</p>
         </div>
       `,
     });
@@ -222,7 +222,7 @@ async function handlePaymentFailed(order: Record<string, unknown>, _webhook: Rev
           </p>
 
           <p style="color: #666; font-size: 14px;">
-            Need help? Contact us at hello@kitchen-os.com
+            Need help? Contact us at neil@kitchen-os.com
           </p>
         </div>
       `,

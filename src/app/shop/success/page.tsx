@@ -157,12 +157,12 @@ export default async function OrderSuccessPage({
           <p>
             Need help? Email us at{' '}
             <a
-              href="mailto:hello@kitchen-os.com"
+              href="mailto:neil@kitchen-os.com"
               className="text-product-fss-green hover:underline font-semibold"
             >
-              hello@kitchen-os.com
+              neil@kitchen-os.com
             </a>{' '}
-            or call <span className="font-semibold">+44 (0) 20 1234 5678</span>
+            or call <span className="font-semibold">+44 7588 427222</span>
           </p>
         </div>
       </div>

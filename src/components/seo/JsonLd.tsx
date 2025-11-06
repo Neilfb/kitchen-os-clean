@@ -40,7 +40,8 @@ export function OrganizationSchema() {
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'sales',
-      email: 'hello@kitchen-os.com',
+      email: 'neil@kitchen-os.com',
+      telephone: '+447588427222',
       availableLanguage: ['English'],
     },
     sameAs: [
