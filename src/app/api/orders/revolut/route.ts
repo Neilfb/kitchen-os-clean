@@ -34,28 +34,36 @@ export async function POST(request: NextRequest) {
       customer_phone: body.customerPhone,
     };
 
-    // Add billing address if provided
+    // Add billing address if provided (filter out undefined values)
     if (body.billingAddress) {
-      revolutOrderData.billing_address = {
+      const billingAddress: Record<string, string> = {
         street_line_1: body.billingAddress.line1,
-        street_line_2: body.billingAddress.line2,
         city: body.billingAddress.city,
-        region: body.billingAddress.county,
         postcode: body.billingAddress.postcode,
         country_code: body.billingAddress.country,
       };
+
+      // Only add optional fields if they have values
+      if (body.billingAddress.line2) billingAddress.street_line_2 = body.billingAddress.line2;
+      if (body.billingAddress.county) billingAddress.region = body.billingAddress.county;
+
+      revolutOrderData.billing_address = billingAddress;
     }
 
-    // Add shipping address if provided
+    // Add shipping address if provided (filter out undefined values)
     if (body.shippingAddress) {
-      revolutOrderData.shipping_address = {
+      const shippingAddress: Record<string, string> = {
         street_line_1: body.shippingAddress.line1,
-        street_line_2: body.shippingAddress.line2,
         city: body.shippingAddress.city,
-        region: body.shippingAddress.county,
         postcode: body.shippingAddress.postcode,
         country_code: body.shippingAddress.country,
       };
+
+      // Only add optional fields if they have values
+      if (body.shippingAddress.line2) shippingAddress.street_line_2 = body.shippingAddress.line2;
+      if (body.shippingAddress.county) shippingAddress.region = body.shippingAddress.county;
+
+      revolutOrderData.shipping_address = shippingAddress;
     }
 
     // Get Revolut configuration from environment
