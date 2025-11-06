@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { Hotel, Utensils, GraduationCap, Building2, Coffee, Home, ArrowRight } from 'lucide-react';
+import { Hotel, Utensils, GraduationCap, Building2, Coffee, Home, Factory, ShoppingCart, ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Industries We Serve - Kitchen OS',
-  description: 'Kitchen OS serves restaurants, hotels, healthcare facilities, schools, cafes, and more. Tailored solutions for every professional kitchen.',
+  description: 'Kitchen OS serves restaurants, hotels, healthcare facilities, schools, cafes, food production, food retail, and more. Tailored solutions for every professional kitchen.',
   openGraph: {
     title: 'Industries We Serve - Kitchen OS',
-    description: 'Kitchen OS serves restaurants, hotels, healthcare facilities, schools, cafes, and more. Tailored solutions for every professional kitchen.',
+    description: 'Kitchen OS serves restaurants, hotels, healthcare facilities, schools, cafes, food production, food retail, and more. Tailored solutions for every professional kitchen.',
     url: '/industries',
   },
 };
@@ -86,6 +86,30 @@ export default function IndustriesPage() {
       ],
       solution: 'Enterprise plan supports unlimited sites with centralized management. Generate client-specific compliance and sustainability reports. F*** Waste provides ROI metrics to demonstrate cost savings. White-label options available.',
     },
+    {
+      icon: Factory,
+      name: 'Food Production',
+      description: 'Food manufacturers, central production kitchens, and processing facilities',
+      challenges: [
+        'High-volume temperature monitoring across production lines',
+        'Complex HACCP compliance for multiple product ranges',
+        'Accurate date labelling and batch tracking',
+        'Waste reduction in large-scale production',
+      ],
+      solution: 'Food Safe System scales to handle production environments with unlimited sensor support and automated HACCP logging. Food Label System ensures accurate batch labels and traceability. F*** Waste identifies production inefficiencies and cost-saving opportunities. Real-time alerts prevent costly recalls.',
+    },
+    {
+      icon: ShoppingCart,
+      name: 'Food Retail',
+      description: 'Supermarkets, delis, food halls, and retail food counters',
+      challenges: [
+        'Managing hot food counters and prepared foods',
+        'Customer-facing allergen information requirements',
+        'Date labelling for short shelf-life products',
+        'Compliance across multiple retail locations',
+      ],
+      solution: 'AllerQ provides instant customer-accessible allergen information via QR codes. Food Safe System handles temperature monitoring for hot counters and chill displays. Food Label System streamlines date labelling for grab-and-go items. Multi-site dashboard provides visibility across all locations.',
+    },
   ];
 
   return (
@@ -163,7 +187,7 @@ export default function IndustriesPage() {
               <div className="text-xl text-gray-700">Professional Kitchens</div>
             </div>
             <div className="text-center">
-              <div className="text-5xl font-bold text-product-fss-green mb-2">6</div>
+              <div className="text-5xl font-bold text-product-fss-green mb-2">8</div>
               <div className="text-xl text-gray-700">Industries Served</div>
             </div>
             <div className="text-center">
