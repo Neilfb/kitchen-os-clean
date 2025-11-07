@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, Printer, Clock, Shield, TrendingDown, Zap, Database, ExternalLink } from 'lucide-react';
+import { CheckCircle, Printer, Clock, Shield, TrendingDown, Zap, Database, ExternalLink, FileDown } from 'lucide-react';
 import { ProductSchema, FAQSchema, BreadcrumbSchema, SoftwareApplicationSchema } from '@/components/seo/JsonLd';
 import { ProductLogo } from '@/components/ProductLogo';
 
@@ -86,19 +86,19 @@ export default function FoodLabelSystemPage() {
   const faqs = [
     {
       question: 'What kind of printer do I need?',
-      answer: 'Food Label System works with any Bluetooth thermal label printer. We recommend the Brother QL series for best results. Labels are waterproof, grease-resistant, and dishwasher-safe.',
+      answer: 'Food Label System only works with our supplied handheld Android printer. This specialized device is included in your subscription and designed specifically for kitchen environments. Labels are waterproof, grease-resistant, and dishwasher-safe.',
     },
     {
       question: 'Can I create custom label templates?',
-      answer: 'Yes. You can create unlimited custom templates for your specific dishes and prep items. Include your logo, custom fields, allergen warnings, and storage instructions. Templates save massive amounts of time once set up.',
+      answer: 'Yes. You can create custom templates tailored to your operational needs, but logos cannot be added to labels. Templates follow standardized food safety formats to ensure compliance and consistency across your operations.',
     },
     {
       question: 'How does the system calculate use-by dates?',
-      answer: 'The system uses food safety guidelines (FSA, HACCP) to calculate use-by dates based on food type, preparation method, and storage conditions. You can also set custom shelf lives for your specific recipes and processes.',
+      answer: 'Use-by dates and shelf-life periods are set by you based on your operational procedures. The system defaults to 3 days but can be customized per item to match your food safety protocols and specific recipes.',
     },
     {
-      question: 'Can I track where ingredients came from?',
-      answer: 'Absolutely. Food Label System includes full batch tracking. Scan supplier delivery barcodes or enter batch numbers manually. If there\'s ever a recall, you can instantly identify affected items.',
+      question: 'Can it scan barcodes?',
+      answer: 'No. Food Label System does not include barcode scanning capabilities. It focuses on quickly printing compliant date labels for food items to eliminate handwritten labels and ensure consistent food safety protocols.',
     },
     {
       question: 'How much does it cost?',
@@ -394,11 +394,31 @@ export default function FoodLabelSystemPage() {
         </div>
       </section>
 
+      {/* Resources Section - Presentation Download */}
+      <section className="py-16 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-brand-navy mb-4">
+            Want More Details?
+          </h2>
+          <p className="text-xl text-gray-600 mb-8">
+            Download our comprehensive presentation to learn more about Food Label System
+          </p>
+          <a
+            href="/resources/Food-Label-System-Presentation.pdf"
+            download
+            className="inline-flex items-center gap-2 bg-product-fls-green text-white font-bold px-8 py-4 rounded-xl hover:bg-product-fls-green-dark transition-all shadow-lg hover:shadow-xl hover:scale-105 transform duration-200"
+          >
+            <FileDown className="w-5 h-5" />
+            Download PDF Presentation
+          </a>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/assets/pexels-4louette-11129150.jpg"
+            src="/assets/Labeling Fresh Produce in the Kitchen.png"
             alt="Kitchen food preparation"
             className="w-full h-full object-cover"
           />

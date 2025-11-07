@@ -298,7 +298,7 @@ export default function FWastePage() {
             <div className="bg-white p-8 rounded-2xl shadow-soft">
               <h3 className="text-xl font-bold text-product-fw-green mb-3">Blue-Chip Pilot Programme</h3>
               <p className="text-gray-600 leading-relaxed">
-                Active deployments with Roe Park Hotel, Fish City, and Fadiga validate technology across different hospitality segments and operational scales.
+                Active pilots with leading hospitality groups and restaurant chains demonstrate real-world impact. Early adopters report significant waste reduction and cost savings within the first 30 days of implementation.
               </p>
             </div>
             <div className="bg-white p-8 rounded-2xl shadow-soft">
@@ -310,7 +310,7 @@ export default function FWastePage() {
             <div className="bg-white p-8 rounded-2xl shadow-soft">
               <h3 className="text-xl font-bold text-product-fw-green mb-3">Enterprise Pipeline</h3>
               <p className="text-gray-600 leading-relaxed">
-                Advanced discussions with ByteDance and major Saudi hospitality groups signal massive scalability potential and enterprise-grade market validation.
+                Leading tech companies and international hospitality groups evaluating F*** Waste for deployment across their operations. Enterprise clients benefit from white-label options and centralized waste analytics dashboards.
               </p>
             </div>
           </div>
@@ -346,19 +346,12 @@ export default function FWastePage() {
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div className="bg-gradient-to-br from-red-50 to-white p-6 rounded-xl shadow-soft border-2 border-red-100">
                 <h3 className="text-xl font-bold text-brand-navy mb-3">Hidden Daily Losses</h3>
                 <p className="text-gray-600 leading-relaxed">
                   Every kitchen haemorrhages money through invisible waste streams. Over-purchasing, spoilage, and plate waste
                   create a constant drain on margins that most operators never properly quantify.
-                </p>
-              </div>
-              <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-xl shadow-soft border-2 border-orange-100">
-                <h3 className="text-xl font-bold text-brand-navy mb-3">Catastrophic Failures</h3>
-                <p className="text-gray-600 leading-relaxed">
-                  Fish City lost £25,000 in a single day after freezer failure destroyed premium stock. Without proper monitoring,
-                  these disasters become expensive surprises rather than preventable incidents.
                 </p>
               </div>
               <div className="bg-gradient-to-br from-yellow-50 to-white p-6 rounded-xl shadow-soft border-2 border-yellow-100">
@@ -440,7 +433,7 @@ export default function FWastePage() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/assets/pexels-owen-outdoors-409204690-29462835.jpg"
+            src="/assets/Food_Waste_5.width-1300.png"
             alt="Fresh produce and ingredients"
             className="w-full h-full object-cover"
           />
