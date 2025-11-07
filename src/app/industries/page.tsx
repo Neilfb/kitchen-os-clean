@@ -146,7 +146,7 @@ export default function IndustriesPage() {
               Explore Our Industry Solutions
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Click or tap any card to discover how Kitchen OS solves the unique challenges of each industry
+              Click or tap any card to discover how Kitchen OS solves the unique challenges of your industry
             </p>
           </div>
 
