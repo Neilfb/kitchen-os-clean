@@ -67,7 +67,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Get Revolut configuration from environment
-    const revolutApiUrl = process.env.REVOLUT_API_URL || 'https://sandbox-merchant.revolut.com/api/1.0';
+    const revolutApiUrl = process.env.REVOLUT_API_URL || 'https://sandbox-merchant.revolut.com/api';
     const revolutSecretKey = process.env.REVOLUT_SECRET_KEY;
 
     if (!revolutSecretKey) {
@@ -163,7 +163,7 @@ export async function GET(request: NextRequest) {
       );
     }
 
-    const revolutApiUrl = process.env.REVOLUT_API_URL || 'https://sandbox-merchant.revolut.com/api/1.0';
+    const revolutApiUrl = process.env.REVOLUT_API_URL || 'https://sandbox-merchant.revolut.com/api';
     const revolutSecretKey = process.env.REVOLUT_SECRET_KEY;
 
     if (!revolutSecretKey) {

@@ -6,7 +6,7 @@
 echo "Testing Revolut API credentials..."
 echo ""
 
-curl -X POST https://sandbox-merchant.revolut.com/api/1.0/orders \
+curl -X POST https://sandbox-merchant.revolut.com/api/orders \
   -H "Authorization: Bearer ${REVOLUT_SECRET_KEY}" \
   -H "Content-Type: application/json" \
   -H "Revolut-Api-Version: 2024-09-01" \
