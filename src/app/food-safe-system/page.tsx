@@ -280,7 +280,7 @@ export default function FoodSafeSystemPage() {
       <section className="relative py-20 overflow-hidden">
         <div className="absolute inset-0">
           <img
-            src="/assets/pexels-carlo-martin-alcordo-1279322-2449665.jpg"
+            src="/assets/Kitchen OS-12.png"
             alt="Professional kitchen"
             className="w-full h-full object-cover"
           />

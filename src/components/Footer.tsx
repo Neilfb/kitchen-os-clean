@@ -43,12 +43,138 @@ export default function Footer() {
   ];
 
   return (
-    <footer className="bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-navy-dark border-t-4 border-product-fss-green relative overflow-hidden">
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute top-20 left-20 w-96 h-96 bg-product-fss-green rounded-full blur-3xl"></div>
-        <div className="absolute bottom-20 right-20 w-96 h-96 bg-product-allerq-orange rounded-full blur-3xl"></div>
-      </div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
+    <>
+      {/* Partners & Certifications Section - Light Gray Background */}
+      <section className="bg-gray-100 border-t border-gray-200 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h3 className="text-brand-navy font-bold mb-12 text-center text-sm uppercase tracking-wider">
+            Partners & Certifications
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16 items-center">
+            {/* UN Tourism */}
+            <div className="flex justify-center">
+              <a
+                href="https://www.untourism.int/events/9-world-forum-gastronomy-tourism-bahrain"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white px-8 py-6 rounded-2xl shadow-soft transition-all hover:scale-105 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
+                aria-label="UN Tourism - 9th World Forum on Gastronomy Tourism"
+              >
+                <img
+                  src="/assets/Logo_UN_Tourism.svg"
+                  alt="UN Tourism Logo"
+                  className="h-24 w-auto transition-opacity"
+                  loading="lazy"
+                />
+              </a>
+            </div>
+
+            {/* Innovate NI Gold Innovator */}
+            <div className="flex justify-center">
+              <a
+                href="https://www.innovateni.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white px-8 py-6 rounded-2xl shadow-soft transition-all hover:scale-105 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
+                aria-label="Innovate NI Gold Innovator"
+              >
+                <Image
+                  src="/assets/gold-innovator.png"
+                  alt="Innovate NI Gold Innovator Logo"
+                  width={240}
+                  height={96}
+                  className="h-24 w-auto transition-opacity"
+                />
+              </a>
+            </div>
+
+            {/* MassChallenge */}
+            <div className="flex justify-center">
+              <a
+                href="https://masschallenge.org/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white px-8 py-6 rounded-2xl shadow-soft transition-all hover:scale-105 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
+                aria-label="MassChallenge"
+              >
+                <Image
+                  src="/assets/masschallenge-seeklogo.png"
+                  alt="MassChallenge Logo"
+                  width={240}
+                  height={96}
+                  className="h-24 w-auto transition-opacity"
+                />
+              </a>
+            </div>
+
+            {/* EIT Food */}
+            <div className="flex justify-center">
+              <a
+                href="https://www.eitfood.eu/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white px-8 py-6 rounded-2xl shadow-soft transition-all hover:scale-105 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
+                aria-label="EIT Food"
+              >
+                <Image
+                  src="/assets/EIT-Food_landscape_square.png"
+                  alt="EIT Food Logo"
+                  width={240}
+                  height={96}
+                  className="h-24 w-auto transition-opacity"
+                />
+              </a>
+            </div>
+
+            {/* UN Sustainable Development Goals */}
+            <div className="flex flex-col items-center gap-6">
+              <a
+                href="https://www.un.org/sustainabledevelopment/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white px-8 py-6 rounded-2xl shadow-soft transition-all hover:scale-105 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
+                aria-label="UN Sustainable Development Goals"
+              >
+                <Image
+                  src="/assets/E_SDG_logo_Square_Transparent_WEB.png"
+                  alt="UN Sustainable Development Goals Logo"
+                  width={160}
+                  height={160}
+                  className="h-20 w-auto transition-opacity"
+                />
+              </a>
+              <div className="flex flex-wrap justify-center gap-3 max-w-sm">
+                {['01', '02', '08', '11', '12', '13'].map((num) => (
+                  <a
+                    key={num}
+                    href="https://www.un.org/sustainabledevelopment/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-brand-navy/30 rounded-lg"
+                    aria-label={`UN SDG Goal ${num}`}
+                  >
+                    <Image
+                      src={`/assets/E_WEB_${num}.png`}
+                      alt={`UN SDG Goal ${num}`}
+                      width={80}
+                      height={80}
+                      className="h-16 w-16 transition-opacity rounded-lg"
+                    />
+                  </a>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Main Footer - Navy Background */}
+      <footer className="bg-gradient-to-br from-brand-navy via-brand-navy-light to-brand-navy-dark border-t-4 border-product-fss-green relative overflow-hidden">
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-20 left-20 w-96 h-96 bg-product-fss-green rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-product-allerq-orange rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-12 mb-16">
           <div className="lg:col-span-2">
             <Link href="/" className="inline-block mb-6 group">
@@ -170,129 +296,7 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Partners & Certifications */}
-        <div className="border-t border-white/10 pt-16 pb-16">
-          <h3 className="text-white font-bold mb-12 text-center text-sm uppercase tracking-wider">
-            Partners & Certifications
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16 items-center">
-            {/* UN Tourism */}
-            <div className="flex justify-center">
-              <a
-                href="https://www.untourism.int/events/9-world-forum-gastronomy-tourism-bahrain"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
-                aria-label="UN Tourism - 9th World Forum on Gastronomy Tourism"
-              >
-                <img
-                  src="/assets/Logo_UN_Tourism.svg"
-                  alt="UN Tourism Logo"
-                  className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"
-                  loading="lazy"
-                />
-              </a>
-            </div>
-
-            {/* Innovate NI Gold Innovator */}
-            <div className="flex justify-center">
-              <a
-                href="https://www.innovateni.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
-                aria-label="Innovate NI Gold Innovator"
-              >
-                <Image
-                  src="/assets/gold-innovator.png"
-                  alt="Innovate NI Gold Innovator Logo"
-                  width={240}
-                  height={96}
-                  className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"
-                />
-              </a>
-            </div>
-
-            {/* MassChallenge */}
-            <div className="flex justify-center">
-              <a
-                href="https://masschallenge.org/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
-                aria-label="MassChallenge"
-              >
-                <Image
-                  src="/assets/masschallenge-seeklogo.png"
-                  alt="MassChallenge Logo"
-                  width={240}
-                  height={96}
-                  className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"
-                />
-              </a>
-            </div>
-
-            {/* EIT Food */}
-            <div className="flex justify-center">
-              <a
-                href="https://www.eitfood.eu/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
-                aria-label="EIT Food"
-              >
-                <Image
-                  src="/assets/EIT-Food_landscape_square.png"
-                  alt="EIT Food Logo"
-                  width={240}
-                  height={96}
-                  className="h-24 w-auto opacity-90 hover:opacity-100 transition-opacity"
-                />
-              </a>
-            </div>
-
-            {/* UN Sustainable Development Goals */}
-            <div className="flex flex-col items-center gap-6">
-              <a
-                href="https://www.un.org/sustainabledevelopment/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="block bg-white/5 backdrop-blur-sm px-8 py-6 rounded-2xl transition-all hover:scale-105 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
-                aria-label="UN Sustainable Development Goals"
-              >
-                <Image
-                  src="/assets/E_SDG_logo_Square_Transparent_WEB.png"
-                  alt="UN Sustainable Development Goals Logo"
-                  width={160}
-                  height={160}
-                  className="h-20 w-auto opacity-90 hover:opacity-100 transition-opacity"
-                />
-              </a>
-              <div className="flex flex-wrap justify-center gap-3 max-w-sm">
-                {['01', '02', '08', '11', '12', '13'].map((num) => (
-                  <a
-                    key={num}
-                    href="https://www.un.org/sustainabledevelopment/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-white/30 rounded-lg"
-                    aria-label={`UN SDG Goal ${num}`}
-                  >
-                    <Image
-                      src={`/assets/E_WEB_${num}.png`}
-                      alt={`UN SDG Goal ${num}`}
-                      width={80}
-                      height={80}
-                      className="h-16 w-16 opacity-90 hover:opacity-100 transition-opacity rounded-lg"
-                    />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="border-t border-white/10 pt-10 mt-16 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-white/60">
             &copy; {new Date().getFullYear()} Kitchen OS. All rights reserved.
           </p>
@@ -302,5 +306,6 @@ export default function Footer() {
         </div>
       </div>
     </footer>
+    </>
   );
 }

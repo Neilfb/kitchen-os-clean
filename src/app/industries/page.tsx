@@ -24,7 +24,7 @@ export default function IndustriesPage() {
         'Reducing food waste to improve margins',
         'Ensuring consistent labelling and stock rotation',
       ],
-      solution: 'Kitchen OS gives restaurant operators complete visibility across all locations. Food Safe System handles HACCP automatically, AllerQ provides multi-language allergen menus, and F*** Waste helps identify cost-saving opportunities. Professional plan covers up to 5 sites for £149/month.',
+      solution: 'Kitchen OS gives restaurant operators complete visibility across all locations. Food Safe System handles HACCP automatically, AllerQ provides multi-language allergen menus, and F*** Waste helps identify cost-saving opportunities. Flexible per-site pricing with volume discounts for multi-location groups.',
     },
     {
       icon: Hotel,
@@ -72,7 +72,7 @@ export default function IndustriesPage() {
         'Managing food waste to improve profitability',
         'Maintaining compliance without dedicated compliance staff',
       ],
-      solution: 'Starter plan (£49/month) is perfect for single-site cafes. AllerQ provides instant allergen menus via QR codes. Food Label System eliminates handwritten labels. F*** Waste helps identify over-prepping and reduce costs.',
+      solution: 'Kitchen OS is perfect for cafes of all sizes. AllerQ (£7.49/month) provides instant allergen menus via QR codes. Food Label System (£35/month) eliminates handwritten labels and ensures compliance. Start with what you need and add more products as you grow.',
     },
     {
       icon: Home,

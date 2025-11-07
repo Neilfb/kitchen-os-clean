@@ -355,7 +355,7 @@ export default function HomePage() {
               {/* Image */}
               <div className="relative h-full min-h-[400px]">
                 <img
-                  src="/assets/pexels-marcus-aurelius-4063796.jpg"
+                  src="/assets/female_chef.jpg"
                   alt="Professional chef"
                   className="absolute inset-0 w-full h-full object-cover"
                 />
