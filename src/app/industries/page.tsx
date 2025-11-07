@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Hotel, Utensils, GraduationCap, Building2, Coffee, Home, Factory, ShoppingCart, ArrowRight } from 'lucide-react';
+import IndustryCard from '@/components/IndustryCard';
 
 export const metadata: Metadata = {
   title: 'Industries We Serve - Kitchen OS',
@@ -18,6 +19,7 @@ export default function IndustriesPage() {
       icon: Utensils,
       name: 'Restaurants',
       description: 'From independent bistros to multi-site restaurant groups',
+      imageSrc: '/assets/restaurant_wc.png',
       challenges: [
         'Managing HACCP compliance across multiple sites',
         'Providing multi-language allergen information for international guests',
@@ -30,6 +32,7 @@ export default function IndustriesPage() {
       icon: Hotel,
       name: 'Hotels & Hospitality',
       description: 'Large-scale catering for hotels, conference centers, and event venues',
+      imageSrc: '/assets/Hotel_wc.png',
       challenges: [
         'Managing multiple kitchens and service points',
         'High volume temperature monitoring across large sites',
@@ -42,6 +45,7 @@ export default function IndustriesPage() {
       icon: GraduationCap,
       name: 'Schools & Universities',
       description: 'Educational institutions serving hundreds of meals daily',
+      imageSrc: '/assets/school_canteen.png',
       challenges: [
         'Strict allergen compliance for student safety',
         'Budget constraints requiring waste reduction',
@@ -54,6 +58,7 @@ export default function IndustriesPage() {
       icon: Building2,
       name: 'Healthcare & Care Homes',
       description: 'Hospitals, nursing homes, and care facilities',
+      imageSrc: '/assets/hospital_wc.png',
       challenges: [
         'Critical food safety for vulnerable populations',
         'Detailed allergen tracking for dietary requirements',
@@ -66,6 +71,7 @@ export default function IndustriesPage() {
       icon: Coffee,
       name: 'Cafes & Coffee Shops',
       description: 'Independent cafes and coffee shop chains',
+      imageSrc: '/assets/cafe_wc.png',
       challenges: [
         'Quick allergen information display for customers',
         'Simple date labelling for daily prep',
@@ -78,6 +84,7 @@ export default function IndustriesPage() {
       icon: Home,
       name: 'Contract Catering',
       description: 'Corporate catering, workplace restaurants, and catering companies',
+      imageSrc: '/assets/factory_canteen_wc.png',
       challenges: [
         'Managing multiple client sites',
         'Different compliance requirements per client',
@@ -90,6 +97,7 @@ export default function IndustriesPage() {
       icon: Factory,
       name: 'Food Production',
       description: 'Food manufacturers, central production kitchens, and processing facilities',
+      imageSrc: '/assets/food_prod_wc.png',
       challenges: [
         'High-volume temperature monitoring across production lines',
         'Complex HACCP compliance for multiple product ranges',
@@ -102,6 +110,7 @@ export default function IndustriesPage() {
       icon: ShoppingCart,
       name: 'Food Retail',
       description: 'Supermarkets, delis, food halls, and retail food counters',
+      imageSrc: '/assets/butcher_shop.png',
       challenges: [
         'Managing hot food counters and prepared foods',
         'Customer-facing allergen information requirements',
@@ -129,45 +138,34 @@ export default function IndustriesPage() {
         </div>
       </section>
 
-      {/* Industries Sections */}
-      {industries.map((industry, index) => (
-        <section
-          key={index}
-          className={`py-20 ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
-        >
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-              <div>
-                <div className="flex items-center mb-6">
-                  <div className="w-16 h-16 bg-product-fss-green-light rounded-lg flex items-center justify-center mr-4">
-                    <industry.icon className="w-8 h-8 text-product-fss-green" />
-                  </div>
-                  <div>
-                    <h2 className="text-3xl font-bold text-brand-navy">{industry.name}</h2>
-                    <p className="text-xl text-gray-600">{industry.description}</p>
-                  </div>
-                </div>
-
-                <div className="mb-6">
-                  <h3 className="text-xl font-semibold text-brand-navy mb-4">Common Challenges:</h3>
-                  <ul className="space-y-2">
-                    {industry.challenges.map((challenge, idx) => (
-                      <li key={idx} className="text-gray-700 pl-4 border-l-2 border-product-fss-green">
-                        {challenge}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="bg-gradient-to-br from-product-fss-green-light to-white p-8 rounded-2xl">
-                <h3 className="text-xl font-semibold text-brand-navy mb-4">How Kitchen OS Helps:</h3>
-                <p className="text-gray-700 leading-relaxed">{industry.solution}</p>
-              </div>
-            </div>
+      {/* Industries Grid with Flip Cards */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+              Explore Our Industry Solutions
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+              Click or tap any card to discover how Kitchen OS solves the unique challenges of each industry
+            </p>
           </div>
-        </section>
-      ))}
+
+          {/* Grid of Flip Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {industries.map((industry, index) => (
+              <IndustryCard
+                key={index}
+                name={industry.name}
+                description={industry.description}
+                imageSrc={industry.imageSrc}
+                icon={industry.icon}
+                challenges={industry.challenges}
+                solution={industry.solution}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* Trust Indicators */}
       <section className="py-20 bg-white">
