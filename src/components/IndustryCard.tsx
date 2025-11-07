@@ -9,25 +9,37 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import type { LucideIcon } from 'lucide-react';
+import { Hotel, Utensils, GraduationCap, Building2, Coffee, Home, Factory, ShoppingCart } from 'lucide-react';
 
 interface IndustryCardProps {
   name: string;
   description: string;
   imageSrc: string;
-  icon: LucideIcon;
+  iconName: string;
   challenges: string[];
   solution: string;
 }
+
+const iconMap = {
+  Utensils,
+  Hotel,
+  GraduationCap,
+  Building2,
+  Coffee,
+  Home,
+  Factory,
+  ShoppingCart,
+};
 
 export default function IndustryCard({
   name,
   description,
   imageSrc,
-  icon: Icon,
+  iconName,
   challenges,
   solution,
 }: IndustryCardProps) {
+  const Icon = iconMap[iconName as keyof typeof iconMap] || Utensils;
   const [isFlipped, setIsFlipped] = useState(false);
 
   const handleClick = () => {

@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 export default function IndustriesPage() {
   const industries = [
     {
-      icon: Utensils,
+      iconName: 'Utensils',
       name: 'Restaurants',
       description: 'From independent bistros to multi-site restaurant groups',
       imageSrc: '/assets/restaurant_wc.png',
@@ -29,7 +29,7 @@ export default function IndustriesPage() {
       solution: 'Kitchen OS gives restaurant operators complete visibility across all locations. Food Safe System handles HACCP automatically, AllerQ provides multi-language allergen menus, and F*** Waste helps identify cost-saving opportunities. Flexible per-site pricing with volume discounts for multi-location groups.',
     },
     {
-      icon: Hotel,
+      iconName: 'Hotel',
       name: 'Hotels & Hospitality',
       description: 'Large-scale catering for hotels, conference centers, and event venues',
       imageSrc: '/assets/Hotel_wc.png',
@@ -42,7 +42,7 @@ export default function IndustriesPage() {
       solution: 'Kitchen OS scales to handle large hotel operations with unlimited temperature sensors, multi-site management, and comprehensive waste analytics. Enterprise customers get dedicated support and custom integrations with existing hotel systems.',
     },
     {
-      icon: GraduationCap,
+      iconName: 'GraduationCap',
       name: 'Schools & Universities',
       description: 'Educational institutions serving hundreds of meals daily',
       imageSrc: '/assets/school_canteen.png',
@@ -55,7 +55,7 @@ export default function IndustriesPage() {
       solution: 'AllerQ ensures every student can see allergen information instantly via QR codes. F*** Waste helps schools reduce costs and meet sustainability targets. Food Safe System maintains compliance with minimal staff training required.',
     },
     {
-      icon: Building2,
+      iconName: 'Building2',
       name: 'Healthcare & Care Homes',
       description: 'Hospitals, nursing homes, and care facilities',
       imageSrc: '/assets/hospital_wc.png',
@@ -68,7 +68,7 @@ export default function IndustriesPage() {
       solution: 'Healthcare facilities require the highest food safety standards. Food Safe System provides 24/7 monitoring with instant alerts. AllerQ manages complex dietary requirements and allergen information. Complete audit trails for CQC inspections.',
     },
     {
-      icon: Coffee,
+      iconName: 'Coffee',
       name: 'Cafes & Coffee Shops',
       description: 'Independent cafes and coffee shop chains',
       imageSrc: '/assets/cafe_wc.png',
@@ -81,7 +81,7 @@ export default function IndustriesPage() {
       solution: 'Kitchen OS is perfect for cafes of all sizes. AllerQ (£7.49/month) provides instant allergen menus via QR codes. Food Label System (£35/month) eliminates handwritten labels and ensures compliance. Start with what you need and add more products as you grow.',
     },
     {
-      icon: Home,
+      iconName: 'Home',
       name: 'Contract Catering',
       description: 'Corporate catering, workplace restaurants, and catering companies',
       imageSrc: '/assets/factory_canteen_wc.png',
@@ -94,7 +94,7 @@ export default function IndustriesPage() {
       solution: 'Enterprise plan supports unlimited sites with centralized management. Generate client-specific compliance and sustainability reports. F*** Waste provides ROI metrics to demonstrate cost savings. White-label options available.',
     },
     {
-      icon: Factory,
+      iconName: 'Factory',
       name: 'Food Production',
       description: 'Food manufacturers, central production kitchens, and processing facilities',
       imageSrc: '/assets/food_prod_wc.png',
@@ -107,7 +107,7 @@ export default function IndustriesPage() {
       solution: 'Food Safe System scales to handle production environments with unlimited sensor support and automated HACCP logging. Food Label System ensures accurate batch labels and traceability. F*** Waste identifies production inefficiencies and cost-saving opportunities. Real-time alerts prevent costly recalls.',
     },
     {
-      icon: ShoppingCart,
+      iconName: 'ShoppingCart',
       name: 'Food Retail',
       description: 'Supermarkets, delis, food halls, and retail food counters',
       imageSrc: '/assets/butcher_shop.png',
@@ -158,7 +158,7 @@ export default function IndustriesPage() {
                 name={industry.name}
                 description={industry.description}
                 imageSrc={industry.imageSrc}
-                icon={industry.icon}
+                iconName={industry.iconName}
                 challenges={industry.challenges}
                 solution={industry.solution}
               />
