@@ -522,7 +522,7 @@ NEXT_PUBLIC_REVOLUT_MODE=sandbox
 REVOLUT_SECRET_KEY=sk_1ilr9StupO3oJ9aQstN_CbeiqbH9jS3z9S0xrGpQ2PVyt7KENN_un1_Tq7c_sclL
 REVOLUT_MODE=sandbox
 REVOLUT_MERCHANT_NAME=KITCHEN OPERATING SYSTEM LTD
-REVOLUT_API_URL=https://sandbox-merchant.revolut.com/api/1.0
+REVOLUT_API_URL=https://sandbox-merchant.revolut.com/api
 ```
 
 **To Be Added:**
