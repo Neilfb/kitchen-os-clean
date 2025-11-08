@@ -4,6 +4,7 @@
  * UK Shipping Rules:
  * - Free delivery on orders over £50
  * - £5.99 standard delivery under £50
+ * - Free delivery for test products (for payment testing)
  *
  * International Shipping:
  * - Flat rate £15.99 for all international orders
@@ -14,6 +15,7 @@ import { DEFAULT_SHIPPING_RULES } from '@/types/cart';
 export interface ShippingCalculationInput {
   subtotal: number; // Order subtotal (ex VAT)
   country: string; // ISO country code
+  productIds?: string[]; // Optional: Product IDs in cart
 }
 
 export interface ShippingCalculationResult {
@@ -26,8 +28,17 @@ export interface ShippingCalculationResult {
  * Calculate shipping cost based on order subtotal and destination country
  */
 export function calculateShipping(input: ShippingCalculationInput): ShippingCalculationResult {
-  const { subtotal, country } = input;
+  const { subtotal, country, productIds = [] } = input;
   const rules = DEFAULT_SHIPPING_RULES;
+
+  // Special case: Free shipping for test products
+  if (productIds.length > 0 && productIds.every(id => id === 'test-product')) {
+    return {
+      cost: 0,
+      isFree: true,
+      reason: 'Free delivery for test products',
+    };
+  }
 
   // UK Shipping
   if (country === 'GB' || country === 'UK') {

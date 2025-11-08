@@ -61,10 +61,14 @@ export function CartProvider({ children }: CartProviderProps) {
     // Calculate subtotal (sum of all item prices * quantities)
     const subtotal = items.reduce((sum, item) => sum + item.price * item.quantity, 0);
 
+    // Extract product IDs for shipping calculation
+    const productIds = items.map(item => item.productId);
+
     // Calculate shipping
     const shipping = calculateShipping({
       subtotal,
       country: effectiveCountry,
+      productIds,
     });
 
     // Calculate tax

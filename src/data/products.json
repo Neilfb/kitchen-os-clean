@@ -1,5 +1,36 @@
 [
   {
+    "id": "test-product",
+    "name": "Test Product - Payment Testing",
+    "category": "Test Items",
+    "tagline": "£0.10 test product for verifying payment integration",
+    "description": "This is a test product for verifying the Revolut payment integration. Use this to test the checkout flow with a minimal amount before making real purchases.",
+    "image": "https://placehold.co/600x400/10b981/FFFFFF/png?text=Test+Product",
+    "images": [
+      "https://placehold.co/600x400/10b981/FFFFFF/png?text=Test+Product"
+    ],
+    "icon": "TestTube2",
+    "systemCategory": "test",
+    "productType": "test",
+    "isFeatured": false,
+    "variants": [
+      {
+        "id": "test-single",
+        "name": "Test Item",
+        "price": 0.10,
+        "savings": null,
+        "popular": true
+      }
+    ],
+    "features": [
+      "Test product for payment verification",
+      "Minimal £0.10 price for testing",
+      "Free delivery (no minimum order)",
+      "Will not be shipped - for testing only"
+    ],
+    "relatedProduct": null
+  },
+  {
     "id": "thermal-labels",
     "name": "Thermal Labels",
     "category": "Labels & Consumables",
