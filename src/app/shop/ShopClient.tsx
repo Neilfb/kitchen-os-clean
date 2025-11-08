@@ -287,7 +287,7 @@ export function ShopClient({ products: productsData }: ShopClientProps) {
           <div className="space-y-6">
             <FAQItem
               question="Do I need a subscription to purchase hardware?"
-              answer="Yes, all temperature monitoring hardware requires an active Food Safe System subscription (£12/probe/month). Thermal labels require a Food Label System subscription (£35/month, includes 2,000 free labels)."
+              answer="Yes, all temperature monitoring hardware requires an active Food Safe System subscription (£15/probe/month). Thermal labels require a Food Label System subscription (£35/month, includes 2,000 free labels)."
             />
             <FAQItem
               question="What payment methods do you accept?"
@@ -299,11 +299,11 @@ export function ShopClient({ products: productsData }: ShopClientProps) {
             />
             <FAQItem
               question="Can I get a bulk discount?"
-              answer="Yes! Contact our sales team for volume pricing on bulk orders (10+ probes or 50,000+ labels). Email sales@kitchenos.com or call 020 1234 5678."
+              answer="Yes! Contact our sales team for volume pricing on bulk orders (10+ probes or 50,000+ labels). Email neil@kitchen-os.com or call +447588427222."
             />
             <FAQItem
               question="What's your returns policy?"
-              answer="30-day money-back guarantee on all hardware purchases. Unused thermal labels can be returned within 14 days. Contact support@kitchenos.com to initiate a return."
+              answer="30-day money-back guarantee on all hardware purchases. Unused thermal labels can be returned within 14 days. Contact neil@kitchen-os.com to initiate a return."
             />
           </div>
         </div>
