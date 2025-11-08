@@ -31,9 +31,11 @@ export interface RevolutOrderRequest {
 }
 
 // Revolut Order Creation Response
+// Note: API version 2024-09-01 returns 'token', older versions return 'public_id'
 export interface RevolutOrderResponse {
   id: string; // Revolut order ID
-  public_id: string; // Public token for frontend widget
+  token?: string; // Public token for frontend widget (API version 2024-09-01+)
+  public_id?: string; // Public token for frontend widget (older API versions)
   type: 'PAYMENT';
   state: 'PENDING' | 'PROCESSING' | 'COMPLETED' | 'CANCELLED' | 'FAILED';
   created_at: string; // ISO 8601 datetime

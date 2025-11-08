@@ -78,6 +78,36 @@ export async function POST(request: NextRequest) {
       );
     }
 
+    // Validate API key format and log diagnostic info
+    const keyPrefix = revolutSecretKey.substring(0, 11);
+    const keyLength = revolutSecretKey.length;
+    const isSandboxKey = revolutSecretKey.startsWith('sk_sandbox_');
+    const isProductionKey = revolutSecretKey.startsWith('sk_live_');
+    const isSandboxUrl = revolutApiUrl.includes('sandbox');
+
+    console.log('Revolut API Configuration:', {
+      apiUrl: revolutApiUrl,
+      keyPrefix: revolutSecretKey.substring(0, 20) + '...',
+      keyLength,
+      isSandboxKey,
+      isProductionKey,
+      isSandboxUrl,
+      environmentMatch: (isSandboxKey && isSandboxUrl) || (isProductionKey && !isSandboxUrl),
+    });
+
+    // Warn about mismatched environment
+    if (isSandboxKey && !isSandboxUrl) {
+      console.warn('⚠️ WARNING: Sandbox API key detected but using production URL');
+    } else if (isProductionKey && isSandboxUrl) {
+      console.warn('⚠️ WARNING: Production API key detected but using sandbox URL');
+    }
+
+    // Warn about invalid key format
+    if (!isSandboxKey && !isProductionKey) {
+      console.error('❌ ERROR: Invalid API key format. Key should start with sk_sandbox_ or sk_live_');
+      console.error('   Your key starts with:', revolutSecretKey.substring(0, 15) + '...');
+    }
+
     // Call Revolut API to create order
     console.log('Revolut API Request:', {
       url: `${revolutApiUrl}/orders`,
@@ -113,12 +143,46 @@ export async function POST(request: NextRequest) {
         errorData,
         requestUrl: `${revolutApiUrl}/orders`,
         hasApiKey: !!revolutSecretKey,
+        keyPrefix: revolutSecretKey?.substring(0, 20) + '...',
+        isSandboxKey: revolutSecretKey?.startsWith('sk_sandbox_'),
+        isProductionKey: revolutSecretKey?.startsWith('sk_live_'),
       });
+
+      // Provide helpful error messages based on status code
+      let helpfulMessage = errorData.message || 'Unknown error from payment provider';
+
+      if (revolutResponse.status === 401) {
+        console.error('');
+        console.error('🔴 AUTHENTICATION FAILED (401)');
+        console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.error('Your Revolut API key is INVALID, EXPIRED, or REVOKED.');
+        console.error('');
+        console.error('Common causes:');
+        console.error('1. Wrong environment: Using production key with sandbox endpoint (or vice versa)');
+        console.error('2. Key expired: The API key has been revoked or expired in Revolut dashboard');
+        console.error('3. Copy/paste error: Missing characters or extra spaces in the key');
+        console.error('4. Wrong account: Using a key from a different Revolut merchant account');
+        console.error('');
+        console.error('Next steps:');
+        console.error('1. Log into Revolut Business: https://business.revolut.com');
+        console.error('2. Navigate to: Merchant API → API Keys');
+        console.error('3. Regenerate your sandbox secret key');
+        console.error('4. Copy the ENTIRE key (starts with sk_sandbox_)');
+        console.error('5. Update your REVOLUT_SECRET_KEY environment variable in Vercel');
+        console.error('6. Redeploy your application');
+        console.error('');
+        console.error('For detailed troubleshooting, see:');
+        console.error('.claude/revolut-api-troubleshooting.md');
+        console.error('━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━');
+        console.error('');
+
+        helpfulMessage = 'API authentication failed. Please check your Revolut API key configuration.';
+      }
 
       return NextResponse.json(
         {
           error: 'Failed to create payment order',
-          message: errorData.message || 'Unknown error from payment provider',
+          message: helpfulMessage,
           details: process.env.NODE_ENV === 'development' ? errorData : undefined,
         },
         { status: revolutResponse.status }
@@ -127,11 +191,42 @@ export async function POST(request: NextRequest) {
 
     const revolutOrder: RevolutOrderResponse = await revolutResponse.json();
 
+    // Log the FULL response from Revolut for debugging
+    console.log('Full Revolut API Response:', JSON.stringify(revolutOrder, null, 2));
+
     // Return the public token and order details
+    // Note: API version 2024-09-01 returns 'token', older versions return 'public_id'
+    const publicToken = revolutOrder.token || revolutOrder.public_id;
+
+    console.log('Token extraction:', {
+      hasTokenField: !!revolutOrder.token,
+      hasPublicIdField: !!revolutOrder.public_id,
+      extractedToken: publicToken,
+      allKeys: Object.keys(revolutOrder),
+    });
+
+    if (!publicToken) {
+      console.error('Revolut API did not return a public token. Full response:', revolutOrder);
+      return NextResponse.json(
+        {
+          error: 'Invalid response from payment provider',
+          message: 'Payment initialization failed - no public token received',
+        },
+        { status: 500 }
+      );
+    }
+
+    console.log('Revolut order created successfully:', {
+      id: revolutOrder.id,
+      hasToken: !!publicToken,
+      tokenLength: publicToken?.length,
+      state: revolutOrder.state,
+    });
+
     return NextResponse.json({
       success: true,
       revolutOrderId: revolutOrder.id,
-      publicToken: revolutOrder.public_id,
+      publicToken: publicToken,
       orderState: revolutOrder.state,
       checkoutUrl: revolutOrder.checkout_url,
     });

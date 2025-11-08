@@ -73,9 +73,17 @@ export function RevolutWidget({ customerDetails, cart }: RevolutWidgetProps) {
 
         const data: OrderCreationResponse = await response.json();
 
+        console.log('Full order creation response:', data);
+
         if (!data.success) {
           throw new Error(data.error || 'Failed to create order');
         }
+
+        console.log('Extracting token from response:', {
+          revolutOrderToken: data.revolutOrderToken,
+          hasToken: !!data.revolutOrderToken,
+          allKeys: Object.keys(data),
+        });
 
         setRevolutOrderToken(data.revolutOrderToken || null);
         setOrderNumber(data.orderId || null);
@@ -83,6 +91,7 @@ export function RevolutWidget({ customerDetails, cart }: RevolutWidgetProps) {
         console.log('Order created successfully:', {
           orderId: data.orderId,
           hasToken: !!data.revolutOrderToken,
+          tokenSet: !!data.revolutOrderToken,
         });
       } catch (err) {
         console.error('Order creation error:', err);

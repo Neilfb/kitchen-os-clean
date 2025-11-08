@@ -137,6 +137,13 @@ export async function POST(request: NextRequest) {
 
     const revolutData = await revolutResponse.json();
 
+    console.log('Revolut API response received:', {
+      revolutData,
+      hasPublicToken: !!revolutData.publicToken,
+      publicTokenValue: revolutData.publicToken,
+      allKeys: Object.keys(revolutData),
+    });
+
     // Update order with Revolut order ID
     await db.update('orders', dbOrderId, {
       revolut_order_id: revolutData.revolutOrderId,
