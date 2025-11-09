@@ -16,6 +16,7 @@ import { TaxSection } from '@/components/checkout/TaxSection';
 import { OrderSummary } from '@/components/checkout/OrderSummary';
 import { RevolutWidget } from '@/components/payment/RevolutWidget';
 import type { CustomerDetails } from '@/types/order';
+import { getAffiliateId, initAffiliateTracking } from '@/utils/affiliateTracking';
 
 export function CheckoutClient() {
   const router = useRouter();
@@ -23,6 +24,17 @@ export function CheckoutClient() {
   const [customerDetails, setCustomerDetails] = useState<CustomerDetails | null>(null);
   const [isFormValid, setIsFormValid] = useState(false);
   const [showPayment, setShowPayment] = useState(false);
+  const [affiliateId, setAffiliateId] = useState<string | null>(null);
+
+  // Initialize affiliate tracking and get affiliate ID
+  useEffect(() => {
+    initAffiliateTracking();
+    const detectedAffiliateId = getAffiliateId();
+    if (detectedAffiliateId) {
+      setAffiliateId(detectedAffiliateId);
+      console.log('[Checkout] Affiliate ID detected:', detectedAffiliateId);
+    }
+  }, []);
 
   // Redirect if cart is empty
   useEffect(() => {
@@ -116,7 +128,11 @@ export function CheckoutClient() {
             {showPayment && customerDetails && (
               <div className="bg-white rounded-2xl shadow-sm p-6 md:p-8">
                 <h2 className="text-xl font-bold text-gray-900 mb-6">Payment</h2>
-                <RevolutWidget customerDetails={customerDetails} cart={cart} />
+                <RevolutWidget
+                  customerDetails={customerDetails}
+                  cart={cart}
+                  affiliateId={affiliateId}
+                />
               </div>
             )}
           </div>

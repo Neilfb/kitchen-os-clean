@@ -20,9 +20,10 @@ import type { PaymentResult } from '@/types/revolut';
 interface RevolutWidgetProps {
   customerDetails: CustomerDetails;
   cart: CartState;
+  affiliateId?: string | null;
 }
 
-export function RevolutWidget({ customerDetails, cart }: RevolutWidgetProps) {
+export function RevolutWidget({ customerDetails, cart, affiliateId }: RevolutWidgetProps) {
   const router = useRouter();
   const [isCreatingOrder, setIsCreatingOrder] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -63,6 +64,7 @@ export function RevolutWidget({ customerDetails, cart }: RevolutWidgetProps) {
               total: cart.total,
               currency: cart.currency,
             },
+            affiliateId: affiliateId || undefined, // Pass affiliate ID if available
           }),
         });
 

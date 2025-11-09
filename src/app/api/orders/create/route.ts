@@ -68,8 +68,15 @@ export async function POST(request: NextRequest) {
       total: body.summary.total,
       status: 'pending',
       payment_method: null,
+      affiliate_id: body.affiliateId || null, // Push Lap Growth affiliate ID
+      affiliate_commission_tracked: false, // Will be set to true after conversion is tracked
       // created_at omitted - let DB default handle it
     });
+
+    // Log affiliate attribution if present
+    if (body.affiliateId) {
+      console.log(`[Affiliate] Order ${orderNumber} attributed to affiliate: ${body.affiliateId}`);
+    }
 
     // Save order items to database
     for (const item of body.items) {

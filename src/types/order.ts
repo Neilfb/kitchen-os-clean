@@ -67,6 +67,7 @@ export interface OrderCreationRequest {
   customer: CustomerDetails;
   items: CartItem[];
   summary: OrderSummary;
+  affiliateId?: string; // Push Lap Growth affiliate ID
 }
 
 export interface OrderCreationResponse {
