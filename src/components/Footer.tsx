@@ -16,6 +16,7 @@ export default function Footer() {
     { name: 'Blog', href: '/blog' },
     { name: 'Careers', href: '/careers' },
     { name: 'Contact', href: '/contact' },
+    { name: 'Partners & Affiliates', href: '/affiliates' },
   ];
 
   const resourceLinks = [
