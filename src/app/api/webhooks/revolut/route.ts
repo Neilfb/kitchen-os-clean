@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from 'next/server';
 import type { RevolutWebhookEvent } from '@/types/revolut';
 import * as db from '@/services/nocodebackend';
 import { sendEmail } from '@/services/emailit';
-import { trackConversion } from '@/services/pushLapGrowth';
+import { trackSale } from '@/services/pushLapGrowth';
 
 /**
  * Revolut Webhook Handler
@@ -116,37 +116,33 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
 
   if (affiliateId && !affiliateCommissionTracked) {
     try {
-      console.log(`[Affiliate] Tracking conversion for order ${order.order_number}, affiliate: ${affiliateId}`);
+      console.log(`[Affiliate] Tracking sale for order ${order.order_number}, affiliate: ${affiliateId}`);
 
-      const conversionResult = await trackConversion({
-        affiliate_id: affiliateId,
-        order_id: order.order_number as string,
-        amount: (order.total as number) / 100, // Convert pence to pounds
-        currency: 'GBP',
-        customer_email: order.customer_email as string,
-        metadata: {
-          payment_method: webhook.payment_method?.type || 'CARD',
-          order_db_id: order.id,
-        },
+      // Push Lap Growth Step 4: Track Sale
+      const saleResult = await trackSale({
+        referralId: order.customer_email as string, // Customer email (was referred)
+        externalId: String(order.id), // Database order ID
+        externalInvoiceId: order.order_number as string, // Order number (e.g., KOS-2025-123456)
+        totalEarned: (order.total as number) / 100, // Convert pence to pounds
       });
 
-      if (conversionResult.success) {
+      if (saleResult.success) {
         // Mark conversion as tracked to prevent duplicates
         await db.update('orders', order.id as number, {
           affiliate_commission_tracked: true,
         });
 
-        console.log(`[Affiliate] Conversion tracked successfully for order ${order.order_number}`);
+        console.log(`[Affiliate] Sale tracked successfully for order ${order.order_number}`);
       } else {
-        console.error(`[Affiliate] Failed to track conversion: ${conversionResult.error}`);
+        console.error(`[Affiliate] Failed to track sale: ${saleResult.error}`);
         // Don't fail the webhook if affiliate tracking fails
       }
     } catch (affiliateError) {
-      console.error('[Affiliate] Error tracking conversion:', affiliateError);
+      console.error('[Affiliate] Error tracking sale:', affiliateError);
       // Don't fail the webhook if affiliate tracking fails
     }
   } else if (affiliateId && affiliateCommissionTracked) {
-    console.log(`[Affiliate] Conversion already tracked for order ${order.order_number}`);
+    console.log(`[Affiliate] Sale already tracked for order ${order.order_number}`);
   }
 
   // Send payment confirmation email

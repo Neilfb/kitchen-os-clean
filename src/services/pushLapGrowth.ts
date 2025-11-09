@@ -1,120 +1,61 @@
 /**
  * Push Lap Growth API Client
  *
- * Service for tracking affiliate conversions and leads via Push Lap Growth API
- * Documentation: https://developers.pushlapgrowth.com/
+ * Service for tracking affiliate referrals and sales via Push Lap Growth API
+ * Documentation: https://www.pushlapgrowth.com/
+ * Program ID: 7bbce14d-c2f8-40b1-8461-f3542b9b4652
  */
 
-import type {
-  PushLapGrowthConversionRequest,
-  PushLapGrowthConversionResponse,
-  PushLapGrowthLeadRequest,
-  PushLapGrowthLeadResponse,
-} from '@/types/affiliate';
-
 // Push Lap Growth API configuration
-const API_BASE_URL = 'https://api.pushlapgrowth.com/v1';
+const API_BASE_URL = 'https://www.pushlapgrowth.com/api/v1';
 const API_KEY = process.env.PUSH_LAP_GROWTH_API_KEY;
 const ENABLED = process.env.NEXT_PUBLIC_PUSH_LAP_GROWTH_ENABLED === 'true';
 
 /**
- * Track a conversion (sale/purchase) with Push Lap Growth
- * Called when a payment is successfully completed
+ * Push Lap Growth Referral (Sign Up) Request
  */
-export async function trackConversion(
-  data: PushLapGrowthConversionRequest
-): Promise<PushLapGrowthConversionResponse> {
-  // Check if Push Lap Growth is enabled
-  if (!ENABLED) {
-    console.log('[Push Lap Growth] Tracking disabled, skipping conversion:', data.order_id);
-    return {
-      success: true,
-      message: 'Tracking disabled',
-    };
-  }
-
-  // Check if API key is configured
-  if (!API_KEY) {
-    console.error('[Push Lap Growth] API key not configured');
-    return {
-      success: false,
-      error: 'Push Lap Growth API key not configured',
-    };
-  }
-
-  try {
-    console.log('[Push Lap Growth] Tracking conversion:', {
-      affiliate_id: data.affiliate_id,
-      order_id: data.order_id,
-      amount: data.amount,
-    });
-
-    const response = await fetch(`${API_BASE_URL}/conversions`, {
-      method: 'POST',
-      headers: {
-        'Authorization': `Bearer ${API_KEY}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        affiliate_id: data.affiliate_id,
-        order_id: data.order_id,
-        amount: data.amount,
-        currency: data.currency || 'GBP',
-        customer_email: data.customer_email,
-        product_ids: data.product_ids,
-        commission_amount: data.commission_amount,
-        metadata: {
-          ...data.metadata,
-          source: 'kitchen-os',
-          timestamp: new Date().toISOString(),
-        },
-      }),
-    });
-
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error('[Push Lap Growth] API error:', {
-        status: response.status,
-        statusText: response.statusText,
-        error: errorText,
-      });
-
-      return {
-        success: false,
-        error: `Push Lap Growth API error: ${response.status} ${response.statusText}`,
-      };
-    }
-
-    const result = await response.json();
-
-    console.log('[Push Lap Growth] Conversion tracked successfully:', {
-      order_id: data.order_id,
-      conversion_id: result.id || result.conversion_id,
-    });
-
-    return {
-      success: true,
-      conversion_id: result.id || result.conversion_id,
-    };
-  } catch (error) {
-    console.error('[Push Lap Growth] Failed to track conversion:', error);
-    return {
-      success: false,
-      error: error instanceof Error ? error.message : 'Unknown error',
-    };
-  }
+export interface PushLapReferralRequest {
+  affiliateId: string; // Affiliate ID or email who referred the user
+  name: string; // Customer name
+  email: string; // Customer email
+  referredUserExternalId?: string; // Optional: Customer ID in your database
+  plan?: string; // Optional: Product/plan name
+  status?: string; // Optional: Status (e.g., "active", "pending")
 }
 
 /**
- * Track a lead (demo booking, inquiry, etc.) with Push Lap Growth
- * Used for tracking non-purchase conversions
+ * Push Lap Growth Sale Request
  */
-export async function trackLead(
-  data: PushLapGrowthLeadRequest
-): Promise<PushLapGrowthLeadResponse> {
+export interface PushLapSaleRequest {
+  referralId: string; // The referral ID or email of the user who bought
+  externalId?: string; // Optional: Customer ID in your database
+  externalInvoiceId?: string; // Optional: Order/invoice number
+  totalEarned: number; // Total sale amount
+  commissionRate?: number; // Optional: Override affiliate commission rate
+}
+
+/**
+ * API Response
+ */
+export interface PushLapResponse {
+  success: boolean;
+  id?: string;
+  referralId?: string;
+  saleId?: string;
+  error?: string;
+  message?: string;
+}
+
+/**
+ * Track a new referral (customer sign-up)
+ * Called when a customer completes checkout (before payment)
+ */
+export async function trackReferral(
+  data: PushLapReferralRequest
+): Promise<PushLapResponse> {
   // Check if Push Lap Growth is enabled
   if (!ENABLED) {
-    console.log('[Push Lap Growth] Tracking disabled, skipping lead:', data.email);
+    console.log('[Push Lap Growth] Tracking disabled, skipping referral:', data.email);
     return {
       success: true,
       message: 'Tracking disabled',
@@ -131,36 +72,31 @@ export async function trackLead(
   }
 
   try {
-    console.log('[Push Lap Growth] Tracking lead:', {
-      affiliate_id: data.affiliate_id,
+    console.log('[Push Lap Growth] Tracking referral:', {
+      affiliateId: data.affiliateId,
       email: data.email,
-      lead_type: data.lead_type,
+      name: data.name,
     });
 
-    const response = await fetch(`${API_BASE_URL}/leads`, {
+    const response = await fetch(`${API_BASE_URL}/referrals`, {
       method: 'POST',
       headers: {
         'Authorization': `Bearer ${API_KEY}`,
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        affiliate_id: data.affiliate_id,
-        email: data.email,
+        affiliateId: data.affiliateId,
         name: data.name,
-        phone: data.phone,
-        lead_type: data.lead_type,
-        product: data.product,
-        metadata: {
-          ...data.metadata,
-          source: 'kitchen-os',
-          timestamp: new Date().toISOString(),
-        },
+        email: data.email,
+        referredUserExternalId: data.referredUserExternalId,
+        plan: data.plan,
+        status: data.status || 'pending',
       }),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      console.error('[Push Lap Growth] API error:', {
+      console.error('[Push Lap Growth] Referral API error:', {
         status: response.status,
         statusText: response.statusText,
         error: errorText,
@@ -174,17 +110,17 @@ export async function trackLead(
 
     const result = await response.json();
 
-    console.log('[Push Lap Growth] Lead tracked successfully:', {
+    console.log('[Push Lap Growth] Referral tracked successfully:', {
       email: data.email,
-      lead_id: result.id || result.lead_id,
+      referralId: result.id || result.referralId,
     });
 
     return {
       success: true,
-      lead_id: result.id || result.lead_id,
+      referralId: result.id || result.referralId,
     };
   } catch (error) {
-    console.error('[Push Lap Growth] Failed to track lead:', error);
+    console.error('[Push Lap Growth] Failed to track referral:', error);
     return {
       success: false,
       error: error instanceof Error ? error.message : 'Unknown error',
@@ -193,33 +129,104 @@ export async function trackLead(
 }
 
 /**
- * Test API connection and authentication
- * Useful for verifying Push Lap Growth setup
+ * Track a sale/conversion
+ * Called when payment is successfully completed
  */
-export async function testConnection(): Promise<boolean> {
+export async function trackSale(
+  data: PushLapSaleRequest
+): Promise<PushLapResponse> {
+  // Check if Push Lap Growth is enabled
+  if (!ENABLED) {
+    console.log('[Push Lap Growth] Tracking disabled, skipping sale:', data.externalInvoiceId);
+    return {
+      success: true,
+      message: 'Tracking disabled',
+    };
+  }
+
+  // Check if API key is configured
   if (!API_KEY) {
     console.error('[Push Lap Growth] API key not configured');
-    return false;
+    return {
+      success: false,
+      error: 'Push Lap Growth API key not configured',
+    };
   }
 
   try {
-    // Try to fetch account info or make a test request
-    // Note: Update this endpoint based on actual Push Lap Growth API docs
-    const response = await fetch(`${API_BASE_URL}/account`, {
-      headers: {
-        'Authorization': `Bearer ${API_KEY}`,
-      },
+    console.log('[Push Lap Growth] Tracking sale:', {
+      referralId: data.referralId,
+      externalInvoiceId: data.externalInvoiceId,
+      totalEarned: data.totalEarned,
     });
 
-    if (response.ok) {
-      console.log('[Push Lap Growth] API connection successful');
-      return true;
-    } else {
-      console.error('[Push Lap Growth] API connection failed:', response.status);
-      return false;
+    const response = await fetch(`${API_BASE_URL}/sales`, {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${API_KEY}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        referralId: data.referralId,
+        externalId: data.externalId,
+        externalInvoiceId: data.externalInvoiceId,
+        totalEarned: data.totalEarned,
+        commissionRate: data.commissionRate,
+      }),
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error('[Push Lap Growth] Sale API error:', {
+        status: response.status,
+        statusText: response.statusText,
+        error: errorText,
+      });
+
+      return {
+        success: false,
+        error: `Push Lap Growth API error: ${response.status} ${response.statusText}`,
+      };
     }
+
+    const result = await response.json();
+
+    console.log('[Push Lap Growth] Sale tracked successfully:', {
+      externalInvoiceId: data.externalInvoiceId,
+      saleId: result.id || result.saleId,
+    });
+
+    return {
+      success: true,
+      saleId: result.id || result.saleId,
+    };
   } catch (error) {
-    console.error('[Push Lap Growth] Connection test failed:', error);
-    return false;
+    console.error('[Push Lap Growth] Failed to track sale:', error);
+    return {
+      success: false,
+      error: error instanceof Error ? error.message : 'Unknown error',
+    };
   }
+}
+
+/**
+ * Legacy function for backward compatibility
+ * Maps to trackSale() with proper parameters
+ * @deprecated Use trackReferral() and trackSale() instead
+ */
+export async function trackConversion(data: {
+  affiliate_id: string;
+  order_id: string;
+  amount: number;
+  currency: string;
+  customer_email?: string;
+  metadata?: Record<string, unknown>;
+}): Promise<PushLapResponse> {
+  // For Push Lap Growth, we need to track this as a sale
+  // The referralId can be the customer's email (since they were referred)
+  return trackSale({
+    referralId: data.customer_email || data.affiliate_id,
+    externalInvoiceId: data.order_id,
+    totalEarned: data.amount,
+  });
 }

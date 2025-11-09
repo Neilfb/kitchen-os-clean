@@ -19,6 +19,13 @@ export default function RootLayout({
       <head>
         <OrganizationSchema />
         <WebSiteSchema />
+        {/* Push Lap Growth Affiliate Tracker (Step 1) */}
+        <script
+          src="https://pushlapgrowth.com/affiliate-tracker.js"
+          data-affiliate
+          data-program-id="7bbce14d-c2f8-40b1-8461-f3542b9b4652"
+          async
+        />
       </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <CartProvider>

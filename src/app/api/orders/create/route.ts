@@ -8,6 +8,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import type { OrderCreationRequest, OrderCreationResponse } from '@/types/order';
 import * as db from '@/services/nocodebackend';
+import { trackReferral } from '@/services/pushLapGrowth';
 
 export async function POST(request: NextRequest) {
   try {
@@ -73,9 +74,29 @@ export async function POST(request: NextRequest) {
       // created_at omitted - let DB default handle it
     });
 
-    // Log affiliate attribution if present
+    // Track affiliate referral if present (Push Lap Growth Step 3: Sign ups)
     if (body.affiliateId) {
       console.log(`[Affiliate] Order ${orderNumber} attributed to affiliate: ${body.affiliateId}`);
+
+      try {
+        const referralResult = await trackReferral({
+          affiliateId: body.affiliateId,
+          name: customerName,
+          email: body.customer.email,
+          referredUserExternalId: String(dbOrderId), // Use database order ID
+          plan: body.items.map(item => item.productName).join(', '), // Product names
+          status: 'pending', // Will become 'active' after payment
+        });
+
+        if (referralResult.success) {
+          console.log(`[Affiliate] Referral tracked successfully for ${body.customer.email}`);
+        } else {
+          console.error(`[Affiliate] Failed to track referral: ${referralResult.error}`);
+        }
+      } catch (affiliateError) {
+        console.error('[Affiliate] Error tracking referral:', affiliateError);
+        // Don't fail order creation if affiliate tracking fails
+      }
     }
 
     // Save order items to database
