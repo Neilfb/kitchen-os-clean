@@ -60,8 +60,8 @@ export default function FoodLabelSystemAffiliatePage() {
   const productFeatures = [
     {
       icon: Printer,
-      title: 'Bluetooth Thermal Printer',
-      description: 'Print professional allergen-safe labels instantly from any mobile device.',
+      title: 'Integrated Android Tablet & Printer',
+      description: 'Versatile integrated Android tablet and label printer for professional allergen-safe labels.',
     },
     {
       icon: Shield,
@@ -94,23 +94,23 @@ export default function FoodLabelSystemAffiliatePage() {
   const commissionExamples = [
     {
       customers: '1 per month',
-      monthly: '£10.50',
-      yearly: '£1,260',
+      monthly: '£8.75',
+      yearly: '£1,050',
     },
     {
       customers: '2 per month',
-      monthly: '£21',
-      yearly: '£2,520',
+      monthly: '£17.50',
+      yearly: '£2,100',
     },
     {
       customers: '3 per month',
-      monthly: '£31.50',
-      yearly: '£3,780',
+      monthly: '£26.25',
+      yearly: '£3,150',
     },
     {
       customers: '5 per month',
-      monthly: '£52.50',
-      yearly: '£6,300',
+      monthly: '£43.75',
+      yearly: '£5,250',
     },
   ];
 
@@ -139,10 +139,10 @@ export default function FoodLabelSystemAffiliatePage() {
               Earn 25% Recurring Commission
             </h2>
             <p className="text-2xl text-white/90 mb-8 font-semibold">
-              Introduce 1 restaurant per month, earn £1,260* per year
+              Introduce 1 restaurant per month, earn £1,050* per year
             </p>
             <p className="text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Promote Food Label System - the automated allergen-safe labeling solution helping UK businesses comply with Natasha&apos;s Law. Average subscription £42/month, you earn £10.50/month per customer.
+              Promote Food Label System - the automated allergen-safe labeling solution helping UK businesses comply with Natasha's Law. Average subscription £35/month (excluding VAT), you earn £8.75/month per customer.
             </p>
           </div>
 
@@ -169,7 +169,7 @@ export default function FoodLabelSystemAffiliatePage() {
               ))}
             </div>
             <p className="text-center text-gray-500 text-sm mt-6">
-              Based on average £42/month subscription (25% commission = £10.50/month per customer). *Earnings subject to sales performance and confirmed sales.
+              Based on average £35/month subscription, excluding VAT (25% commission = £8.75/month per customer). *Earnings subject to sales performance and confirmed sales. Commission calculated on subscription price excluding VAT.
             </p>
           </div>
 
@@ -195,7 +195,7 @@ export default function FoodLabelSystemAffiliatePage() {
               What is Food Label System?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              An automated allergen-safe food labeling solution that helps UK businesses comply with Natasha&apos;s Law using Bluetooth thermal printing technology.
+              An automated allergen-safe food labeling solution that helps UK businesses comply with Natasha's Law using an integrated Android tablet and thermal printer.
             </p>
           </div>
 
@@ -221,12 +221,12 @@ export default function FoodLabelSystemAffiliatePage() {
             </h3>
             <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto">
               {[
-                'Full Natasha&apos;s Law compliance (UK PPDS regulations)',
+                'Full Natasha\'s Law compliance (UK PPDS regulations)',
                 'No more handwriting labels or manual data entry',
                 'Professional-looking labels in seconds',
                 'All 14 major allergens clearly highlighted',
                 'Digital recipe database with allergen tracking',
-                'Bluetooth printing from any mobile device',
+                'Integrated Android tablet & thermal printer',
               ].map((benefit, idx) => (
                 <div key={idx} className="flex items-start gap-3">
                   <CheckCircle className="w-6 h-6 text-product-fls-purple flex-shrink-0 mt-0.5" />
@@ -299,8 +299,8 @@ export default function FoodLabelSystemAffiliatePage() {
               What is Natasha&apos;s Law?
             </h4>
             <p className="text-gray-700 leading-relaxed">
-              Natasha&apos;s Law (UK PPDS regulations) requires all prepacked for direct sale (PPDS) food to display full ingredients and allergen information.
-              Food Label System makes compliance simple with automated label generation, allergen highlighting, and Bluetooth thermal printing.
+              Natasha's Law (UK PPDS regulations) requires all prepacked for direct sale (PPDS) food to display full ingredients and allergen information.
+              Food Label System makes compliance simple with automated label generation, allergen highlighting, and an integrated Android tablet & thermal printer.
             </p>
           </div>
         </div>
