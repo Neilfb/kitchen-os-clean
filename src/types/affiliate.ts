@@ -7,8 +7,8 @@
 export interface AffiliateData {
   affiliateId: string | null;
   affiliateCode?: string | null; // Optional promo/coupon code
-  source?: string; // Where the affiliate link was clicked (e.g., 'shop', 'food-label-system')
-  timestamp?: string; // When the affiliate cookie was set
+  source?: string | null; // Where the affiliate link was clicked (e.g., 'shop', 'food-label-system')
+  timestamp?: string | null; // When the affiliate cookie was set
 }
 
 export interface PushLapGrowthConversionRequest {
