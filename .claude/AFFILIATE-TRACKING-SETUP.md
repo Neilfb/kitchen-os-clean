@@ -4,14 +4,18 @@
 
 Affiliate tracking for hardware purchases (thermal labels, temperature probes) via shop.
 
+**Program ID**: `7bbce14d-c2f8-40b1-8461-f3542b9b4652`
+
 ### Implementation Status
 
 ✅ **Completed:**
+- Push Lap Growth affiliate tracker script (automatically tracks clicks)
 - Client-side affiliate detection (URL parameters, cookies)
 - Checkout flow integration
 - Order creation with affiliate attribution
-- Revolut webhook conversion tracking
-- Push Lap Growth API client
+- Referral tracking (Step 3: Sign-ups)
+- Sale tracking (Step 4: Sales)
+- Revolut webhook integration
 
 ### Required Setup Steps
 
@@ -38,13 +42,15 @@ Affiliate tracking for hardware purchases (thermal labels, temperature probes) v
 
 1. **Find Your API Key**:
    - Login to Push Lap Growth: https://www.pushlapgrowth.com/
-   - Navigate to Settings → API or Developer settings
+   - Navigate to Dashboard → API Keys
+   - Click "Create a new API key"
    - Copy your API key
 
-2. **Verify API Documentation**:
-   - Check API endpoint structure: https://developers.pushlapgrowth.com/
-   - Confirm conversion tracking endpoint (may need to update `/src/services/pushLapGrowth.ts`)
-   - Note: Current implementation assumes endpoint `https://api.pushlapgrowth.com/v1/conversions`
+2. **API Endpoints** (Already Configured):
+   - **Base URL**: `https://www.pushlapgrowth.com/api/v1`
+   - **Referrals**: `/api/v1/referrals` (Step 3: Sign-ups)
+   - **Sales**: `/api/v1/sales` (Step 4: Conversions)
+   - **Tracker Script**: Already added to site layout
 
 #### 3. Update Environment Variables
 
