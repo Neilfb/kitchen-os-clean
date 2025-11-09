@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
 import type { RevolutWebhookEvent } from '@/types/revolut';
 import * as db from '@/services/nocodebackend';
+import { sendEmail } from '@/services/emailit';
 
 /**
  * Revolut Webhook Handler
@@ -12,8 +12,6 @@ import * as db from '@/services/nocodebackend';
  * IMPORTANT: You must configure this webhook URL in your Revolut dashboard:
  * https://your-domain.com/api/webhooks/revolut
  */
-
-const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -113,9 +111,10 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
 
   // Send payment confirmation email
   try {
-    await resend.emails.send({
+    await sendEmail({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
+      reply_to: 'neil@kitchen-os.com',
       subject: `Payment Confirmed - Order ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -170,9 +169,10 @@ async function handleOrderCancelled(order: Record<string, unknown>, _webhook: Re
 
   // Send cancellation notification email
   try {
-    await resend.emails.send({
+    await sendEmail({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
+      reply_to: 'neil@kitchen-os.com',
       subject: `Order Cancelled - ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -199,9 +199,10 @@ async function handlePaymentFailed(order: Record<string, unknown>, _webhook: Rev
 
   // Send payment failure notification
   try {
-    await resend.emails.send({
+    await sendEmail({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
+      reply_to: 'neil@kitchen-os.com',
       subject: `Payment Issue - Order ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
