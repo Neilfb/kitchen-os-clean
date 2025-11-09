@@ -93,24 +93,24 @@ export default function FoodLabelSystemAffiliatePage() {
 
   const commissionExamples = [
     {
-      customers: 1,
-      monthly: '£24.75',
-      yearly: '£297',
+      customers: '1 per month',
+      monthly: '£10.50',
+      yearly: '£1,260',
     },
     {
-      customers: 5,
-      monthly: '£123.75',
-      yearly: '£1,485',
+      customers: '2 per month',
+      monthly: '£21',
+      yearly: '£2,520',
     },
     {
-      customers: 10,
-      monthly: '£247.50',
-      yearly: '£2,970',
+      customers: '3 per month',
+      monthly: '£31.50',
+      yearly: '£3,780',
     },
     {
-      customers: 20,
-      monthly: '£495.00',
-      yearly: '£5,940',
+      customers: '5 per month',
+      monthly: '£52.50',
+      yearly: '£6,300',
     },
   ];
 
@@ -136,13 +136,13 @@ export default function FoodLabelSystemAffiliatePage() {
               Food Label System Affiliate Program
             </h1>
             <h2 className="text-4xl font-bold text-white/90 mb-6">
-              Earn 25% Recurring Commission for 12 Months
+              Earn 25% Recurring Commission
             </h2>
             <p className="text-2xl text-white/90 mb-8 font-semibold">
-              £24.75/month per customer (£297 total)
+              Introduce 1 restaurant per month, earn £1,260* per year
             </p>
             <p className="text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Promote Food Label System - the automated allergen-safe labeling solution helping UK businesses comply with Natasha&apos;s Law.
+              Promote Food Label System - the automated allergen-safe labeling solution helping UK businesses comply with Natasha&apos;s Law. Average subscription £42/month, you earn £10.50/month per customer.
             </p>
           </div>
 
@@ -155,21 +155,21 @@ export default function FoodLabelSystemAffiliatePage() {
               {commissionExamples.map((example, idx) => (
                 <div key={idx} className="text-center p-4 bg-gray-50 rounded-xl">
                   <p className="text-sm text-gray-500 mb-2">
-                    {example.customers} Customer{example.customers > 1 ? 's' : ''}
+                    Introduce {example.customers}
                   </p>
                   <p className="text-3xl font-bold text-product-fls-purple mb-1">
                     {example.monthly}
                   </p>
                   <p className="text-xs text-gray-500 mb-3">per month</p>
                   <div className="pt-3 border-t border-gray-200">
-                    <p className="text-sm text-gray-500 mb-1">12-month total</p>
+                    <p className="text-sm text-gray-500 mb-1">Annual earnings</p>
                     <p className="text-2xl font-bold text-brand-navy">{example.yearly}</p>
                   </div>
                 </div>
               ))}
             </div>
             <p className="text-center text-gray-500 text-sm mt-6">
-              Based on £99/month subscription price (25% commission)
+              Based on average £42/month subscription (25% commission = £10.50/month per customer). *Earnings subject to sales performance and confirmed sales.
             </p>
           </div>
 
@@ -384,7 +384,7 @@ export default function FoodLabelSystemAffiliatePage() {
             Start Earning Today
           </h2>
           <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join the Food Label System affiliate program and earn £24.75/month recurring commission (£297 over 12 months) on every customer you refer.
+            Join the Food Label System affiliate program and earn 25% recurring commission. Introduce 1 restaurant per month and earn £1,260 per year.
           </p>
           <a
             href="https://www.pushlapgrowth.com/programs/7bbce14d-c2f8-40b1-8461-f3542b9b4652/join"

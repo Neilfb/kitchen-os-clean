@@ -34,9 +34,10 @@ export default function AffiliatesPage() {
       name: 'Food Safe System',
       slug: 'food-safe-system',
       description: 'Digital HACCP and automated temperature monitoring for professional kitchens',
-      price: '£175/month',
-      commission: '£43.75/month',
-      totalEarnings: '£525',
+      price: 'from £90/month',
+      commission: '£22.50/month',
+      yearlyEarning: '£3,240',
+      yearlyDescription: 'Introduce 1 restaurant per month',
       color: 'product-fss-green',
       features: [
         'Automated temperature monitoring',
@@ -49,13 +50,14 @@ export default function AffiliatesPage() {
       name: 'Food Label System',
       slug: 'food-label-system',
       description: 'Automated allergen-safe food labeling and compliance for professional kitchens',
-      price: '£99/month',
-      commission: '£24.75/month',
-      totalEarnings: '£297',
+      price: 'from £42/month',
+      commission: '£10.50/month',
+      yearlyEarning: '£1,260',
+      yearlyDescription: 'Introduce 1 restaurant per month',
       color: 'product-fls-purple',
       features: [
         'Allergen-safe labeling',
-        'UK Natasha\'s Law compliance',
+        'UK Natasha&apos;s Law compliance',
         'Bluetooth thermal printer',
         'Instant label printing',
       ],
@@ -66,12 +68,12 @@ export default function AffiliatesPage() {
     {
       icon: DollarSign,
       title: '25% Recurring Commission',
-      description: 'Earn 25% of every monthly subscription for 12 months. One referral = £525+ in total commissions.',
+      description: 'Earn 25% of every monthly subscription. Introduce 1 restaurant per month to Food Safe System and earn £3,240/year.',
     },
     {
       icon: TrendingUp,
-      title: 'High-Value Products',
-      description: 'Professional kitchen software with £99-£175/month subscriptions. Higher prices = higher earnings.',
+      title: 'Hardware Commission Too',
+      description: 'Earn 10% commission on all hardware sales (thermal printers, temperature probes, labels).',
     },
     {
       icon: Users,
@@ -175,14 +177,14 @@ export default function AffiliatesPage() {
                         <p className="text-2xl font-bold text-brand-navy">{product.price}</p>
                       </div>
                       <div>
-                        <p className="text-sm text-gray-500 mb-1">Your Commission</p>
+                        <p className="text-sm text-gray-500 mb-1">25% Commission</p>
                         <p className="text-2xl font-bold text-product-fss-green">{product.commission}</p>
                       </div>
                     </div>
                     <div className="pt-4 border-t border-gray-200">
-                      <p className="text-sm text-gray-500 mb-1">Total Earnings (12 months)</p>
-                      <p className="text-3xl font-bold text-brand-navy">{product.totalEarnings}</p>
-                      <p className="text-sm text-gray-500 mt-1">per customer referred</p>
+                      <p className="text-sm text-gray-500 mb-1">{product.yearlyDescription}</p>
+                      <p className="text-3xl font-bold text-brand-navy">{product.yearlyEarning}</p>
+                      <p className="text-sm text-gray-500 mt-1">per year*</p>
                     </div>
                   </div>
 
@@ -206,6 +208,15 @@ export default function AffiliatesPage() {
                 </div>
               </div>
             ))}
+          </div>
+
+          <div className="mt-8 text-center">
+            <p className="text-gray-500 text-sm max-w-2xl mx-auto mb-4">
+              *Earnings are subject to sales performance and confirmed sales. Hardware sales earn 10% commission.
+            </p>
+            <p className="text-gray-600 text-sm max-w-2xl mx-auto">
+              <strong>Coming Soon:</strong> Similar subscription commissions will be available for AllerQ and F*** Waste when launched.
+            </p>
           </div>
         </div>
       </section>

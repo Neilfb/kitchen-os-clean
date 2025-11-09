@@ -93,24 +93,24 @@ export default function FoodSafeSystemAffiliatePage() {
 
   const commissionExamples = [
     {
-      customers: 1,
-      monthly: '£43.75',
-      yearly: '£525',
+      customers: '1 per month',
+      monthly: '£22.50',
+      yearly: '£3,240',
     },
     {
-      customers: 5,
-      monthly: '£218.75',
-      yearly: '£2,625',
+      customers: '2 per month',
+      monthly: '£45',
+      yearly: '£6,480',
     },
     {
-      customers: 10,
-      monthly: '£437.50',
-      yearly: '£5,250',
+      customers: '3 per month',
+      monthly: '£67.50',
+      yearly: '£9,720',
     },
     {
-      customers: 20,
-      monthly: '£875.00',
-      yearly: '£10,500',
+      customers: '5 per month',
+      monthly: '£112.50',
+      yearly: '£16,200',
     },
   ];
 
@@ -136,13 +136,13 @@ export default function FoodSafeSystemAffiliatePage() {
               Food Safe System Affiliate Program
             </h1>
             <h2 className="text-4xl font-bold text-white/90 mb-6">
-              Earn 25% Recurring Commission for 12 Months
+              Earn 25% Recurring Commission
             </h2>
             <p className="text-2xl text-white/90 mb-8 font-semibold">
-              £43.75/month per customer (£525 total)
+              Introduce 1 restaurant per month, earn £3,240* per year
             </p>
             <p className="text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Promote Food Safe System - the digital HACCP and automated temperature monitoring solution trusted by professional kitchens across the UK.
+              Promote Food Safe System - the digital HACCP and automated temperature monitoring solution trusted by professional kitchens across the UK. Average subscription £90/month, you earn £22.50/month per customer.
             </p>
           </div>
 
@@ -155,21 +155,21 @@ export default function FoodSafeSystemAffiliatePage() {
               {commissionExamples.map((example, idx) => (
                 <div key={idx} className="text-center p-4 bg-gray-50 rounded-xl">
                   <p className="text-sm text-gray-500 mb-2">
-                    {example.customers} Customer{example.customers > 1 ? 's' : ''}
+                    Introduce {example.customers}
                   </p>
                   <p className="text-3xl font-bold text-product-fss-green mb-1">
                     {example.monthly}
                   </p>
                   <p className="text-xs text-gray-500 mb-3">per month</p>
                   <div className="pt-3 border-t border-gray-200">
-                    <p className="text-sm text-gray-500 mb-1">12-month total</p>
+                    <p className="text-sm text-gray-500 mb-1">Annual earnings</p>
                     <p className="text-2xl font-bold text-brand-navy">{example.yearly}</p>
                   </div>
                 </div>
               ))}
             </div>
             <p className="text-center text-gray-500 text-sm mt-6">
-              Based on £175/month subscription price (25% commission)
+              Based on average £90/month subscription (25% commission = £22.50/month per customer). *Earnings subject to sales performance and confirmed sales.
             </p>
           </div>
 
@@ -373,7 +373,7 @@ export default function FoodSafeSystemAffiliatePage() {
             Start Earning Today
           </h2>
           <p className="text-xl text-white/80 mb-10 max-w-2xl mx-auto leading-relaxed">
-            Join the Food Safe System affiliate program and earn £43.75/month recurring commission (£525 over 12 months) on every customer you refer.
+            Join the Food Safe System affiliate program and earn 25% recurring commission. Introduce 1 restaurant per month and earn £3,240 per year.
           </p>
           <a
             href="https://www.pushlapgrowth.com/programs/7bbce14d-c2f8-40b1-8461-f3542b9b4652/join"
