@@ -142,7 +142,7 @@ export default function FoodLabelSystemAffiliatePage() {
               Introduce 1 restaurant per month, earn £1,050* per year
             </p>
             <p className="text-xl text-white/80 mb-10 max-w-3xl mx-auto leading-relaxed">
-              Promote Food Label System - the automated allergen-safe labeling solution helping UK businesses comply with Natasha's Law. Average subscription £35/month (excluding VAT), you earn £8.75/month per customer.
+              Promote Food Label System - the automated allergen-safe labeling solution helping UK businesses comply with Natasha&apos;s Law. Average subscription £35/month (excluding VAT), you earn £8.75/month per customer.
             </p>
           </div>
 
@@ -195,7 +195,7 @@ export default function FoodLabelSystemAffiliatePage() {
               What is Food Label System?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              An automated allergen-safe food labeling solution that helps UK businesses comply with Natasha's Law using an integrated Android tablet and thermal printer.
+              An automated allergen-safe food labeling solution that helps UK businesses comply with Natasha&apos;s Law using an integrated Android tablet and thermal printer.
             </p>
           </div>
 
@@ -299,7 +299,7 @@ export default function FoodLabelSystemAffiliatePage() {
               What is Natasha&apos;s Law?
             </h4>
             <p className="text-gray-700 leading-relaxed">
-              Natasha's Law (UK PPDS regulations) requires all prepacked for direct sale (PPDS) food to display full ingredients and allergen information.
+              Natasha&apos;s Law (UK PPDS regulations) requires all prepacked for direct sale (PPDS) food to display full ingredients and allergen information.
               Food Label System makes compliance simple with automated label generation, allergen highlighting, and an integrated Android tablet & thermal printer.
             </p>
           </div>
