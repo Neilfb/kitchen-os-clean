@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
 import { CartProvider } from "@/contexts/CartContext";
+import Release0Widget from "@/components/chatbot/Release0Widget";
 
 // Export metadata using Next.js App Router native metadata API
 export const metadata: Metadata = defaultMetadata;
@@ -32,6 +33,14 @@ export default function RootLayout({
           <Header />
           <main>{children}</main>
           <Footer />
+          {/* Release0 AI Chatbot - Conversational lead capture & product discovery */}
+          <Release0Widget
+            mode="bubble"
+            position="bottom-right"
+            primaryColor="#00A651"
+            showGreeting={true}
+            greetingMessage="Hi! 👋 I'm the Kitchen OS AI assistant. How can I help you today?"
+          />
         </CartProvider>
       </body>
     </html>
