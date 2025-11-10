@@ -57,7 +57,7 @@ interface Release0WebhookPayload {
   };
 }
 
-interface ChatLead {
+interface ChatLead extends Record<string, unknown> {
   conversation_id: string;
   name: string | null;
   email: string;
@@ -135,8 +135,8 @@ export async function POST(request: NextRequest) {
 
     // Save to NoCodeBackend database
     try {
-      const savedLead = await db.create('chat_leads', leadData);
-      console.log('[Release0 Webhook] Lead saved to database:', savedLead.id);
+      const leadId = await db.create('chat_leads', leadData);
+      console.log('[Release0 Webhook] Lead saved to database:', leadId);
     } catch (dbError) {
       console.error('[Release0 Webhook] Database error:', dbError);
       // Continue processing even if database save fails
@@ -231,6 +231,7 @@ async function sendHotLeadNotification(
     `;
 
     await sendEmail({
+      from: 'Kitchen OS Chatbot <noreply@kitchenos.com>',
       to: process.env.SALES_NOTIFICATION_EMAIL || 'hello@kitchenos.com',
       subject: `🔥 Hot Lead: ${lead.name || lead.email} - ${lead.product_interest || 'General Inquiry'}`,
       html: emailHtml,
