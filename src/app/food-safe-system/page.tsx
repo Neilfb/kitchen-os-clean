@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'food safety automation',
     'kitchen temperature monitoring',
   ],
+  alternates: {
+    canonical: '/food-safe-system',
+  },
   openGraph: {
     title: 'Food Safe System - Digital HACCP & Temperature Monitoring | Kitchen OS',
     description: 'Automated HACCP management and temperature monitoring for professional kitchens. Real-time alerts, cloud backup, and complete compliance documentation.',

@@ -5,6 +5,9 @@ import { Users, Target, Heart, Lightbulb, ArrowRight } from 'lucide-react';
 export const metadata: Metadata = {
   title: 'About Us - Kitchen OS',
   description: 'Learn about Kitchen OS - the professional kitchen management platform built by chefs, for chefs. Our mission, values, and story.',
+  alternates: {
+    canonical: '/about',
+  },
   openGraph: {
     title: 'About Us - Kitchen OS',
     description: 'Learn about Kitchen OS - the professional kitchen management platform built by chefs, for chefs. Our mission, values, and story.',

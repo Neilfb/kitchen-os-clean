@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'food waste software',
     'commercial kitchen waste',
   ],
+  alternates: {
+    canonical: '/f-waste',
+  },
   openGraph: {
     title: 'F*** Waste - Turning Waste into Profit | Kitchen OS',
     description: 'IoT smart under-bin scales with AI analytics. 50%+ waste reduction, 14:1 ROI. Zero workflow disruption.',

@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'allergen tracking',
     'food allergen software',
   ],
+  alternates: {
+    canonical: '/allerq',
+  },
   openGraph: {
     title: 'AllerQ - Digital Allergen Menus with QR Codes | Kitchen OS',
     description: 'Create compliant digital allergen menus with QR codes. Multi-language support, instant updates, and complete allergen traceability for restaurants and cafes.',

@@ -17,6 +17,9 @@ export const metadata: Metadata = {
     'kitchen label software',
     'commercial kitchen labels',
   ],
+  alternates: {
+    canonical: '/food-label-system',
+  },
   openGraph: {
     title: 'Food Label System - Automated Date Labels & Barcodes | Kitchen OS',
     description: 'Print compliant food labels with barcodes in seconds. Automated use-by dates, allergen warnings, and complete traceability for professional kitchens.',

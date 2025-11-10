@@ -24,6 +24,9 @@ export const metadata: Metadata = {
     'allergen management',
     'restaurant technology',
   ],
+  alternates: {
+    canonical: '/blog',
+  },
   openGraph: {
     title: 'Kitchen OS Blog - Expert Insights for Commercial Kitchens',
     description:

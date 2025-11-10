@@ -19,6 +19,9 @@ export const metadata: Metadata = {
     'commercial kitchen software',
     'hospitality management system',
   ],
+  alternates: {
+    canonical: '/',
+  },
   openGraph: {
     title: 'Kitchen OS - The Operating System for Professional Kitchens',
     description: 'Transform your kitchen operations with Kitchen OS. Food safety, allergen management, labelling, and waste tracking in one intelligent platform. Trusted by hospitality leaders.',

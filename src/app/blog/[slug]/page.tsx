@@ -40,6 +40,9 @@ export async function generateMetadata({ params }: BlogPostPageProps): Promise<M
     title: `${post.title} - Kitchen OS Blog`,
     description: post.excerpt,
     keywords: post.tags,
+    alternates: {
+      canonical: `/blog/${post.slug}`,
+    },
     openGraph: {
       title: post.title,
       description: post.excerpt,
