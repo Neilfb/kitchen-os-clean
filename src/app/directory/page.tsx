@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Link from 'next/link';
 import { ExternalLink, CheckCircle } from 'lucide-react';
+import EnchargeForm from '@/components/EnchargeForm';
 
 export const metadata: Metadata = {
   title: 'Kitchen Solutions Directory - Curated Partners & Suppliers | Kitchen OS',
@@ -328,21 +328,22 @@ export default function DirectoryPage() {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Suggest a Supplier Form */}
       <section className="py-20 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-6">
-            Missing Something?
-          </h2>
-          <p className="text-xl text-gray-600 mb-8">
-            Know a great supplier we should feature? Let us know and we&apos;ll review them for inclusion.
-          </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center px-8 py-4 bg-product-fss-green text-white font-bold rounded-xl hover:bg-product-fss-green-dark transition-all shadow-lg hover:shadow-xl hover:scale-105 transform duration-200"
-          >
-            Suggest a Supplier
-          </Link>
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gradient-to-br from-gray-50 to-white rounded-2xl shadow-soft p-8">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+                Missing Something?
+              </h2>
+              <p className="text-xl text-gray-600">
+                Know a great supplier we should feature? Let us know and we&apos;ll review them for inclusion.
+              </p>
+            </div>
+            <EnchargeForm
+              formId="066b4cba-033b-423d-a9aa-6c3b7d2fa308"
+            />
+          </div>
         </div>
       </section>
 

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { Twitter, Linkedin, Instagram, Youtube, ExternalLink } from 'lucide-react';
+import EnchargeForm from '@/components/EnchargeForm';
 
 export default function Footer() {
   const productLinks = [
@@ -165,6 +166,27 @@ export default function Footer() {
                   </a>
                 ))}
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Newsletter Section */}
+      <section className="bg-white py-20 border-t border-gray-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="max-w-3xl mx-auto">
+            <div className="bg-gradient-to-br from-product-fss-green-light to-white rounded-2xl shadow-soft p-8">
+              <div className="text-center mb-8">
+                <h3 className="text-3xl font-bold text-brand-navy mb-3">
+                  Stay Updated
+                </h3>
+                <p className="text-lg text-gray-600">
+                  Get the latest Kitchen OS updates, food safety tips, and industry insights delivered to your inbox.
+                </p>
+              </div>
+              <EnchargeForm
+                formId="52391afa-3232-40f5-8bee-de7302e0854d"
+              />
             </div>
           </div>
         </div>

@@ -1,67 +1,9 @@
 'use client';
 
-import { useState } from 'react';
-import { Mail, Phone, MapPin, Clock, Send } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock } from 'lucide-react';
+import EnchargeForm from '@/components/EnchargeForm';
 
 export default function ContactForm() {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    sites: '1',
-    interest: 'food-safe-system',
-    message: '',
-  });
-
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setSubmitStatus('idle');
-
-    try {
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to submit form');
-      }
-
-      setSubmitStatus('success');
-
-      // Reset form after successful submission
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        sites: '1',
-        interest: 'food-safe-system',
-        message: '',
-      });
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
-  };
-
   return (
     <div className="min-h-screen bg-white">
       {/* Hero Section */}
@@ -81,168 +23,14 @@ export default function ContactForm() {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-            {/* Contact Form */}
+            {/* Contact Form - Now using Encharge */}
             <div className="lg:col-span-2">
               <div className="bg-white rounded-2xl shadow-soft p-8">
-                <h2 className="text-3xl font-bold text-brand-navy mb-6">
-                  Book a Demo or Start Free Trial
-                </h2>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                        Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-product-fss-green focus:border-transparent"
-                        placeholder="Your full name"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-product-fss-green focus:border-transparent"
-                        placeholder="you@company.com"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                        Phone
-                      </label>
-                      <input
-                        type="tel"
-                        id="phone"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-product-fss-green focus:border-transparent"
-                        placeholder="+44 20 1234 5678"
-                      />
-                    </div>
-                    <div>
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
-                        Company / Restaurant Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        value={formData.company}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-product-fss-green focus:border-transparent"
-                        placeholder="Your restaurant or company"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <label htmlFor="sites" className="block text-sm font-medium text-gray-700 mb-2">
-                        Number of Sites
-                      </label>
-                      <select
-                        id="sites"
-                        name="sites"
-                        value={formData.sites}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-product-fss-green focus:border-transparent"
-                      >
-                        <option value="1">1 site</option>
-                        <option value="2-5">2-5 sites</option>
-                        <option value="6-10">6-10 sites</option>
-                        <option value="11-20">11-20 sites</option>
-                        <option value="20+">20+ sites</option>
-                      </select>
-                    </div>
-                    <div>
-                      <label htmlFor="interest" className="block text-sm font-medium text-gray-700 mb-2">
-                        Product Interest *
-                      </label>
-                      <select
-                        id="interest"
-                        name="interest"
-                        value={formData.interest}
-                        onChange={handleChange}
-                        required
-                        className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-product-fss-green focus:border-transparent"
-                      >
-                        <option value="food-safe-system">Food Safe System (HACCP)</option>
-                        <option value="allerq">AllerQ (Allergen Menus)</option>
-                        <option value="food-label-system">Food Label System</option>
-                        <option value="f-waste">F*** Waste</option>
-                        <option value="complete-platform">Complete Platform (All Products)</option>
-                        <option value="not-sure">Not sure yet</option>
-                      </select>
-                    </div>
-                  </div>
-
-                  <div>
-                    <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                      Message
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      value={formData.message}
-                      onChange={handleChange}
-                      rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-product-fss-green focus:border-transparent"
-                      placeholder="Tell us about your kitchen operation and what challenges you're facing..."
-                    />
-                  </div>
-
-                  {submitStatus === 'success' && (
-                    <div className="bg-product-fss-green-light border border-product-fss-green text-product-fss-green-dark px-4 py-3 rounded-lg">
-                      <p className="font-semibold">Thank you for your inquiry!</p>
-                      <p className="text-sm">We&apos;ll get back to you within 24 hours.</p>
-                    </div>
-                  )}
-
-                  {submitStatus === 'error' && (
-                    <div className="bg-red-50 border border-red-300 text-red-700 px-4 py-3 rounded-lg">
-                      <p className="font-semibold">Something went wrong.</p>
-                      <p className="text-sm">Please try again or email us directly at neil@kitchen-os.com</p>
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="w-full bg-product-fss-green text-white font-semibold px-8 py-4 rounded-lg hover:bg-product-fss-green-dark transition-colors disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
-                  >
-                    {isSubmitting ? (
-                      'Sending...'
-                    ) : (
-                      <>
-                        Send Message
-                        <Send className="ml-2 w-5 h-5" />
-                      </>
-                    )}
-                  </button>
-
-                  <p className="text-sm text-gray-500 text-center">
-                    By submitting this form, you agree to our Privacy Policy.
-                    We&apos;ll never share your information.
-                  </p>
-                </form>
+                <EnchargeForm
+                  formId="9c1b1ddf-90db-4f82-aa42-63d2e57fc581"
+                  title="Book a Demo or Start Free Trial"
+                  description="Fill out the form below and we'll get back to you within 24 hours."
+                />
               </div>
             </div>
 
