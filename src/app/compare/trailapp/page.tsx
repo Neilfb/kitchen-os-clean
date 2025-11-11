@@ -15,16 +15,22 @@ export const metadata: Metadata = {
 export default function CompareTrailappPage() {
   const comparisonFeatures = [
     {
+      feature: 'Native Temperature Monitoring',
+      kitchenOS: true,
+      competitor: false,
+      notes: 'FSS includes integrated LoRaWAN sensors. TrailApp requires external provider integrations (additional costs)',
+    },
+    {
       feature: 'Automated Temperature Monitoring',
       kitchenOS: true,
       competitor: true,
-      notes: 'Both offer LoRaWAN sensors for 24/7 monitoring',
+      notes: 'FSS: Native solution included. TrailApp: Via third-party integrations',
     },
     {
       feature: 'Real-Time Alerts',
       kitchenOS: true,
       competitor: true,
-      notes: 'Instant notifications when temperatures go out of range',
+      notes: 'Both offer instant notifications when temperatures go out of range',
     },
     {
       feature: 'Food Waste Tracking',
@@ -54,13 +60,7 @@ export default function CompareTrailappPage() {
       feature: 'Mobile App',
       kitchenOS: true,
       competitor: true,
-      notes: 'Both offer iOS and Android apps',
-    },
-    {
-      feature: 'UK Support Team',
-      kitchenOS: true,
-      competitor: false,
-      notes: 'Kitchen OS has UK-based support, Trailapp is US-based',
+      notes: 'Both are UK companies with UK-based support teams',
     },
   ];
 
@@ -87,17 +87,19 @@ export default function CompareTrailappPage() {
             <h2 className="text-2xl font-bold text-brand-navy mb-6">Quick Summary</h2>
             <div className="prose max-w-none text-gray-700">
               <p className="text-lg leading-relaxed mb-4">
-                <strong>Trailapp</strong> is a solid HACCP management platform focused on temperature monitoring
-                and compliance documentation. It&apos;s popular in the US market and offers reliable sensor technology.
+                <strong>TrailApp</strong> is a UK company offering a <strong>generic digital checklist</strong> platform
+                that can be adapted for various industries. For temperature monitoring, TrailApp requires integration with
+                external providers, which adds to overall costs.
               </p>
               <p className="text-lg leading-relaxed mb-4">
-                <strong>Kitchen OS</strong> goes beyond HACCP to offer a complete kitchen management platform.
-                In addition to temperature monitoring (Food Safe System), you get allergen menu management (AllerQ),
-                automated date labelling (Food Label System), and food waste tracking (F*** Waste) - all in one integrated platform.
+                <strong>Food Safe System (Kitchen OS)</strong> is <strong>hospitality and food safety focused</strong> from the ground up.
+                FSS includes integrated LoRaWAN temperature monitoring as a native solution - no external integrations needed.
+                Beyond temperature monitoring, Kitchen OS offers allergen menu management (AllerQ), automated date labelling
+                (Food Label System), and food waste tracking (F*** Waste) - all in one integrated platform.
               </p>
               <p className="text-lg leading-relaxed">
-                If you only need temperature monitoring, both products work well. If you want to solve multiple
-                kitchen challenges with one integrated system, Kitchen OS is the better choice.
+                If you want a purpose-built food safety solution with integrated temperature monitoring at a significantly
+                lower cost (£15/month vs £75/month per location), Food Safe System is the clear choice.
               </p>
             </div>
           </div>
@@ -157,13 +159,18 @@ export default function CompareTrailappPage() {
             Pricing Comparison
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white p-8 rounded-lg shadow-soft">
-              <h3 className="text-xl font-bold text-brand-navy mb-4">Kitchen OS</h3>
-              <div className="text-3xl font-bold text-product-fss-green mb-4">From £49/month</div>
+            <div className="bg-white p-8 rounded-lg shadow-soft border-2 border-product-fss-green">
+              <h3 className="text-xl font-bold text-brand-navy mb-4">Food Safe System</h3>
+              <div className="text-3xl font-bold text-product-fss-green mb-2">From £15/month</div>
+              <div className="text-sm text-gray-600 mb-4">per location</div>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-product-fss-green mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Temperature monitoring (Food Safe System)</span>
+                  <span><strong>Native</strong> temperature monitoring with LoRaWAN sensors included</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-product-fss-green mr-2 flex-shrink-0 mt-0.5" />
+                  <span>Real-time alerts and HACCP compliance</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-product-fss-green mr-2 flex-shrink-0 mt-0.5" />
@@ -180,12 +187,17 @@ export default function CompareTrailappPage() {
               </ul>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-soft">
-              <h3 className="text-xl font-bold text-brand-navy mb-4">Trailapp</h3>
-              <div className="text-3xl font-bold text-gray-700 mb-4">From $49/month</div>
+              <h3 className="text-xl font-bold text-brand-navy mb-4">TrailApp</h3>
+              <div className="text-3xl font-bold text-gray-700 mb-2">From £75/month</div>
+              <div className="text-sm text-gray-600 mb-4">per location</div>
               <ul className="space-y-3 text-gray-700">
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Temperature monitoring</span>
+                  <span>Generic digital checklists</span>
+                </li>
+                <li className="flex items-start">
+                  <CheckCircle className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
+                  <span>Temperature monitoring via <strong>external integrations</strong> (extra cost)</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
@@ -193,11 +205,7 @@ export default function CompareTrailappPage() {
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>US-based support</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Free trial available</span>
+                  <span>UK-based support</span>
                 </li>
               </ul>
             </div>
@@ -212,33 +220,50 @@ export default function CompareTrailappPage() {
             Key Differences
           </h2>
           <div className="space-y-6">
+            <div className="bg-gradient-to-br from-product-fss-green-light to-white p-6 rounded-lg border-l-4 border-product-fss-green">
+              <h3 className="text-xl font-semibold text-brand-navy mb-3">
+                Native Temperature Monitoring vs External Integrations
+              </h3>
+              <p className="text-gray-700 mb-2">
+                <strong>Food Safe System:</strong> Integrated LoRaWAN temperature monitoring is included as a native solution.
+                Sensors are part of the system from day one - no additional integrations needed.
+              </p>
+              <p className="text-gray-700">
+                <strong>TrailApp:</strong> Requires integration with external temperature monitoring providers, which adds
+                to your costs and complexity. You'll need to manage multiple vendor relationships and potential compatibility issues.
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-product-fss-green-light to-white p-6 rounded-lg">
+              <h3 className="text-xl font-semibold text-brand-navy mb-3">
+                Food Safety Focused vs Generic Checklists
+              </h3>
+              <p className="text-gray-700 mb-2">
+                <strong>Food Safe System:</strong> Purpose-built for hospitality and food safety from the ground up.
+                Every feature is designed specifically for professional kitchens and HACCP compliance.
+              </p>
+              <p className="text-gray-700">
+                <strong>TrailApp:</strong> Generic digital checklist platform that can be adapted for various industries.
+                While flexible, it requires more configuration to meet specific food safety needs.
+              </p>
+            </div>
             <div className="bg-gradient-to-br from-product-fss-green-light to-white p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-brand-navy mb-3">
                 Integrated Platform vs Single Purpose
               </h3>
               <p className="text-gray-700">
                 Kitchen OS is a complete kitchen management platform. Beyond temperature monitoring,
-                you can add allergen menus, date labelling, and waste tracking - all integrated and
-                managed from one system. Trailapp focuses solely on HACCP and temperature monitoring.
+                you can add allergen menus (AllerQ), date labelling (Food Label System), and waste tracking (F*** Waste) -
+                all integrated and managed from one system. TrailApp focuses primarily on checklist management.
               </p>
             </div>
             <div className="bg-gradient-to-br from-product-fss-green-light to-white p-6 rounded-lg">
               <h3 className="text-xl font-semibold text-brand-navy mb-3">
-                UK vs US Focus
-              </h3>
-              <p className="text-gray-700">
-                Kitchen OS is built in the UK, with UK-based support and pricing in GBP. We understand
-                UK regulations, FSA guidelines, and EHO requirements. Trailapp is US-based with primarily
-                US market focus.
-              </p>
-            </div>
-            <div className="bg-gradient-to-br from-product-fss-green-light to-white p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-brand-navy mb-3">
-                Built by Chefs
+                Built by Chefs for Kitchens
               </h3>
               <p className="text-gray-700">
                 Kitchen OS was built by professional chefs who understand real kitchen challenges.
-                Every feature is designed around actual kitchen workflows, not abstract theory.
+                Every feature is designed around actual kitchen workflows, not abstract theory. Both companies
+                are UK-based with UK support teams, but Food Safe System is specifically designed for hospitality operations.
               </p>
             </div>
           </div>
