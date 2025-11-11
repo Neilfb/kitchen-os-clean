@@ -230,7 +230,7 @@ export default function CompareTrailappPage() {
               </p>
               <p className="text-gray-700">
                 <strong>TrailApp:</strong> Requires integration with external temperature monitoring providers, which adds
-                to your costs and complexity. You'll need to manage multiple vendor relationships and potential compatibility issues.
+                to your costs and complexity. You&apos;ll need to manage multiple vendor relationships and potential compatibility issues.
               </p>
             </div>
             <div className="bg-gradient-to-br from-product-fss-green-light to-white p-6 rounded-lg">
