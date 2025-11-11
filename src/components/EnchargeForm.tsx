@@ -1,7 +1,3 @@
-'use client';
-
-import { useEffect, useRef } from 'react';
-
 interface EnchargeFormProps {
   formId: string;
   title?: string;
@@ -11,50 +7,9 @@ interface EnchargeFormProps {
 /**
  * Encharge Form Embed Component
  *
- * Embeds an Encharge form by form ID with automatic script loading
+ * Simple wrapper for Encharge forms - script is loaded in layout.tsx
  */
 export default function EnchargeForm({ formId, title, description }: EnchargeFormProps) {
-  const formRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    // Check if script is already loaded
-    const existingScript = document.querySelector('.encharge-form-embed-script');
-
-    const loadScript = () => {
-      const script = document.createElement('script');
-      script.type = 'text/javascript';
-      script.className = 'encharge-form-embed-script';
-      script.src = 'https://resources-app.encharge.io/embed-production.min.js';
-      script.async = true;
-
-      // Wait for script to load before initializing forms
-      script.onload = () => {
-        // Give Encharge time to initialize
-        setTimeout(() => {
-          // Trigger re-initialization if needed
-          if (formRef.current) {
-            const event = new Event('DOMContentLoaded', { bubbles: true });
-            document.dispatchEvent(event);
-          }
-        }, 100);
-      };
-
-      document.head.appendChild(script);
-    };
-
-    if (!existingScript) {
-      loadScript();
-    } else {
-      // Script already exists, just trigger initialization
-      setTimeout(() => {
-        if (formRef.current) {
-          const event = new Event('DOMContentLoaded', { bubbles: true });
-          document.dispatchEvent(event);
-        }
-      }, 100);
-    }
-  }, [formId]);
-
   return (
     <div className="encharge-form-container">
       {title && (
@@ -68,7 +23,6 @@ export default function EnchargeForm({ formId, title, description }: EnchargeFor
         </p>
       )}
       <div
-        ref={formRef}
         className="encharge-form-embed"
         data-encharge-form-id={formId}
       />
