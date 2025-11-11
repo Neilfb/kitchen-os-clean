@@ -9,6 +9,7 @@ import PricingCard from '@/components/pricing/PricingCard';
 import PackageCard from '@/components/pricing/PackageCard';
 import VolumeDiscountTable from '@/components/pricing/VolumeDiscountTable';
 import ROICalculator from '@/components/pricing/ROICalculator';
+import { CurrencySelector } from '@/components/ui/CurrencySelector';
 
 // Note: Metadata export needs to be in a separate server component file
 // For now, this is a client component due to useState
@@ -72,26 +73,33 @@ export default function PricingPage() {
 
       {/* Hero Section */}
       <section className="bg-gradient-to-br from-brand-navy to-brand-navy-light text-white py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Simple, Transparent Pricing
-          </h1>
-          <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
-            Pay only for what you need. Flexible pricing that scales with your kitchen.
-            All products include 14-day free trial.
-          </p>
-          <div className="flex flex-wrap justify-center gap-6 text-sm">
-            <div className="flex items-center gap-2">
-              <Gift className="w-5 h-5 text-product-fss-green" />
-              <span>No credit card required</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Award className="w-5 h-5 text-product-fss-green" />
-              <span>Cancel anytime</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <ArrowRight className="w-5 h-5 text-product-fss-green" />
-              <span>Free onboarding included</span>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Currency Selector */}
+          <div className="flex justify-end mb-6">
+            <CurrencySelector />
+          </div>
+
+          <div className="text-center">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+              Simple, Transparent Pricing
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-gray-300 max-w-3xl mx-auto">
+              Pay only for what you need. Flexible pricing that scales with your kitchen.
+              All products include 14-day free trial.
+            </p>
+            <div className="flex flex-wrap justify-center gap-6 text-sm">
+              <div className="flex items-center gap-2">
+                <Gift className="w-5 h-5 text-product-fss-green" />
+                <span>No credit card required</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Award className="w-5 h-5 text-product-fss-green" />
+                <span>Cancel anytime</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <ArrowRight className="w-5 h-5 text-product-fss-green" />
+                <span>Free onboarding included</span>
+              </div>
             </div>
           </div>
         </div>
@@ -361,6 +369,21 @@ export default function PricingPage() {
             </p>
           </div>
           <VolumeDiscountTable />
+        </div>
+      </section>
+
+      {/* Currency Disclaimer */}
+      <section className="py-12 bg-white border-t border-gray-200">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-6 text-center">
+            <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              Currency Conversion Notice
+            </h3>
+            <p className="text-sm text-gray-600">
+              Prices are displayed in your selected currency for convenience. All prices are converted from GBP using daily exchange rates from the European Central Bank.
+              <strong className="text-gray-900"> Final charges will be processed in GBP via Revolut.</strong> The exact amount may vary slightly based on your bank&apos;s exchange rate at the time of payment.
+            </p>
+          </div>
         </div>
       </section>
 
