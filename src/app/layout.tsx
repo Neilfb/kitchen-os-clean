@@ -38,6 +38,13 @@ export default async function RootLayout({
           data-program-id="7bbce14d-c2f8-40b1-8461-f3542b9b4652"
           async
         />
+        {/* Encharge Site Tracking */}
+        <script
+          type="text/javascript"
+          dangerouslySetInnerHTML={{
+            __html: `!function(){if(!window.EncTracking||!window.EncTracking.started){window.EncTracking=Object.assign({}, window.EncTracking, {queue:window.EncTracking&&window.EncTracking.queue?window.EncTracking.queue:[],track:function(t){this.queue.push({type:"track",props:t})},identify:function(t){this.queue.push({type:"identify",props:t})},started:!0});var t=window.EncTracking;t.writeKey="vPyFR9a5FyuvV1sm5FPEuTUWh",t.hasOptedIn=true,t.shouldGetConsent=true,t.hasOptedIn&&(t.shouldGetConsent=!1),t.optIn=function(){t.hasOptedIn=!0,t&&t.init&&t.init()},t.optOut=function(){t.hasOptedIn=!1,t&&t.setOptOut&&t.setOptOut(!0)};var n=function(t){var n=document.createElement("script");n.type="text/javascript",n.async=void 0===t||t,n.src="https://resources-app.encharge.io/encharge-tracking.min.js";var e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};"complete"===document.readyState?n():window.attachEvent?window.attachEvent("onload",n):window.addEventListener("load",n,!1)}}();`,
+          }}
+        />
       </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <CurrencyProvider
