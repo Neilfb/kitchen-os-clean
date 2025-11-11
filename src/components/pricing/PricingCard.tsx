@@ -3,6 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { Check, Info } from 'lucide-react';
+import { useCurrency } from '@/contexts/CurrencyContext';
 
 interface PricingTier {
   name: string;
@@ -51,6 +52,8 @@ export default function PricingCard({
   badge,
   popular = false,
 }: PricingCardProps) {
+  const { convertPrice, formatPrice } = useCurrency();
+
   return (
     <div
       className={`relative bg-white rounded-2xl shadow-soft hover:shadow-soft-lg transition-all duration-300 overflow-hidden ${
@@ -84,35 +87,42 @@ export default function PricingCard({
         {/* Pricing Display */}
         {tiers ? (
           <div className="space-y-4">
-            {tiers.map((tier, index) => (
-              <div key={index} className="pb-4 border-b border-gray-100 last:border-0 last:pb-0">
-                <div className="flex items-baseline gap-2 mb-2">
-                  <span className="text-sm font-semibold text-gray-600">{tier.name}:</span>
-                  <span className="text-3xl font-bold text-brand-navy">
-                    £{isAnnual ? tier.annualPrice : tier.monthlyPrice}
-                  </span>
-                  <span className="text-gray-500">/{isAnnual ? 'year' : 'month'}</span>
+            {tiers.map((tier, index) => {
+              const price = isAnnual ? tier.annualPrice : tier.monthlyPrice;
+              const convertedPrice = convertPrice(price);
+              const savings = tier.monthlyPrice * 12 - tier.annualPrice;
+              const convertedSavings = convertPrice(savings);
+
+              return (
+                <div key={index} className="pb-4 border-b border-gray-100 last:border-0 last:pb-0">
+                  <div className="flex items-baseline gap-2 mb-2">
+                    <span className="text-sm font-semibold text-gray-600">{tier.name}:</span>
+                    <span className="text-3xl font-bold text-brand-navy">
+                      {formatPrice(convertedPrice)}
+                    </span>
+                    <span className="text-gray-500">/{isAnnual ? 'year' : 'month'}</span>
+                  </div>
+                  {isAnnual && savings > 0 && (
+                    <p className="text-sm text-product-fss-green font-semibold">
+                      Save {formatPrice(convertedSavings)}/year
+                    </p>
+                  )}
+                  <p className="text-sm text-gray-600 mt-1">{tier.description}</p>
                 </div>
-                {isAnnual && tier.monthlyPrice * 12 > tier.annualPrice && (
-                  <p className="text-sm text-product-fss-green font-semibold">
-                    Save £{(tier.monthlyPrice * 12 - tier.annualPrice).toFixed(2)}/year
-                  </p>
-                )}
-                <p className="text-sm text-gray-600 mt-1">{tier.description}</p>
-              </div>
-            ))}
+              );
+            })}
           </div>
         ) : singlePrice ? (
           <div>
             <div className="flex items-baseline gap-2 mb-2">
               <span className="text-4xl font-bold text-brand-navy">
-                £{isAnnual ? singlePrice.annual : singlePrice.monthly}
+                {formatPrice(convertPrice(isAnnual ? singlePrice.annual : singlePrice.monthly))}
               </span>
               <span className="text-gray-500">/{isAnnual ? 'year' : 'month'}</span>
             </div>
             {isAnnual && singlePrice.monthly * 12 > singlePrice.annual && (
               <p className="text-sm text-product-fss-green font-semibold">
-                Save £{(singlePrice.monthly * 12 - singlePrice.annual).toFixed(2)}/year
+                Save {formatPrice(convertPrice(singlePrice.monthly * 12 - singlePrice.annual))}/year
               </p>
             )}
           </div>
@@ -124,7 +134,7 @@ export default function PricingCard({
             <Info className="w-5 h-5 text-amber-600 flex-shrink-0 mt-0.5" />
             <div>
               <p className="text-sm font-semibold text-amber-900">One-time setup fee</p>
-              <p className="text-sm text-amber-700">£{setupFee} per installation</p>
+              <p className="text-sm text-amber-700">{formatPrice(convertPrice(setupFee))} per installation</p>
             </div>
           </div>
         )}

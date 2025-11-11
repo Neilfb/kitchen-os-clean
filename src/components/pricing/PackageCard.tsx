@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { Check, TrendingDown } from 'lucide-react';
+import { useCurrency } from '@/contexts/CurrencyContext';
 
 interface PackageProduct {
   name: string;
@@ -39,10 +40,17 @@ export default function PackageCard({
   popular = false,
   gradient = 'from-product-fss-green to-product-fss-green-dark',
 }: PackageCardProps) {
+  const { convertPrice, formatPrice } = useCurrency();
+
   const currentPrice = isAnnual ? annualPrice : monthlyPrice;
   const regularPrice = isAnnual ? regularAnnualPrice : regularMonthlyPrice;
   const savings = regularPrice - currentPrice;
   const savingsPercent = Math.round((savings / regularPrice) * 100);
+
+  // Convert prices to selected currency
+  const convertedCurrentPrice = convertPrice(currentPrice);
+  const convertedRegularPrice = convertPrice(regularPrice);
+  const convertedSavings = convertPrice(savings);
 
   return (
     <div
@@ -78,13 +86,13 @@ export default function PackageCard({
 
         {/* Pricing */}
         <div className="flex items-baseline gap-3 mb-2">
-          <span className="text-5xl font-bold">£{currentPrice.toFixed(2)}</span>
+          <span className="text-5xl font-bold">{formatPrice(convertedCurrentPrice)}</span>
           <span className="text-xl">/{isAnnual ? 'year' : 'month'}</span>
         </div>
 
         {/* Savings */}
         <div className="flex items-center gap-2 mb-4">
-          <span className="text-white/80 line-through text-lg">£{regularPrice.toFixed(2)}</span>
+          <span className="text-white/80 line-through text-lg">{formatPrice(convertedRegularPrice)}</span>
           <div className="flex items-center gap-1 bg-white/20 backdrop-blur-sm px-3 py-1 rounded-full">
             <TrendingDown className="w-4 h-4" />
             <span className="font-bold text-sm">Save {savingsPercent}%</span>
@@ -92,7 +100,7 @@ export default function PackageCard({
         </div>
 
         <p className="text-sm text-white/90">
-          Save £{savings.toFixed(2)} {isAnnual ? 'per year' : 'per month'} vs buying separately
+          Save {formatPrice(convertedSavings)} {isAnnual ? 'per year' : 'per month'} vs buying separately
         </p>
       </div>
 
