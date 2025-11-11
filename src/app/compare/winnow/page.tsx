@@ -1,13 +1,13 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, X, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Kitchen OS vs Winnow - Food Waste Tracking Comparison',
-  description: 'Compare Kitchen OS F*** Waste and Winnow for food waste tracking. See features, pricing, and key differences.',
+  title: 'F*** Waste vs Winnow | Reduce Food Waste & Boost ROI in Your Kitchen',
+  description: 'Compare F*** Waste with Winnow to see how our affordable smart-scale system delivers faster ROI, easier setup, and higher waste reduction for restaurants and hotels worldwide.',
   openGraph: {
-    title: 'Kitchen OS vs Winnow - Food Waste Tracking Comparison',
-    description: 'Compare Kitchen OS F*** Waste and Winnow for food waste tracking. See features, pricing, and key differences.',
+    title: 'F*** Waste vs Winnow | Reduce Food Waste & Boost ROI in Your Kitchen',
+    description: 'Compare F*** Waste with Winnow to see how our affordable smart-scale system delivers faster ROI, easier setup, and higher waste reduction for restaurants and hotels worldwide.',
     url: '/compare/winnow',
   },
 };
@@ -15,52 +15,39 @@ export const metadata: Metadata = {
 export default function CompareWinnowPage() {
   const comparisonFeatures = [
     {
-      feature: 'AI-Powered Waste Recognition',
-      kitchenOS: true,
-      competitor: true,
-      notes: 'Both use AI to identify waste items from photos',
+      feature: 'Core Technology',
+      kitchenOS: 'Smart LoRaWAN Scales + Cloud Analytics',
+      competitor: 'AI Camera + Bin Scale',
     },
     {
-      feature: 'Cost Tracking',
-      kitchenOS: true,
-      competitor: true,
-      notes: 'Calculate financial impact of waste',
+      feature: 'Target Users',
+      kitchenOS: 'Restaurants, Hotels, Caterers, SMEs',
+      competitor: 'Large Hotels & Enterprises',
     },
     {
-      feature: 'HACCP & Temperature Monitoring',
-      kitchenOS: true,
-      competitor: false,
-      notes: 'Kitchen OS includes Food Safe System',
+      feature: 'Average ROI',
+      kitchenOS: '14:1',
+      competitor: '<10:1 (undisclosed exact)',
     },
     {
-      feature: 'Digital Allergen Menus',
-      kitchenOS: true,
-      competitor: false,
-      notes: 'Kitchen OS includes AllerQ',
+      feature: 'Hardware Setup',
+      kitchenOS: 'Plug-and-play Smart Scales',
+      competitor: 'Custom install + AI Camera Unit',
     },
     {
-      feature: 'Automated Date Labels',
-      kitchenOS: true,
-      competitor: false,
-      notes: 'Kitchen OS includes Food Label System',
+      feature: 'Monthly Cost',
+      kitchenOS: 'From £150 / month',
+      competitor: 'Typically £400–£1000+ / month',
     },
     {
-      feature: 'Sustainability Reporting',
-      kitchenOS: true,
-      competitor: true,
-      notes: 'Both offer CO2 and ESG reports',
+      feature: 'Integration',
+      kitchenOS: 'Part of the Kitchen OS suite (Food Safe System, Food Label System)',
+      competitor: 'Stand-alone waste tracking',
     },
     {
-      feature: 'Weighing Scales Required',
-      kitchenOS: false,
-      competitor: true,
-      notes: 'Winnow requires specialized smart scales, Kitchen OS uses photo-based estimation',
-    },
-    {
-      feature: 'UK Support & Pricing',
-      kitchenOS: true,
-      competitor: false,
-      notes: 'Kitchen OS has UK-based support and GBP pricing',
+      feature: 'Setup Time',
+      kitchenOS: '<1 hour',
+      competitor: 'Multi-day install',
     },
   ];
 
@@ -71,35 +58,14 @@ export default function CompareWinnowPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
             <h1 className="text-4xl md:text-5xl font-bold mb-6">
-              Kitchen OS vs Winnow
+              F*** Waste vs Winnow: The Smarter Way to Cut Food Waste and Costs
             </h1>
-            <p className="text-xl md:text-2xl mb-8 text-product-fw-green-light">
-              Both platforms track food waste. Here&apos;s how F*** Waste compares to Winnow.
+            <p className="text-xl md:text-2xl mb-8 text-white/90">
+              Winnow&apos;s AI camera bins made headlines for reducing food waste in luxury hotels. But not every kitchen needs a £10,000 system to make a real impact.
             </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Quick Summary */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white p-8 rounded-lg shadow-soft">
-            <h2 className="text-2xl font-bold text-brand-navy mb-6">Quick Summary</h2>
-            <div className="prose max-w-none text-gray-700">
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>Winnow</strong> is a well-established food waste tracking platform popular with large hotels
-                and contract caterers. It uses smart scales and AI cameras to track waste with high accuracy.
-              </p>
-              <p className="text-lg leading-relaxed mb-4">
-                <strong>Kitchen OS F*** Waste</strong> offers similar waste tracking capabilities but with a simpler,
-                more flexible approach - just take a photo. Beyond waste tracking, Kitchen OS provides temperature
-                monitoring, allergen management, and date labelling in one integrated platform.
-              </p>
-              <p className="text-lg leading-relaxed">
-                Winnow excels for large-scale operations requiring maximum accuracy. Kitchen OS is better for
-                restaurants and smaller operations wanting waste tracking plus complete kitchen management.
-              </p>
-            </div>
+            <p className="text-lg text-white/90">
+              <strong>F*** Waste</strong> gives you the same insight at a fraction of the cost — delivering over 50% waste reduction and an average 14:1 ROI, all powered by simple IoT smart scales that fit seamlessly into any kitchen, from small restaurants to global hotel groups.
+            </p>
           </div>
         </div>
       </section>
@@ -115,7 +81,7 @@ export default function CompareWinnowPage() {
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Feature</th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold text-product-fw-green">Kitchen OS</th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-product-fw-green">F*** Waste</th>
                   <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">Winnow</th>
                 </tr>
               </thead>
@@ -124,23 +90,12 @@ export default function CompareWinnowPage() {
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
                       <div className="text-sm font-medium text-gray-900">{item.feature}</div>
-                      {item.notes && (
-                        <div className="text-sm text-gray-500 mt-1">{item.notes}</div>
-                      )}
                     </td>
                     <td className="px-6 py-4 text-center">
-                      {item.kitchenOS ? (
-                        <CheckCircle className="w-6 h-6 text-product-fw-green mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-gray-300 mx-auto" />
-                      )}
+                      <div className="text-sm text-gray-900">{item.kitchenOS}</div>
                     </td>
                     <td className="px-6 py-4 text-center">
-                      {item.competitor ? (
-                        <CheckCircle className="w-6 h-6 text-gray-400 mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-gray-300 mx-auto" />
-                      )}
+                      <div className="text-sm text-gray-600">{item.competitor}</div>
                     </td>
                   </tr>
                 ))}
@@ -150,99 +105,76 @@ export default function CompareWinnowPage() {
         </div>
       </section>
 
-      {/* Pricing Comparison */}
+      {/* Operational Advantages */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-brand-navy mb-12 text-center">
-            Pricing Comparison
+            Operational Advantages
           </h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="space-y-6">
             <div className="bg-white p-8 rounded-lg shadow-soft">
-              <h3 className="text-xl font-bold text-brand-navy mb-4">Kitchen OS</h3>
-              <div className="text-3xl font-bold text-product-fw-green mb-4">From £79/month</div>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-product-fw-green mr-2 flex-shrink-0 mt-0.5" />
-                  <span>F*** Waste tracking with photo-based AI</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-product-fw-green mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Optional: Food Safe System, AllerQ, Food Label System</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-product-fw-green mr-2 flex-shrink-0 mt-0.5" />
-                  <span>No specialized hardware required</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-product-fw-green mr-2 flex-shrink-0 mt-0.5" />
-                  <span>14-day free trial</span>
-                </li>
-              </ul>
+              <h3 className="text-xl font-semibold text-brand-navy mb-3 flex items-center">
+                <span className="text-2xl mr-3">1️⃣</span>
+                Easier to implement
+              </h3>
+              <p className="text-gray-700 ml-11">
+                No complex cameras, calibrations, or enterprise contracts. Just smart scales that connect securely via LoRaWAN and start sending data instantly.
+              </p>
             </div>
             <div className="bg-white p-8 rounded-lg shadow-soft">
-              <h3 className="text-xl font-bold text-brand-navy mb-4">Winnow</h3>
-              <div className="text-3xl font-bold text-gray-700 mb-4">Custom pricing</div>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Smart scales and AI cameras</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>High-accuracy waste tracking</span>
-                </li>
-                <li className="flex items-start">
-                  <X className="w-5 h-5 text-gray-300 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Requires specialized hardware (£5k+ upfront)</span>
-                </li>
-                <li className="flex items-start">
-                  <CheckCircle className="w-5 h-5 text-gray-400 mr-2 flex-shrink-0 mt-0.5" />
-                  <span>Enterprise-focused pricing</span>
-                </li>
-              </ul>
+              <h3 className="text-xl font-semibold text-brand-navy mb-3 flex items-center">
+                <span className="text-2xl mr-3">2️⃣</span>
+                Built for real kitchens
+              </h3>
+              <p className="text-gray-700 ml-11">
+                Designed by chefs who understand service chaos — use it during prep, service, and cleanup with no disruption.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-lg shadow-soft">
+              <h3 className="text-xl font-semibold text-brand-navy mb-3 flex items-center">
+                <span className="text-2xl mr-3">3️⃣</span>
+                Complete visibility
+              </h3>
+              <p className="text-gray-700 ml-11">
+                Cloud dashboard consolidates all locations in one place. Track patterns by day, team, or menu item.
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Key Differences */}
+      {/* ROI & Pricing Advantage */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-brand-navy mb-12 text-center">
-            Key Differences
+            ROI & Pricing Advantage
           </h2>
-          <div className="space-y-6">
-            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-brand-navy mb-3">
-                Photo-Based vs Hardware-Based
-              </h3>
-              <p className="text-gray-700">
-                Winnow requires smart scales and AI cameras (£5,000+ upfront investment).
-                Kitchen OS F*** Waste uses simple photo capture - just snap a picture with your phone.
-                Lower barrier to entry, faster setup, no specialized hardware to maintain.
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-8 rounded-lg shadow-soft">
+              <h3 className="text-2xl font-bold text-brand-navy mb-4">Get ROI faster.</h3>
+              <p className="text-gray-700 text-lg">
+                Our customers typically see <strong>50%+ waste reduction within the first month</strong>. That means payback in under 12 months — not &quot;eventually.&quot;
               </p>
             </div>
-            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-brand-navy mb-3">
-                Complete Platform vs Single Purpose
-              </h3>
-              <p className="text-gray-700">
-                Winnow focuses solely on waste tracking. Kitchen OS offers waste tracking plus temperature
-                monitoring, allergen menus, and date labelling - all integrated. One platform for all
-                kitchen challenges.
-              </p>
-            </div>
-            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-6 rounded-lg">
-              <h3 className="text-xl font-semibold text-brand-navy mb-3">
-                Restaurant vs Enterprise Focus
-              </h3>
-              <p className="text-gray-700">
-                Winnow targets large hotels and contract caterers with enterprise budgets.
-                Kitchen OS serves restaurants, cafes, and smaller operations. More flexible pricing,
-                easier to get started, no long-term contracts.
+            <div className="bg-gradient-to-br from-product-fw-green-light to-white p-8 rounded-lg shadow-soft">
+              <h3 className="text-2xl font-bold text-brand-navy mb-4">Save thousands, not spend them.</h3>
+              <p className="text-gray-700 text-lg">
+                At <strong>£150/month</strong>, F*** Waste delivers enterprise-level insights for a fraction of Winnow&apos;s cost.
               </p>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* Verdict */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-brand-navy mb-6">
+            Verdict
+          </h2>
+          <p className="text-xl text-gray-700 mb-8 max-w-2xl mx-auto">
+            If you run a restaurant, hotel, or catering group that wants measurable results without enterprise complexity, <strong>F*** Waste outperforms Winnow in value, speed, and ROI.</strong>
+          </p>
         </div>
       </section>
 
@@ -250,10 +182,10 @@ export default function CompareWinnowPage() {
       <section className="py-20 bg-gradient-to-br from-product-fw-green to-product-fw-green-dark text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Ready to Try F*** Waste?
+            Ready to Start Cutting Your Food Waste?
           </h2>
-          <p className="text-xl mb-8 text-product-fw-green-light">
-            No smart scales required. Start tracking waste today with just your smartphone.
+          <p className="text-xl mb-8 text-white/90">
+            Book a demo and see how F*** Waste can deliver faster ROI than Winnow.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link

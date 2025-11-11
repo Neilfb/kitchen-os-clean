@@ -1,67 +1,87 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { CheckCircle, X, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Kitchen OS vs Orbisk - Food Waste Tracking Comparison',
-  description: 'Compare Kitchen OS F*** Waste and Orbisk for food waste tracking and reduction.',
+  title: 'F*** Waste vs Orbisk | Affordable Smart Food Waste System with Faster ROI',
+  description: 'Compare F*** Waste with Orbisk to discover the simpler, more affordable food waste solution delivering faster ROI and deeper insights for kitchens worldwide.',
   openGraph: {
-    title: 'Kitchen OS vs Orbisk - Food Waste Tracking Comparison',
-    description: 'Compare Kitchen OS F*** Waste and Orbisk for food waste tracking and reduction.',
+    title: 'F*** Waste vs Orbisk | Affordable Smart Food Waste System with Faster ROI',
+    description: 'Compare F*** Waste with Orbisk to discover the simpler, more affordable food waste solution delivering faster ROI and deeper insights for kitchens worldwide.',
     url: '/compare/orbisk',
   },
 };
 
 export default function CompareOrbiskPage() {
   const comparisonFeatures = [
-    { feature: 'AI-Powered Waste Recognition', kitchenOS: true, competitor: true, notes: 'Both use AI to identify waste items' },
-    { feature: 'Photo-Based Tracking', kitchenOS: true, competitor: false, notes: 'Kitchen OS uses smartphone photos, Orbisk uses camera system' },
-    { feature: 'Sustainability Reporting', kitchenOS: true, competitor: true, notes: 'Both offer CO2 and ESG reports' },
-    { feature: 'HACCP & Temperature Monitoring', kitchenOS: true, competitor: false, notes: 'Kitchen OS includes Food Safe System' },
-    { feature: 'Digital Allergen Menus', kitchenOS: true, competitor: false, notes: 'Kitchen OS includes AllerQ' },
-    { feature: 'Automated Date Labels', kitchenOS: true, competitor: false, notes: 'Kitchen OS includes Food Label System' },
-    { feature: 'Hardware Installation Required', kitchenOS: false, competitor: true, notes: 'Orbisk requires camera installation above bins' },
-    { feature: 'UK Support & Pricing', kitchenOS: true, competitor: false, notes: 'Orbisk is Netherlands-based' },
+    {
+      feature: 'Core Tech',
+      kitchenOS: 'Smart Scales + IoT Cloud',
+      competitor: 'AI Camera + Scale',
+    },
+    {
+      feature: 'Average Waste Reduction',
+      kitchenOS: '50%+',
+      competitor: '38% avg',
+    },
+    {
+      feature: 'Average ROI',
+      kitchenOS: '14:1',
+      competitor: '~6–8:1',
+    },
+    {
+      feature: 'Setup Cost',
+      kitchenOS: 'Included',
+      competitor: '$2,000–$8,000/year',
+    },
+    {
+      feature: 'Payback Period',
+      kitchenOS: '<12 months',
+      competitor: '12–15 months',
+    },
+    {
+      feature: 'Integration',
+      kitchenOS: 'Kitchen OS suite',
+      competitor: 'Stand-alone',
+    },
+    {
+      feature: 'Target Users',
+      kitchenOS: 'Restaurants, Hotels, Chains',
+      competitor: 'Hotels, Large Kitchens',
+    },
   ];
 
   return (
     <div className="min-h-screen bg-white">
+      {/* Hero Section */}
       <section className="bg-gradient-to-br from-product-fw-green to-product-fw-green-dark text-white py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="max-w-3xl">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6">Kitchen OS vs Orbisk</h1>
-            <p className="text-xl md:text-2xl mb-8 text-product-fw-green-light">
-              Compare waste tracking platforms. See how Kitchen OS compares to Orbisk.
+            <h1 className="text-4xl md:text-5xl font-bold mb-6">
+              F*** Waste vs Orbisk: More Results, Less Hardware, Faster ROI
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-white/90">
+              Orbisk&apos;s AI camera bins are powerful — but expensive, complex, and often over-engineered for daily kitchen use.
+            </p>
+            <p className="text-lg text-white/90">
+              <strong>F*** Waste</strong> delivers the same impact using smart IoT scales that identify waste trends instantly — for just £150/month, not thousands a year.
             </p>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white p-8 rounded-lg shadow-soft">
-            <h2 className="text-2xl font-bold text-brand-navy mb-6">Quick Summary</h2>
-            <p className="text-lg text-gray-700 mb-4">
-              <strong>Orbisk</strong> uses ceiling-mounted cameras with AI to automatically track waste in bins.
-              Popular in European contract catering and large hotels.
-            </p>
-            <p className="text-lg text-gray-700">
-              <strong>Kitchen OS F*** Waste</strong> offers similar AI tracking with simpler setup - just take photos.
-              No hardware installation. Plus complete kitchen management (HACCP, allergens, labelling).
-            </p>
-          </div>
-        </div>
-      </section>
-
+      {/* Feature Comparison Table */}
       <section className="py-20 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-bold text-brand-navy mb-12 text-center">Feature Comparison</h2>
+          <h2 className="text-3xl font-bold text-brand-navy mb-12 text-center">
+            Comparison Snapshot
+          </h2>
           <div className="bg-white rounded-lg shadow-soft overflow-hidden">
             <table className="w-full">
               <thead className="bg-gray-50">
                 <tr>
                   <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Feature</th>
-                  <th className="px-6 py-4 text-center text-sm font-semibold text-product-fw-green">Kitchen OS</th>
+                  <th className="px-6 py-4 text-center text-sm font-semibold text-product-fw-green">F*** Waste</th>
                   <th className="px-6 py-4 text-center text-sm font-semibold text-gray-900">Orbisk</th>
                 </tr>
               </thead>
@@ -70,21 +90,12 @@ export default function CompareOrbiskPage() {
                   <tr key={index} className="hover:bg-gray-50">
                     <td className="px-6 py-4">
                       <div className="text-sm font-medium text-gray-900">{item.feature}</div>
-                      {item.notes && <div className="text-sm text-gray-500 mt-1">{item.notes}</div>}
                     </td>
                     <td className="px-6 py-4 text-center">
-                      {item.kitchenOS ? (
-                        <CheckCircle className="w-6 h-6 text-product-fw-green mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-gray-300 mx-auto" />
-                      )}
+                      <div className="text-sm text-gray-900">{item.kitchenOS}</div>
                     </td>
                     <td className="px-6 py-4 text-center">
-                      {item.competitor ? (
-                        <CheckCircle className="w-6 h-6 text-gray-400 mx-auto" />
-                      ) : (
-                        <X className="w-6 h-6 text-gray-300 mx-auto" />
-                      )}
+                      <div className="text-sm text-gray-600">{item.competitor}</div>
                     </td>
                   </tr>
                 ))}
@@ -94,11 +105,84 @@ export default function CompareOrbiskPage() {
         </div>
       </section>
 
+      {/* Operational Advantages */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-navy mb-12 text-center">
+            Operational Advantages
+          </h2>
+          <div className="space-y-6">
+            <div className="bg-white p-8 rounded-lg shadow-soft">
+              <h3 className="text-xl font-semibold text-brand-navy mb-3 flex items-center">
+                <span className="text-2xl mr-3">1️⃣</span>
+                Less complexity, same results
+              </h3>
+              <p className="text-gray-700 ml-11">
+                No camera installations, no privacy worries — just accurate, reliable data.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-lg shadow-soft">
+              <h3 className="text-xl font-semibold text-brand-navy mb-3 flex items-center">
+                <span className="text-2xl mr-3">2️⃣</span>
+                Cloud-connected from day one
+              </h3>
+              <p className="text-gray-700 ml-11">
+                View waste patterns across sites, teams, or menu items instantly.
+              </p>
+            </div>
+            <div className="bg-white p-8 rounded-lg shadow-soft">
+              <h3 className="text-xl font-semibold text-brand-navy mb-3 flex items-center">
+                <span className="text-2xl mr-3">3️⃣</span>
+                Designed for scaling
+              </h3>
+              <p className="text-gray-700 ml-11">
+                Add kitchens or units easily without new hardware or big-ticket licences.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ROI & Pricing Advantage */}
+      <section className="py-20 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h2 className="text-3xl font-bold text-brand-navy mb-12 text-center">
+            ROI & Pricing Advantage
+          </h2>
+          <div className="bg-gradient-to-br from-product-fw-green-light to-white p-8 rounded-lg shadow-soft text-center">
+            <p className="text-2xl text-gray-900 mb-6">
+              At <strong>£150/month</strong>, F*** Waste customers recover their investment in under a year — while Orbisk systems often take 12–15 months to break even.
+            </p>
+            <p className="text-xl text-gray-700">
+              You get up to <strong>double the ROI</strong> and a faster sustainability win for less upfront cost.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Verdict */}
+      <section className="py-20 bg-gray-50">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h2 className="text-3xl font-bold text-brand-navy mb-6">
+            Verdict
+          </h2>
+          <p className="text-2xl text-gray-900 mb-4">
+            <strong>Orbisk is powerful. F*** Waste is practical.</strong>
+          </p>
+          <p className="text-xl text-gray-700 max-w-2xl mx-auto">
+            You&apos;ll save faster, spend less, and achieve the same or better results — all while integrating with your broader Kitchen OS systems.
+          </p>
+        </div>
+      </section>
+
+      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-product-fw-green to-product-fw-green-dark text-white">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-6">Try Kitchen OS F*** Waste</h2>
-          <p className="text-xl mb-8 text-product-fw-green-light">
-            No cameras to install. Start tracking waste with just your phone.
+          <h2 className="text-3xl md:text-4xl font-bold mb-6">
+            Choose Practical Over Powerful
+          </h2>
+          <p className="text-xl mb-8 text-white/90">
+            Get faster ROI and simpler deployment with F*** Waste.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
