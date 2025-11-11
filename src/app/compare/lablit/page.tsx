@@ -102,13 +102,15 @@ export default function CompareLablitPage() {
             Smart labelling plus complete kitchen management in one platform.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <a
               href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-navy text-white font-semibold rounded-lg hover:bg-brand-navy-light transition-colors"
             >
               Book a Demo
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+            </a>
             <Link
               href="/pricing"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-brand-navy font-semibold rounded-lg hover:bg-gray-50 transition-colors border-2 border-brand-navy"

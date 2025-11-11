@@ -160,12 +160,14 @@ export default function FoodLabelSystemPage() {
               Replace handwriting. Print labels in seconds. Maintain safety compliance across all operations.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
+              <a
                 href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-brand-navy text-white font-semibold rounded-lg hover:bg-brand-navy-light transition-colors"
               >
                 Book a Demo
-              </Link>
+              </a>
               <a
                 href="https://foodlabelsystem.com"
                 target="_blank"
@@ -444,12 +446,14 @@ export default function FoodLabelSystemPage() {
             Join hundreds of kitchens using Food Label System. 14-day free trial, no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <a
               href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-brand-navy text-white font-bold rounded-xl hover:bg-brand-navy-dark transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               Book a Demo
-            </Link>
+            </a>
             <a
               href="https://foodlabelsystem.com"
               target="_blank"

@@ -160,12 +160,14 @@ export default function AllerQPage() {
               instant updates, and complete traceability.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
+              <a
                 href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-allerq-orange font-semibold rounded-lg hover:bg-gray-50 transition-colors"
               >
                 Book a Demo
-              </Link>
+              </a>
               <a
                 href="https://allerq.com"
                 target="_blank"
@@ -306,12 +308,14 @@ export default function AllerQPage() {
             Join hundreds of restaurants using AllerQ. 14-day free trial, no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <a
               href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-allerq-orange font-bold rounded-xl hover:bg-gray-50 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               Book a Demo
-            </Link>
+            </a>
             <a
               href="https://allerq.com"
               target="_blank"

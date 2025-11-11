@@ -142,12 +142,14 @@ export default function FWastePage() {
               Install beneath existing bins and immediately start capturing precise waste data. The system delivers 50%+ waste reduction with a proven 14:1 ROI.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link
+              <a
                 href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-fw-green font-semibold rounded-lg hover:bg-gray-50 transition-colors"
               >
                 Book a Demo
-              </Link>
+              </a>
               <a
                 href="https://f-waste.com"
                 target="_blank"
@@ -459,12 +461,14 @@ export default function FWastePage() {
             Join 105+ kitchens across 9 countries using F*** Waste. 50%+ waste reduction. 14:1 ROI. Zero disruption.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <a
               href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-fw-green font-bold rounded-xl hover:bg-gray-50 transition-all shadow-xl hover:shadow-2xl hover:scale-105 transform duration-200"
             >
               Book a Demo
-            </Link>
+            </a>
             <a
               href="https://f-waste.com"
               target="_blank"

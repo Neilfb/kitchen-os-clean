@@ -366,12 +366,14 @@ export default function PodcastPage() {
             Hear the stories, then experience the results. Start your free trial today.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link
+            <a
               href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-all shadow-lg inline-flex items-center gap-2"
             >
               Book a Demo
-            </Link>
+            </a>
             <Link
               href="/pricing"
               className="bg-green-700 text-white px-8 py-3 rounded-lg font-semibold hover:bg-green-800 transition-all border-2 border-green-400"

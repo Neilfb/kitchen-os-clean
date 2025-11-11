@@ -168,13 +168,15 @@ export default function HomePage() {
               </p>
 
               <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <Link
+                <a
                   href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="inline-flex items-center justify-center px-8 py-4 bg-product-fss-green text-white font-bold rounded-xl hover:bg-product-fss-green-dark transition-all shadow-lg hover:shadow-xl hover:scale-105 transform duration-200"
                 >
                   Book a Demo
                   <ArrowRight className="ml-2 w-5 h-5" />
-                </Link>
+                </a>
                 <Link
                   href="/pricing"
                   className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold rounded-xl hover:bg-white/20 transition-all border-2 border-white/20"
@@ -378,13 +380,15 @@ export default function HomePage() {
             Join 500+ professional kitchens using Kitchen OS. 14-day free trial, no credit card required.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <a
               href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-product-fss-green text-white font-bold rounded-xl hover:bg-product-fss-green-dark transition-all shadow-lg hover:shadow-xl hover:scale-105 transform duration-200"
             >
               Book a Demo
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+            </a>
             <Link
               href="/pricing"
               className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white font-bold rounded-xl hover:bg-white/20 transition-all border-2 border-white/20"

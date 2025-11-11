@@ -177,8 +177,8 @@ export default function Footer() {
           <div className="max-w-3xl mx-auto">
             <div className="bg-gradient-to-br from-product-fss-green-light to-white rounded-2xl shadow-soft p-8">
               <div className="text-center mb-8">
-                <h3 className="text-3xl font-bold text-brand-navy mb-3">
-                  Stay Updated
+                <h3 className="text-3xl md:text-4xl font-bold text-brand-navy mb-4">
+                  Sign up to the Kitchen OS Newsletter
                 </h3>
                 <p className="text-lg text-gray-600">
                   Get the latest Kitchen OS updates, food safety tips, and industry insights delivered to your inbox.

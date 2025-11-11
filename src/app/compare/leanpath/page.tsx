@@ -185,13 +185,15 @@ export default function CompareLeanpathPage() {
             See how F*** Waste delivers up to double the ROI at a fraction of the cost.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link
+            <a
               href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-fw-green font-semibold rounded-lg hover:bg-gray-50 transition-colors"
             >
               Book a Demo
               <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+            </a>
             <Link
               href="/pricing"
               className="inline-flex items-center justify-center px-8 py-4 bg-product-fw-green-dark text-white font-semibold rounded-lg hover:bg-opacity-90 transition-colors border-2 border-white"
