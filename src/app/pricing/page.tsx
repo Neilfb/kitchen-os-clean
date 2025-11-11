@@ -325,7 +325,7 @@ export default function PricingPage() {
           <div className="mt-12 p-6 bg-gradient-to-br from-product-allerq-orange-light to-white rounded-2xl">
             <p className="text-center text-lg">
               <span className="font-bold text-brand-navy">Need a custom bundle?</span>{' '}
-              <Link href="/contact" className="text-product-fss-green hover:underline font-semibold">
+              <Link href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley" className="text-product-fss-green hover:underline font-semibold">
                 Contact us
               </Link>{' '}
               for enterprise pricing and custom configurations for 10+ locations.
@@ -396,14 +396,14 @@ export default function PricingPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
               className="inline-flex items-center justify-center px-8 py-4 bg-white text-product-fss-green font-semibold rounded-lg hover:bg-gray-50 transition-all hover:scale-105"
             >
               Start Free Trial
               <ArrowRight className="ml-2 w-5 h-5" />
             </Link>
             <Link
-              href="/contact"
+              href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
               className="inline-flex items-center justify-center px-8 py-4 bg-transparent text-white font-semibold rounded-lg hover:bg-white/10 transition-all border-2 border-white"
             >
               Book a Demo

@@ -185,7 +185,7 @@ export default function AboutPage() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/contact"
+              href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
               className="inline-flex items-center justify-center px-8 py-4 bg-product-fss-green text-white font-semibold rounded-lg hover:bg-product-fss-green-dark transition-colors"
             >
               Book a Demo

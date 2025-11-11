@@ -367,7 +367,7 @@ export default function PodcastPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/demo"
+              href="https://tidycal.com/foodsafesystem/30-minute-video-call-with-kitchen-os-founder-neil-bradley"
               className="bg-white text-green-600 px-8 py-3 rounded-lg font-semibold hover:bg-green-50 transition-all shadow-lg inline-flex items-center gap-2"
             >
               Book a Demo
