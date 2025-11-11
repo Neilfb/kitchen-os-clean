@@ -30,13 +30,15 @@ export function filterByType(
 
 /**
  * Filter products by both system and type
+ * Also filters out hidden products
  */
 export function filterProducts(
   products: Product[],
   system: SystemCategory | 'all',
   type: ProductType | 'all'
 ): Product[] {
-  let filtered = products;
+  // First, filter out hidden products
+  let filtered = products.filter((product) => !product.hidden);
 
   if (system !== 'all') {
     filtered = filterBySystem(filtered, system);

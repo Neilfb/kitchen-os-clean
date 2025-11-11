@@ -13,6 +13,7 @@
     "systemCategory": "test",
     "productType": "test",
     "isFeatured": false,
+    "hidden": true,
     "variants": [
       {
         "id": "test-single",
