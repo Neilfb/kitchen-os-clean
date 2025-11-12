@@ -142,7 +142,7 @@ export default function Footer() {
                 aria-label="Food Future Co"
               >
                 <Image
-                  src="/assets/Food Future co logo.png"
+                  src="/assets/food-future-co-logo.png"
                   alt="Food Future Co Logo"
                   width={200}
                   height={80}
