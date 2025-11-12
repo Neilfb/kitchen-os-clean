@@ -20,6 +20,28 @@ interface ContactFormData {
 }
 
 /**
+ * Determine form type based on form ID
+ */
+function getFormType(formId?: string): string {
+  if (!formId) return 'contact';
+
+  // Contact Us Form
+  if (formId === '9c1b1ddf-90db-4f82-aa42-63d2e57fc581') {
+    return 'contact';
+  }
+  // Supplier Suggestion Form
+  if (formId === '066b4cba-033b-423d-a9aa-6c3b7d2fa308') {
+    return 'supplier_suggestion';
+  }
+  // Newsletter Signup
+  if (formId === '52391afa-3232-40f5-8bee-de7302e0854d') {
+    return 'newsletter';
+  }
+
+  return 'contact';
+}
+
+/**
  * Determine email subject based on form ID
  */
 function getEmailSubject(formId?: string): string {
@@ -172,6 +194,7 @@ export async function POST(request: NextRequest) {
       number_of_sites: numberOfSites,
       product_interest: body.interest || null,
       message: body.message,
+      form_type: getFormType(body.formId),
       status: 'new',
       created_at: new Date().toISOString(),
     });
