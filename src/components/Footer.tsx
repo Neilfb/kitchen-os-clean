@@ -63,11 +63,12 @@ export default function Footer() {
                 className="block bg-white px-8 py-6 rounded-2xl shadow-soft transition-all hover:scale-105 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
                 aria-label="UN Tourism - 9th World Forum on Gastronomy Tourism"
               >
-                <img
+                <Image
                   src="/assets/Logo_UN_Tourism.svg"
                   alt="UN Tourism Logo"
-                  className="h-24 w-auto transition-opacity"
-                  loading="lazy"
+                  width={200}
+                  height={80}
+                  className="h-20 w-auto transition-opacity"
                 />
               </a>
             </div>
@@ -84,9 +85,9 @@ export default function Footer() {
                 <Image
                   src="/assets/gold-innovator.png"
                   alt="Innovate NI Gold Innovator Logo"
-                  width={240}
-                  height={96}
-                  className="h-24 w-auto transition-opacity"
+                  width={200}
+                  height={80}
+                  className="h-20 w-auto transition-opacity"
                 />
               </a>
             </div>
@@ -103,9 +104,9 @@ export default function Footer() {
                 <Image
                   src="/assets/masschallenge-seeklogo.png"
                   alt="MassChallenge Logo"
-                  width={240}
-                  height={96}
-                  className="h-24 w-auto transition-opacity"
+                  width={200}
+                  height={80}
+                  className="h-20 w-auto transition-opacity"
                 />
               </a>
             </div>
@@ -122,9 +123,9 @@ export default function Footer() {
                 <Image
                   src="/assets/EIT-Food_landscape_square.png"
                   alt="EIT Food Logo"
-                  width={240}
-                  height={96}
-                  className="h-24 w-auto transition-opacity"
+                  width={200}
+                  height={80}
+                  className="h-20 w-auto transition-opacity"
                 />
               </a>
             </div>
@@ -141,9 +142,9 @@ export default function Footer() {
                 <Image
                   src="/assets/E_SDG_logo_Square_Transparent_WEB.png"
                   alt="UN Sustainable Development Goals Logo"
-                  width={160}
-                  height={160}
-                  className="h-20 w-auto transition-opacity"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 transition-opacity"
                 />
               </a>
               <div className="flex flex-wrap justify-center gap-3 max-w-sm">
@@ -161,7 +162,7 @@ export default function Footer() {
                       alt={`UN SDG Goal ${num}`}
                       width={80}
                       height={80}
-                      className="h-16 w-16 transition-opacity rounded-lg"
+                      className="h-20 w-20 transition-opacity rounded-lg"
                     />
                   </a>
                 ))}
