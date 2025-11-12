@@ -55,7 +55,7 @@ export default function Footer() {
           </h3>
 
           {/* Partner Logos Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16 items-center mb-16">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-12 lg:gap-16 items-center mb-16">
             {/* UN Tourism */}
             <div className="flex justify-center">
               <a
@@ -125,6 +125,25 @@ export default function Footer() {
                 <Image
                   src="/assets/EIT-Food_landscape_square.png"
                   alt="EIT Food Logo"
+                  width={200}
+                  height={80}
+                  className="h-20 w-auto transition-opacity"
+                />
+              </a>
+            </div>
+
+            {/* Food Future Co */}
+            <div className="flex justify-center">
+              <a
+                href="https://www.foodfuture.co/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block bg-white px-8 py-6 rounded-2xl shadow-soft transition-all hover:scale-105 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
+                aria-label="Food Future Co"
+              >
+                <Image
+                  src="/assets/Food Future co logo.png"
+                  alt="Food Future Co Logo"
                   width={200}
                   height={80}
                   className="h-20 w-auto transition-opacity"
