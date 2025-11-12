@@ -53,7 +53,9 @@ export default function Footer() {
           <h3 className="text-brand-navy font-bold mb-12 text-center text-sm uppercase tracking-wider">
             Partners & Certifications
           </h3>
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-16 items-center">
+
+          {/* Partner Logos Grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-12 lg:gap-16 items-center mb-16">
             {/* UN Tourism */}
             <div className="flex justify-center">
               <a
@@ -129,14 +131,20 @@ export default function Footer() {
                 />
               </a>
             </div>
+          </div>
 
-            {/* UN Sustainable Development Goals */}
-            <div className="flex flex-col items-center gap-6">
+          {/* UN Sustainable Development Goals Section */}
+          <div className="border-t border-gray-300 pt-12">
+            <h4 className="text-brand-navy font-bold mb-8 text-center text-sm uppercase tracking-wider">
+              Supporting UN Sustainable Development Goals
+            </h4>
+            <div className="flex flex-wrap justify-center items-center gap-6 max-w-5xl mx-auto">
+              {/* Main SDG Logo */}
               <a
                 href="https://www.un.org/sustainabledevelopment/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="block bg-white px-8 py-6 rounded-2xl shadow-soft transition-all hover:scale-105 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
+                className="block bg-white p-4 rounded-xl shadow-soft transition-all hover:scale-110 hover:shadow-soft-lg focus:outline-none focus:ring-2 focus:ring-brand-navy/30"
                 aria-label="UN Sustainable Development Goals"
               >
                 <Image
@@ -147,26 +155,103 @@ export default function Footer() {
                   className="h-20 w-20 transition-opacity"
                 />
               </a>
-              <div className="flex flex-wrap justify-center gap-3 max-w-sm">
-                {['01', '02', '08', '11', '12', '13'].map((num) => (
-                  <a
-                    key={num}
-                    href="https://www.un.org/sustainabledevelopment/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-brand-navy/30 rounded-lg"
-                    aria-label={`UN SDG Goal ${num}`}
-                  >
-                    <Image
-                      src={`/assets/E_WEB_${num}.png`}
-                      alt={`UN SDG Goal ${num}`}
-                      width={80}
-                      height={80}
-                      className="h-20 w-20 transition-opacity rounded-lg"
-                    />
-                  </a>
-                ))}
-              </div>
+
+              {/* Individual SDG Goals with specific links */}
+              <a
+                href="https://www.un.org/sustainabledevelopment/poverty/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-brand-navy/30 rounded-lg"
+                aria-label="UN SDG Goal 1: No Poverty"
+              >
+                <Image
+                  src="/assets/E_WEB_01.png"
+                  alt="UN SDG Goal 1: No Poverty"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 transition-opacity rounded-lg"
+                />
+              </a>
+
+              <a
+                href="https://www.un.org/sustainabledevelopment/hunger/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-brand-navy/30 rounded-lg"
+                aria-label="UN SDG Goal 2: Zero Hunger"
+              >
+                <Image
+                  src="/assets/E_WEB_02.png"
+                  alt="UN SDG Goal 2: Zero Hunger"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 transition-opacity rounded-lg"
+                />
+              </a>
+
+              <a
+                href="https://www.un.org/sustainabledevelopment/economic-growth/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-brand-navy/30 rounded-lg"
+                aria-label="UN SDG Goal 8: Decent Work and Economic Growth"
+              >
+                <Image
+                  src="/assets/E_WEB_08.png"
+                  alt="UN SDG Goal 8: Decent Work and Economic Growth"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 transition-opacity rounded-lg"
+                />
+              </a>
+
+              <a
+                href="https://www.un.org/sustainabledevelopment/cities/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-brand-navy/30 rounded-lg"
+                aria-label="UN SDG Goal 11: Sustainable Cities and Communities"
+              >
+                <Image
+                  src="/assets/E_WEB_11.png"
+                  alt="UN SDG Goal 11: Sustainable Cities and Communities"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 transition-opacity rounded-lg"
+                />
+              </a>
+
+              <a
+                href="https://www.un.org/sustainabledevelopment/sustainable-consumption-production/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-brand-navy/30 rounded-lg"
+                aria-label="UN SDG Goal 12: Responsible Consumption and Production"
+              >
+                <Image
+                  src="/assets/E_WEB_12.png"
+                  alt="UN SDG Goal 12: Responsible Consumption and Production"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 transition-opacity rounded-lg"
+                />
+              </a>
+
+              <a
+                href="https://www.un.org/sustainabledevelopment/climate-change/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block transition-transform hover:scale-110 focus:outline-none focus:ring-2 focus:ring-brand-navy/30 rounded-lg"
+                aria-label="UN SDG Goal 13: Climate Action"
+              >
+                <Image
+                  src="/assets/E_WEB_13.png"
+                  alt="UN SDG Goal 13: Climate Action"
+                  width={80}
+                  height={80}
+                  className="h-20 w-20 transition-opacity rounded-lg"
+                />
+              </a>
             </div>
           </div>
         </div>
