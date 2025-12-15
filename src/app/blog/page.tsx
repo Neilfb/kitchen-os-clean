@@ -7,7 +7,8 @@
 
 import type { Metadata } from 'next';
 import { BlogListingClient } from './BlogListingClient';
-import { getAllPosts, BLOG_CATEGORIES } from '@/data/blogPosts';
+import { BLOG_CATEGORIES } from '@/data/blogPosts';
+import { fetchAllBlogPosts } from '@/lib/builderBlog';
 import { WebSiteSchema, OrganizationSchema } from '@/components/seo/JsonLd';
 
 export const metadata: Metadata = {
@@ -50,8 +51,10 @@ export const metadata: Metadata = {
   },
 };
 
-export default function BlogPage() {
-  const posts = getAllPosts();
+export const revalidate = 60; // Revalidate every 60 seconds
+
+export default async function BlogPage() {
+  const posts = await fetchAllBlogPosts();
 
   return (
     <>
