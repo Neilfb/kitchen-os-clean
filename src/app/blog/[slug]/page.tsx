@@ -13,6 +13,7 @@ import { Calendar, Clock, ArrowLeft, Tag, User } from 'lucide-react';
 import { fetchAllBlogPosts, fetchBlogPostBySlug, fetchRelatedPosts } from '@/lib/builderBlog';
 import type { BlogPost } from '@/data/blogPosts';
 import { BlogPostingSchema, OrganizationSchema, BreadcrumbSchema } from '@/components/seo/JsonLd';
+import { marked } from 'marked';
 
 interface BlogPostPageProps {
   params: Promise<{
@@ -190,7 +191,7 @@ export default async function BlogPostPage({ params }: BlogPostPageProps) {
               prose-blockquote:border-l-4 prose-blockquote:border-green-500 prose-blockquote:pl-4 prose-blockquote:italic prose-blockquote:text-gray-600
               prose-code:text-green-600 prose-code:bg-green-50 prose-code:px-1 prose-code:py-0.5 prose-code:rounded
             "
-            dangerouslySetInnerHTML={{ __html: formatBlogContent(post.content) }}
+            dangerouslySetInnerHTML={{ __html: marked(post.content) as string }}
           />
 
           {/* Tags */}
@@ -309,27 +310,4 @@ function RelatedPostCard({ post }: { post: BlogPost }) {
   );
 }
 
-// Format blog content (convert markdown-like syntax to HTML)
-function formatBlogContent(content: string): string {
-  // Simple markdown-to-HTML conversion
-  let html = content
-    // Headers
-    .replace(/^# (.+)$/gm, '<h1>$1</h1>')
-    .replace(/^## (.+)$/gm, '<h2>$1</h2>')
-    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
-    // Bold
-    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
-    // Italic
-    .replace(/\*(.+?)\*/g, '<em>$1</em>')
-    // Links
-    .replace(/\[(.+?)\]\((.+?)\)/g, '<a href="$2">$1</a>')
-    // Line breaks
-    .replace(/\n\n/g, '</p><p>')
-    // Blockquotes
-    .replace(/^> (.+)$/gm, '<blockquote>$1</blockquote>');
-
-  // Wrap in paragraphs
-  html = '<p>' + html + '</p>';
-
-  return html;
-}
+// Markdown is now handled by the 'marked' library imported above
