@@ -3,6 +3,7 @@
  *
  * Fetches blog posts from Builder.io using REST API.
  * Follows Kitchen OS Builder.io Integration Rules - REST API only, server fetch.
+ * Data Model: blog-post
  */
 
 import { BUILDER_API_KEY, BUILDER_CONTENT_API } from './builderConfig';
