@@ -55,7 +55,7 @@ export async function fetchAllBlogPosts(): Promise<BlogPost[]> {
 
     // Transform and sort posts by publishedDate (newest first)
     return posts.map(transformBuilderPost).sort(
-      (a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
+      (a: BlogPost, b: BlogPost) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
     );
   } catch (error) {
     console.error('[Builder.io Blog] Error fetching posts:', error);
