@@ -35,7 +35,7 @@ const REVALIDATE_TIME = 60; // Revalidate every 60 seconds
  * Fetch all blog posts from Builder.io
  */
 export async function fetchAllBlogPosts(): Promise<BlogPost[]> {
-  const url = `${BUILDER_CONTENT_API}/${BUILDER_MODEL}?apiKey=${BUILDER_API_KEY}&limit=100&sort.publishedDate=-1`;
+  const url = `${BUILDER_CONTENT_API}/${BUILDER_MODEL}?apiKey=${BUILDER_API_KEY}&limit=100`;
 
   try {
     const response = await fetch(url, {
@@ -53,7 +53,10 @@ export async function fetchAllBlogPosts(): Promise<BlogPost[]> {
     const payload = await response.json();
     const posts = payload?.results || [];
 
-    return posts.map(transformBuilderPost);
+    // Transform and sort posts by publishedDate (newest first)
+    return posts.map(transformBuilderPost).sort(
+      (a, b) => new Date(b.publishedDate).getTime() - new Date(a.publishedDate).getTime()
+    );
   } catch (error) {
     console.error('[Builder.io Blog] Error fetching posts:', error);
     return [];
