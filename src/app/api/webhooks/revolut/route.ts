@@ -1,43 +1,76 @@
+import { createHmac, timingSafeEqual } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import type { RevolutWebhookEvent } from '@/types/revolut';
 import * as db from '@/services/nocodebackend';
-import { sendEmail } from '@/services/emailit';
+import { Resend } from 'resend';
 import { trackSale } from '@/services/pushLapGrowth';
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 /**
  * Revolut Webhook Handler
  *
- * Handles payment status updates from Revolut
+ * Handles payment status updates from Revolut.
+ * Webhook URL is specified per-order via the webhook_url field in POST /orders.
  * Documentation: https://developer.revolut.com/docs/merchant/webhooks
- *
- * IMPORTANT: You must configure this webhook URL in your Revolut dashboard:
- * https://your-domain.com/api/webhooks/revolut
  */
 
 export async function POST(request: NextRequest) {
   try {
-    // Get webhook signature from headers (for verification)
-    const signature = request.headers.get('revolut-signature');
+    // Read raw body first — needed for HMAC signature computation before JSON parse
+    const rawBody = await request.text();
 
-    // Parse webhook body
-    const body: RevolutWebhookEvent = await request.json();
+    // Verify webhook signature if signing secret is configured.
+    // Secret is returned when you create a webhook via POST /api/webhooks.
+    const webhookSecret = process.env.REVOLUT_WEBHOOK_SECRET;
+    if (webhookSecret) {
+      const timestamp = request.headers.get('revolut-request-timestamp');
+      const signature = request.headers.get('revolut-signature');
+
+      if (!timestamp || !signature) {
+        console.warn('Webhook missing required signature headers');
+        return NextResponse.json({ error: 'Missing signature headers' }, { status: 401 });
+      }
+
+      // Reject if timestamp is older than 5 minutes (replay attack prevention)
+      const now = Math.floor(Date.now() / 1000);
+      if (Math.abs(now - parseInt(timestamp, 10)) > 300) {
+        console.warn('Webhook signature timestamp expired');
+        return NextResponse.json({ error: 'Signature expired' }, { status: 401 });
+      }
+
+      // Revolut signs payload: "v1.<timestamp>.<rawBody>" using HMAC-SHA256
+      // Revolut-Signature header: "v1=<hex_hmac>" (may contain multiple during secret rotation)
+      const payloadToSign = `v1.${timestamp}.${rawBody}`;
+      const expectedHmac = createHmac('sha256', webhookSecret)
+        .update(payloadToSign)
+        .digest('hex');
+      const expectedSig = `v1=${expectedHmac}`;
+      const expectedBuf = Buffer.from(expectedSig);
+
+      // Check each signature in the header (multiple present during secret rotation)
+      const matched = signature.split(',').some((sig) => {
+        const sigBuf = Buffer.from(sig.trim());
+        return sigBuf.length === expectedBuf.length && timingSafeEqual(sigBuf, expectedBuf);
+      });
+
+      if (!matched) {
+        console.warn('Webhook signature verification failed');
+        return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
+      }
+    } else {
+      console.warn('REVOLUT_WEBHOOK_SECRET not set — skipping signature verification');
+    }
+
+    const body: RevolutWebhookEvent = JSON.parse(rawBody);
 
     console.log('Received Revolut webhook:', {
       event: body.event,
       orderId: body.order_id,
       merchantRef: body.merchant_order_ext_ref,
     });
-
-    // TODO: Verify webhook signature
-    // For production, you should verify the webhook signature to ensure it's from Revolut
-    // Documentation: https://developer.revolut.com/docs/merchant/webhooks#webhook-security
-    if (signature) {
-      // Implement signature verification here
-      // const isValid = verifyRevolutSignature(body, signature);
-      // if (!isValid) {
-      //   return NextResponse.json({ error: 'Invalid signature' }, { status: 401 });
-      // }
-    }
 
     // Get our order number from the webhook
     const orderNumber = body.merchant_order_ext_ref;
@@ -123,7 +156,7 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
         referralId: order.customer_email as string, // Customer email (was referred)
         externalId: String(order.id), // Database order ID
         externalInvoiceId: order.order_number as string, // Order number (e.g., KOS-2025-123456)
-        totalEarned: (order.total as number) / 100, // Convert pence to pounds
+        totalEarned: order.total as number,
       });
 
       if (saleResult.success) {
@@ -147,10 +180,10 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
 
   // Send payment confirmation email
   try {
-    await sendEmail({
+    const { error: emailError } = await getResend().emails.send({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
-      reply_to: 'neil@kitchen-os.com',
+      replyTo: 'neil@kitchen-os.com',
       subject: `Payment Confirmed - Order ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -160,7 +193,7 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
           <div style="background: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
             <h2 style="margin-top: 0;">Order Details</h2>
             <p><strong>Order Number:</strong> ${order.order_number}</p>
-            <p><strong>Amount Paid:</strong> £${((order.total as number) / 100).toFixed(2)}</p>
+            <p><strong>Amount Paid:</strong> £${(order.total as number).toFixed(2)}</p>
             <p><strong>Payment Method:</strong> ${webhook.payment_method?.type || 'Card'}</p>
           </div>
 
@@ -173,10 +206,13 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
       `,
     });
 
-    console.log(`Payment confirmation email sent to ${order.customer_email as string}`);
+    if (emailError) {
+      console.error('Failed to send payment confirmation email:', emailError);
+    } else {
+      console.log(`Payment confirmation email sent to ${order.customer_email as string}`);
+    }
   } catch (emailError) {
     console.error('Failed to send payment confirmation email:', emailError);
-    // Don't fail the webhook if email fails
   }
 }
 
@@ -205,10 +241,10 @@ async function handleOrderCancelled(order: Record<string, unknown>, _webhook: Re
 
   // Send cancellation notification email
   try {
-    await sendEmail({
+    const { error: emailError } = await getResend().emails.send({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
-      reply_to: 'neil@kitchen-os.com',
+      replyTo: 'neil@kitchen-os.com',
       subject: `Order Cancelled - ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -218,6 +254,7 @@ async function handleOrderCancelled(order: Record<string, unknown>, _webhook: Re
         </div>
       `,
     });
+    if (emailError) console.error('Failed to send cancellation email:', emailError);
   } catch (emailError) {
     console.error('Failed to send cancellation email:', emailError);
   }
@@ -235,10 +272,10 @@ async function handlePaymentFailed(order: Record<string, unknown>, _webhook: Rev
 
   // Send payment failure notification
   try {
-    await sendEmail({
+    const { error: emailError } = await getResend().emails.send({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
-      reply_to: 'neil@kitchen-os.com',
+      replyTo: 'neil@kitchen-os.com',
       subject: `Payment Issue - Order ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -264,6 +301,7 @@ async function handlePaymentFailed(order: Record<string, unknown>, _webhook: Rev
         </div>
       `,
     });
+    if (emailError) console.error('Failed to send payment failure email:', emailError);
   } catch (emailError) {
     console.error('Failed to send payment failure email:', emailError);
   }

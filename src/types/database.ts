@@ -45,8 +45,12 @@ export interface DBOrder {
   total: number;
 
   // Order status
-  status: 'pending' | 'paid' | 'failed' | 'cancelled';
+  status: 'pending' | 'paid' | 'failed' | 'cancelled' | 'authorized';
   payment_method: string | null;
+
+  // Affiliate tracking
+  affiliate_id: string | null;
+  affiliate_commission_tracked: boolean;
 
   // Timestamps
   created_at: string;

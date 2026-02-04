@@ -28,6 +28,7 @@ export interface RevolutOrderRequest {
     country_code?: string;
     postcode?: string;
   };
+  webhook_url?: string; // URL where Revolut POSTs order status events
 }
 
 // Revolut Order Creation Response

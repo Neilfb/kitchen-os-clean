@@ -28,6 +28,7 @@ export default function RevolutPayment({
   const [isProcessing, setIsProcessing] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [instance, setInstance] = useState<unknown | null>(null);
+  const instanceRef = useRef<unknown | null>(null);
   const cardFieldRef = useRef<HTMLDivElement>(null);
   const hasInitialized = useRef(false);
 
@@ -46,6 +47,7 @@ export default function RevolutPayment({
 
         // Initialize RevolutCheckout
         const revolutInstance = await RevolutCheckout(publicToken, mode);
+        instanceRef.current = revolutInstance;
         setInstance(revolutInstance);
 
         setIsLoading(false);
@@ -63,9 +65,10 @@ export default function RevolutPayment({
 
     // Cleanup
     return () => {
-      if (instance) {
+      if (instanceRef.current) {
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        (instance as any).destroy();
+        (instanceRef.current as any).destroy();
+        instanceRef.current = null;
       }
     };
   }, [publicToken, onError]);

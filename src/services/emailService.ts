@@ -1,14 +1,18 @@
 /**
  * Email Service
  *
- * Handles sending transactional emails via EmailIt.
+ * Handles sending transactional emails via Resend.
  * Provides type-safe email sending functions for order confirmations and other notifications.
  */
 
 import { render } from '@react-email/components';
+import { Resend } from 'resend';
 import type { Order } from '@/types/order';
 import OrderConfirmationEmail from '@/emails/OrderConfirmation';
-import { sendEmail as sendEmailViaEmailIt } from './emailit';
+
+function getResend() {
+  return new Resend(process.env.RESEND_API_KEY);
+}
 
 // Email configuration
 const FROM_EMAIL = 'Kitchen OS <orders@kitchen-os.com>';
@@ -22,42 +26,30 @@ export async function sendOrderConfirmationEmail(order: Order): Promise<{
   error?: string;
 }> {
   try {
-    // Check if EmailIt is configured
-    if (!process.env.EMAILIT_API_KEY) {
-      console.error('EMAILIT_API_KEY not configured');
-      return {
-        success: false,
-        error: 'Email service not configured',
-      };
+    if (!process.env.RESEND_API_KEY) {
+      console.error('RESEND_API_KEY not configured');
+      return { success: false, error: 'Email service not configured' };
     }
 
-    // Render React Email template to HTML
     const html = await render(OrderConfirmationEmail({ order }));
     const text = generatePlainTextConfirmation(order);
 
-    // Send email using EmailIt
-    const result = await sendEmailViaEmailIt({
+    const { data, error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: order.customer.email,
-      reply_to: 'neil@kitchen-os.com',
+      replyTo: 'neil@kitchen-os.com',
       subject: `Order Confirmation - ${order.orderNumber}`,
       html,
       text,
     });
 
-    if (!result.success) {
-      console.error('Error sending order confirmation email:', result.error);
-      return {
-        success: false,
-        error: result.error || 'Failed to send email',
-      };
+    if (error) {
+      console.error('Error sending order confirmation email:', error);
+      return { success: false, error: error.message };
     }
 
-    console.log(`Order confirmation email sent successfully: ${result.id}`);
-    return {
-      success: true,
-      messageId: result.id,
-    };
+    console.log(`Order confirmation email sent: ${data?.id}`);
+    return { success: true, messageId: data?.id };
   } catch (error) {
     console.error('Unexpected error sending email:', error);
     return {
@@ -79,14 +71,14 @@ export async function sendOrderFailedEmail(
   error?: string;
 }> {
   try {
-    if (!process.env.EMAILIT_API_KEY) {
+    if (!process.env.RESEND_API_KEY) {
       return { success: false, error: 'Email service not configured' };
     }
 
-    const result = await sendEmailViaEmailIt({
+    const { data, error } = await getResend().emails.send({
       from: FROM_EMAIL,
       to: order.customer.email,
-      reply_to: 'neil@kitchen-os.com',
+      replyTo: 'neil@kitchen-os.com',
       subject: `Payment Issue - Order ${order.orderNumber}`,
       html: `
         <h1>Payment Issue</h1>
@@ -99,12 +91,12 @@ export async function sendOrderFailedEmail(
       `,
     });
 
-    if (!result.success) {
-      console.error('Error sending order failed email:', result.error);
-      return { success: false, error: result.error };
+    if (error) {
+      console.error('Error sending order failed email:', error);
+      return { success: false, error: error.message };
     }
 
-    return { success: true, messageId: result.id };
+    return { success: true, messageId: data?.id };
   } catch (error) {
     console.error('Unexpected error sending failed email:', error);
     return {
@@ -176,19 +168,12 @@ function generatePlainTextConfirmation(order: Order): string {
 
 /**
  * Test email configuration
- * Useful for checking if EmailIt is properly configured
  */
 export async function testEmailConfiguration(): Promise<boolean> {
-  try {
-    if (!process.env.EMAILIT_API_KEY) {
-      console.error('EMAILIT_API_KEY not configured');
-      return false;
-    }
-    // Check if the EmailIt API key is valid
-    console.log('Email service configured successfully with EmailIt');
-    return true;
-  } catch (error) {
-    console.error('Email configuration test failed:', error);
+  if (!process.env.RESEND_API_KEY) {
+    console.error('RESEND_API_KEY not configured');
     return false;
   }
+  console.log('Email service configured successfully with Resend');
+  return true;
 }
