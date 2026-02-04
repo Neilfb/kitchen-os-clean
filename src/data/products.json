@@ -259,5 +259,38 @@
       "href": "/food-safe-system",
       "note": "Requires Food Safe System subscription"
     }
+  },
+  {
+    "id": "chef-pen",
+    "name": "CHEF Pen",
+    "category": "Accessories",
+    "tagline": "A solid metal pen built for real kitchens — durable, balanced, and designed for everyday chef use.",
+    "description": "Not disposable. Not forgettable. A pen worth keeping. A pen built for chefs. Built to last.",
+    "image": "/assets/Chef pen 1.png",
+    "images": [
+      "/assets/Chef pen 1.png",
+      "/assets/chef pen 2.png",
+      "/assets/Chef Pen - chef.png",
+      "/assets/Chef Pen - Chef pocket.png"
+    ],
+    "icon": "Package",
+    "productType": "merchandise",
+    "isFeatured": true,
+    "variants": [
+      {
+        "id": "chef-pen-single",
+        "name": "CHEF Pen",
+        "price": 5.50,
+        "savings": null
+      }
+    ],
+    "features": [
+      "Solid metal construction for durability",
+      "Premium weighted feel for comfortable writing",
+      "Precision ballpoint for smooth performance",
+      "Keyring loop for kitchen practicality",
+      "Built to last in busy kitchen environments"
+    ],
+    "relatedProduct": null
   }
 ]
