@@ -266,12 +266,12 @@
     "category": "Accessories",
     "tagline": "A solid metal pen built for real kitchens — durable, balanced, and designed for everyday chef use.",
     "description": "Not disposable. Not forgettable. A pen worth keeping. A pen built for chefs. Built to last.",
-    "image": "/assets/Chef pen 1.png",
+    "image": "/assets/chef-pen-1.jpg",
     "images": [
-      "/assets/Chef pen 1.png",
-      "/assets/chef pen 2.png",
-      "/assets/Chef Pen - chef.png",
-      "/assets/Chef Pen - Chef pocket.png"
+      "/assets/chef-pen-1.jpg",
+      "/assets/chef-pen-2.jpg",
+      "/assets/chef-pen-chef.jpg",
+      "/assets/chef-pen-pocket.jpg"
     ],
     "icon": "Package",
     "productType": "merchandise",
