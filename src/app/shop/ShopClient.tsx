@@ -129,6 +129,22 @@ const SUBSCRIPTIONS = [
     gradientTo: 'to-product-fw-green-light',
     systemCategory: 'fwaste' as SystemCategory,
   },
+  {
+    id: 'foodcostai',
+    name: 'FoodCostAI',
+    tagline: 'Free recipe costing tool with real-time margin calculations',
+    priceFrom: 'Free',
+    features: [
+      'Smart recipe builder',
+      'Real-time margin calculator',
+      'Auto supplier price updates',
+      'Menu engineering insights',
+    ],
+    href: '/foodcostai',
+    logoSrc: '/logos/foodcostai/foodcostai-full-logo-white.png',
+    gradientFrom: 'from-product-fca-blue',
+    gradientTo: 'to-product-fca-blue-light',
+  },
 ];
 
 export function ShopClient({ products: productsData }: ShopClientProps) {

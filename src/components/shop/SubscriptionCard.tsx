@@ -59,9 +59,9 @@ export function SubscriptionCard({
       {/* Pricing */}
       <div className="mb-6">
         <div className="flex items-baseline gap-2 text-gray-900">
-          <span className="text-sm font-medium">From</span>
+          {priceFrom !== 'Free' && <span className="text-sm font-medium">From</span>}
           <span className="text-3xl font-bold">{priceFrom}</span>
-          <span className="text-sm">/month</span>
+          {priceFrom !== 'Free' && <span className="text-sm">/month</span>}
         </div>
       </div>
 

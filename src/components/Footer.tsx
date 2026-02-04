@@ -10,6 +10,7 @@ export default function Footer() {
     { name: 'AllerQ', href: '/allerq', website: 'https://allerq.com' },
     { name: 'Food Label System', href: '/food-label-system', website: 'https://foodlabelsystem.com' },
     { name: 'F*** Waste', href: '/f-waste', website: 'https://f-waste.com' },
+    { name: 'FoodCostAI', href: '/foodcostai', website: 'https://www.kitchen-os.com/foodcostai' },
   ];
 
   const companyLinks = [

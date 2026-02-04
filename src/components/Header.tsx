@@ -41,6 +41,13 @@ export default function Header() {
       logo: '/logos/fwaste/fwaste-icon.png',
       description: 'Food Waste Tracking'
     },
+    {
+      name: 'FoodCostAI',
+      href: '/foodcostai',
+      color: 'product-fca-blue',
+      logo: '/logos/foodcostai/foodcostai-icon.png',
+      description: 'Free Recipe Costing Tool'
+    },
   ];
 
   return (

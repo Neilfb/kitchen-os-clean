@@ -28,6 +28,9 @@ module.exports = {
           'fw-green': '#52B788',
           'fw-green-light': '#EBF7F0',
           'fw-green-dark': '#429970',
+          'fca-blue': '#4F46E5',
+          'fca-blue-light': '#EEF2FF',
+          'fca-blue-dark': '#4338CA',
         },
         accent: {
           blue: '#3B82F6',
