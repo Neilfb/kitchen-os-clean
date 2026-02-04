@@ -52,6 +52,13 @@ export default async function RootLayout({
           src="https://resources-app.encharge.io/embed-production.min.js"
           async
         />
+        {/* Noodleseed Widget */}
+        <script
+          src="https://app.noodleseed.com/widget/loader.js"
+          data-share-code="7VX3DJMB"
+          data-position="bottom-right"
+          async
+        />
       </head>
       <body className="min-h-screen bg-white text-gray-900 antialiased">
         <CurrencyProvider
