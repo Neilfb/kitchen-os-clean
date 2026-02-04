@@ -7,6 +7,7 @@ import { OrganizationSchema, WebSiteSchema } from "@/components/seo/JsonLd";
 import { CartProvider } from "@/contexts/CartContext";
 import { CurrencyProvider } from "@/contexts/CurrencyContext";
 import Release0Widget from "@/components/chatbot/Release0Widget";
+import GrainAnalytics from "@/components/GrainAnalytics";
 import { getExchangeRates } from "@/lib/currency";
 import { cookies } from "next/headers";
 import type { Currency } from "@/types/currency";
@@ -62,6 +63,8 @@ export default async function RootLayout({
             <Header />
             <main>{children}</main>
             <Footer />
+            {/* Grain Analytics - Web analytics */}
+            <GrainAnalytics />
             {/* Release0 AI Chatbot - Conversational lead capture & product discovery */}
             <Release0Widget
               mode="bubble"
