@@ -39,11 +39,11 @@ const nextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.builder.io https://pushlapgrowth.com https://agent.release0.com https://merchant.revolut.com https://sandbox-merchant.revolut.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdn.builder.io https://pushlapgrowth.com https://agent.release0.com https://merchant.revolut.com https://sandbox-merchant.revolut.com https://app.noodleseed.com",
               "style-src 'self' 'unsafe-inline' https://cdn.builder.io https://fonts.googleapis.com",
               "img-src 'self' data: blob: https: http:",
               "font-src 'self' data: https://fonts.gstatic.com",
-              "connect-src 'self' https://cdn.builder.io https://api.emailit.com https://backend.nocodebackend.io https://merchant.revolut.com https://sandbox-merchant.revolut.com https://www.pushlapgrowth.com https://agent.release0.com https://app.release0.com",
+              "connect-src 'self' https://cdn.builder.io https://api.emailit.com https://backend.nocodebackend.io https://merchant.revolut.com https://sandbox-merchant.revolut.com https://www.pushlapgrowth.com https://agent.release0.com https://app.release0.com https://app.noodleseed.com https://api.grainql.com",
               "frame-src 'self' https://merchant.revolut.com https://sandbox-merchant.revolut.com https://agent.release0.com",
               "object-src 'none'",
               "base-uri 'self'",
