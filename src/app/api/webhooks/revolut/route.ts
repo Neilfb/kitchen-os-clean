@@ -2,12 +2,8 @@ import { createHmac, timingSafeEqual } from 'node:crypto';
 import { NextRequest, NextResponse } from 'next/server';
 import type { RevolutWebhookEvent } from '@/types/revolut';
 import * as db from '@/services/nocodebackend';
-import { Resend } from 'resend';
+import { sendEmail } from '@/services/emailit';
 import { trackSale } from '@/services/pushLapGrowth';
-
-function getResend() {
-  return new Resend(process.env.RESEND_API_KEY);
-}
 
 /**
  * Revolut Webhook Handler
@@ -180,10 +176,10 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
 
   // Send payment confirmation email
   try {
-    const { error: emailError } = await getResend().emails.send({
+    const result = await sendEmail({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
-      replyTo: 'neil@kitchen-os.com',
+      reply_to: 'neil@kitchen-os.com',
       subject: `Payment Confirmed - Order ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -206,8 +202,8 @@ async function handleOrderCompleted(order: Record<string, unknown>, webhook: Rev
       `,
     });
 
-    if (emailError) {
-      console.error('Failed to send payment confirmation email:', emailError);
+    if (!result.success) {
+      console.error('Failed to send payment confirmation email:', result.error);
     } else {
       console.log(`Payment confirmation email sent to ${order.customer_email as string}`);
     }
@@ -241,10 +237,10 @@ async function handleOrderCancelled(order: Record<string, unknown>, _webhook: Re
 
   // Send cancellation notification email
   try {
-    const { error: emailError } = await getResend().emails.send({
+    const result = await sendEmail({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
-      replyTo: 'neil@kitchen-os.com',
+      reply_to: 'neil@kitchen-os.com',
       subject: `Order Cancelled - ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -254,7 +250,7 @@ async function handleOrderCancelled(order: Record<string, unknown>, _webhook: Re
         </div>
       `,
     });
-    if (emailError) console.error('Failed to send cancellation email:', emailError);
+    if (!result.success) console.error('Failed to send cancellation email:', result.error);
   } catch (emailError) {
     console.error('Failed to send cancellation email:', emailError);
   }
@@ -272,10 +268,10 @@ async function handlePaymentFailed(order: Record<string, unknown>, _webhook: Rev
 
   // Send payment failure notification
   try {
-    const { error: emailError } = await getResend().emails.send({
+    const result = await sendEmail({
       from: 'Kitchen OS <orders@kitchen-os.com>',
       to: order.customer_email as string,
-      replyTo: 'neil@kitchen-os.com',
+      reply_to: 'neil@kitchen-os.com',
       subject: `Payment Issue - Order ${order.order_number}`,
       html: `
         <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -301,7 +297,7 @@ async function handlePaymentFailed(order: Record<string, unknown>, _webhook: Rev
         </div>
       `,
     });
-    if (emailError) console.error('Failed to send payment failure email:', emailError);
+    if (!result.success) console.error('Failed to send payment failure email:', result.error);
   } catch (emailError) {
     console.error('Failed to send payment failure email:', emailError);
   }
